@@ -1,0 +1,14 @@
+\begin{tikzpicture}[x=0.75cm,y=0.75cm,thick]
+  \def\dirIn{in}
+  \foreach \cx/\dir/\title in {-2.3/in/stable,2.3/out/unstable} {
+    \draw[->] (\cx-1.55,0)--(\cx+1.55,0); \draw[->] (\cx,-1.55)--(\cx,1.55);
+    \node[above] at (\cx,1.62) {$\title$}; \fill (\cx,0) circle (1.5pt);
+    \foreach \ang in {15,45,75,105,135,165,195,225,255,285,315,345} {
+      \ifx\dir\dirIn
+        \draw[->] ({\cx+1.38*cos(\ang)},{1.38*sin(\ang)})--({\cx+0.35*cos(\ang)},{0.35*sin(\ang)});
+      \else
+        \draw[->] ({\cx+0.35*cos(\ang)},{0.35*sin(\ang)})--({\cx+1.38*cos(\ang)},{1.38*sin(\ang)});
+      \fi
+    }
+  }
+\end{tikzpicture}

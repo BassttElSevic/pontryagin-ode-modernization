@@ -1,0 +1,6 @@
+\begin{tikzpicture}[x=1cm,y=1cm,thick]
+  \draw[->] (-4.2,0)--(4.2,0) node[right] {$\xi_1$}; \draw[->] (0,-2.7)--(0,2.7) node[above] {$\xi_2$};
+  \draw[very thick] (0,-2.55)--(0,2.55);
+  \foreach \y in {-2,-1.35,-0.7,0.7,1.35,2} {\draw[->] (-3.8,\y)--(-0.3,\y); \draw[->] (3.8,\y)--(0.3,\y);}
+  \foreach \y in {-2,-1.35,-0.7,0,0.7,1.35,2} {\fill (0,\y) circle (1.1pt);}
+\end{tikzpicture}

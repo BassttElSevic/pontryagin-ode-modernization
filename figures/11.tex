@@ -1,0 +1,10 @@
+\begin{tikzpicture}[x=1cm,y=1cm,thick]
+  \draw (0,0)--(0,0.8); \draw[decorate,decoration={coil,segment length=3mm,amplitude=2.6mm}] (0,0.8)--(0,3.0); \draw (0,3.0)--(0,3.8);
+  \draw (0,3.8)--(1.2,3.8); \draw[fill=white] (1.2,3.55) rectangle (2.35,4.05); \node[above] at (1.78,4.05) {$R$}; \draw (2.35,3.8)--(3.8,3.8);
+  \draw (3.8,3.8)--(3.8,2.8); \draw (3.55,2.8)--(4.05,2.8); \draw (3.55,2.55)--(4.05,2.55); \draw (3.8,2.55)--(3.8,0);
+  \draw (0,0)--(0.88,0); \draw (1.2,0) circle (0.32); \draw (1.52,0)--(3.8,0);
+  \node at (1.2,0) {$\sim$};
+  \node[left] at (0,0) {$a$}; \node[left] at (0,3.8) {$b$}; \node[right] at (3.8,3.8) {$c$}; \node[right] at (3.8,0) {$d$};
+  \node[left] at (0,1.9) {$L$}; \node[right] at (3.8,2.68) {$C$}; \node[below] at (1.2,-0.38) {$U(t)$};
+  \draw[->] (3.2,1.0) .. controls (2.9,2.4) and (2.1,2.9) .. (1.3,3.0) node[midway,above] {$I(t)$};
+\end{tikzpicture}

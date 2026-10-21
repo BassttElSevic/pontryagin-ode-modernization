@@ -1,0 +1,37 @@
+# All generated documents and compiler output.
+/build/
+/main.pdf
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Python build helper and local environments.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local credentials and temporary editor/OS files.
+.env
+.env.*
+!.env.example
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

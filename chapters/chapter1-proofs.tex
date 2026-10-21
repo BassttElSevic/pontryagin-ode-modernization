@@ -1,0 +1,303 @@
+\section*{本章补证：存在、唯一性、最大延拓与线性系统的整体存在}
+\addcontentsline{toc}{section}{本章补证：存在、唯一性、最大延拓与线性系统的整体存在}
+\label{sec:existence-proofs}
+
+\noindent\textbf{编排说明。}
+原书第一章的定理1、2、3，把证明安排在第四章的§20、§21。
+这里把所需论证移到第一章末，使本章可以独立、连续地阅读。
+证明仍采用原书的Picard逐次逼近路线；用向量范数和Jacobian矩阵统一标量与系统的情形。
+最大延拓的拼接论证另在这里明确写出。
+本节不改变这些定理的假设，也不把只适用于局部时间区间的结论说成全局存在。
+
+\subsection*{1. 微分方程与积分方程的等价性}
+
+设$\Omega\subset\R\times\R^n$为开集，
+$\vect{f}:\Omega\to\R^n$连续，$(t_0,\vect{x}_0)\in\Omega$。
+在含$t_0$的区间$I$上，考虑初值问题
+\begin{equation}
+ \vect{x}'(t)=\vect{f}(t,\vect{x}(t)),\qquad \vect{x}(t_0)=\vect{x}_0.
+ \label{eq:proof-ivp}
+\end{equation}
+它与下面的积分方程等价：
+\begin{equation}
+ \vect{x}(t)=\vect{x}_0+\int_{t_0}^t \vect{f}(s,\vect{x}(s))\,\dd s.
+ \label{eq:proof-integral}
+\end{equation}
+这里始终要求$(t,\vect{x}(t))\in\Omega$，向量积分按分量定义。
+
+先假定$\vect{x}$满足\eqref{eq:proof-ivp}。对导数等式从$t_0$积分到$t$，
+由微积分基本定理得到
+\[
+ \vect{x}(t)-\vect{x}(t_0)=\int_{t_0}^t \vect{f}(s,\vect{x}(s))\,\dd s;
+\]
+再代入初值，就得到\eqref{eq:proof-integral}。
+反过来，若连续函数$\vect{x}$满足\eqref{eq:proof-integral}，
+则被积函数连续，右端关于$t$连续可微。
+所以$\vect{x}$也连续可微；对等式求导得到微分方程，令$t=t_0$得到初值。
+这个等价性说明，求解初值问题可以转化为寻找积分算子的不动点。
+
+\subsection*{2. 向量估计与函数空间中的距离}
+
+在$\R^n$上用欧氏范数$\|\cdot\|$，在矩阵空间上用相应的算子范数。
+连续向量函数$\vect{g}$满足
+\[
+ \left\|\int_a^b \vect{g}(s)\,\dd s\right\|
+ \le \int_{\min(a,b)}^{\max(a,b)}\|\vect{g}(s)\|\,\dd s.
+\]
+这是向量三角不等式对Riemann和取极限的结果。
+特别地，$b<a$时不能把右端写成一个负的积分。
+
+若$\vect{f}$关于状态变量的Jacobian矩阵$D_{\vect{x}}\vect{f}$连续，
+并在连接$\vect{x}$与$\vect{z}$的整条线段上有$\|D_{\vect{x}}\vect{f}(t,\cdot)\|\le L$，
+则由沿线段积分的链式法则，
+\[
+ \vect{f}(t,\vect{x})-\vect{f}(t,\vect{z})
+ =\int_0^1D_{\vect{x}}\vect{f}\bigl(t,\vect{z}+\theta(\vect{x}-\vect{z})\bigr)(\vect{x}-\vect{z})\,\dd\theta.
+\]
+因此
+\begin{equation}
+ \|\vect{f}(t,\vect{x})-\vect{f}(t,\vect{z})\|\le L\|\vect{x}-\vect{z}\|.
+ \label{eq:proof-lipschitz}
+\end{equation}
+原书逐个估计偏导数、再把分量估计合并；矩阵范数把同一步骤组织成了这个不等式。
+它没有要求$\partial \vect{f}/\partial t$存在。
+
+令$J=[t_0-h,t_0+h]$。在连续函数空间$C(J;\R^n)$上定义
+\[
+ \|\vect{u}\|_\infty=\max_{t\in J}\|\vect{u}(t)\|.
+\]
+于是$\|\vect{u}-\vect{v}\|_\infty$同时控制整个时间区间上两函数的差别。
+若函数列对这个范数是Cauchy列，则每个$t$处的向量列都收敛，
+而Cauchy估计对$t$一致，故极限是一致极限。
+连续函数的一致极限连续，所以极限仍属于$C(J;\R^n)$。
+这说明该空间是完备的；以下逐次逼近正是利用这一事实。
+
+\subsection*{3. 在一个闭时间区间内构造解}
+
+假定$\vect{f}$和$D_{\vect{x}}\vect{f}$都在$\Omega$上连续。
+因为$\Omega$开，可选$a,r>0$，使闭柱体
+\[
+ K=\{(t,\vect{x}):|t-t_0|\le a,\ \|\vect{x}-\vect{x}_0\|\le r\}
+\]
+完全包含在$\Omega$内。
+连续函数在紧集上有界，因此可取正数$M,L$满足
+\[
+ \|\vect{f}(t,\vect{x})\|\le M,\qquad \|D_{\vect{x}}\vect{f}(t,\vect{x})\|\le L
+ \quad ((t,\vect{x})\in K).
+\]
+即使某个上界可以取零，这里仍可把它增大为正数。
+选择$h>0$，使
+\[
+ h\le a,\qquad Mh\le r,\qquad q:=Lh<1.
+\]
+定义闭函数集合
+\[
+ \mathcal B=\{\vect{u}\in C(J;\R^n):\|\vect{u}-\vect{x}_0\|_\infty\le r\},
+\]
+其中$\vect{x}_0$在这个式子中表示常值函数。
+定义积分算子
+\[
+ (\mathcal T\vect{u})(t)=\vect{x}_0+\int_{t_0}^t \vect{f}(s,\vect{u}(s))\,\dd s.
+\]
+
+\textbf{第一步：算子不会把函数带出$\mathcal B$。}
+若$\vect{u}\in\mathcal B$，其时间—状态图形位于$K$内，故
+\[
+ \|(\mathcal T\vect{u})(t)-\vect{x}_0\|
+ \le M|t-t_0|\le Mh\le r.
+\]
+所以$\mathcal T(\mathcal B)\subset\mathcal B$。
+这一步保证每次迭代的被积函数都有定义，而不是形式地反复代入。
+
+\textbf{第二步：比较两次输入。}
+同一时刻$\vect{u}(s),\vect{v}(s)$之间的线段留在闭球内，
+故\eqref{eq:proof-lipschitz}适用。于是
+\[
+ \|(\mathcal T\vect{u})(t)-(\mathcal T\vect{v})(t)\|
+ \le L|t-t_0|\|\vect{u}-\vect{v}\|_\infty,
+\]
+从而
+\begin{equation}
+ \|\mathcal T\vect{u}-\mathcal T\vect{v}\|_\infty\le q\|\vect{u}-\vect{v}\|_\infty,
+ \qquad 0<q<1.
+ \label{eq:proof-contraction}
+\end{equation}
+
+\textbf{第三步：逐次逼近及其收敛。}
+从$\vect{u}_0(t)=\vect{x}_0$出发，递归定义
+\[
+ \vect{u}_{k+1}=\mathcal T\vect{u}_k,\qquad k=0,1,2,\ldots.
+\]
+第一步保证所有$\vect{u}_k$属于$\mathcal B$。
+第二步给出
+\[
+ \|\vect{u}_{k+1}-\vect{u}_k\|_\infty
+ \le q^k\|\vect{u}_1-\vect{u}_0\|_\infty.
+\]
+若$m>k$，把相邻差相加，得到
+\[
+ \|\vect{u}_m-\vect{u}_k\|_\infty
+ \le\sum_{j=k}^{m-1}q^j\|\vect{u}_1-\vect{u}_0\|_\infty
+ \le\frac{q^k}{1-q}\|\vect{u}_1-\vect{u}_0\|_\infty.
+\]
+右端趋于零，所以$\vect{u}_k$一致收敛于某个连续函数$\vect{u}$。
+因为$\mathcal B$是闭集，$\vect{u}\in\mathcal B$。
+而\eqref{eq:proof-contraction}说明$\mathcal T\vect{u}_k\to\mathcal T\vect{u}$，
+在$\vect{u}_{k+1}=\mathcal T\vect{u}_k$中取极限便有$\vect{u}=\mathcal T\vect{u}$。
+由积分方程与微分方程的等价性，$\vect{u}$就是所求的解。
+同时得到实际的误差估计
+\[
+ \|\vect{u}-\vect{u}_k\|_\infty
+ \le\frac{q^k}{1-q}\|\vect{u}_1-\vect{u}_0\|_\infty.
+\]
+
+\subsection*{4. 局部唯一性为什么能推出整个公共区间上的唯一性}
+
+若$\vect{u},\vect{v}\in\mathcal B$都是同一初值问题的解，则
+$\vect{u}=\mathcal T\vect{u}$、$\vect{v}=\mathcal T\vect{v}$。因此
+\[
+ \|\vect{u}-\vect{v}\|_\infty\le q\|\vect{u}-\vect{v}\|_\infty.
+\]
+由于$q<1$，只能有$\|\vect{u}-\vect{v}\|_\infty=0$，故$\vect{u}=\vect{v}$。
+
+这一推理不只比较由迭代得到的函数。
+任何经过$(t_0,\vect{x}_0)$的连续解，在足够短的时间区间内都会留在上述闭球中；
+把$h$进一步缩小后，同一个估计同样适用于它。
+因此所有经过这一点的解都在该点附近一致。
+
+现在设$\vect{u}:I_1\to\R^n$、$\vect{v}:I_2\to\R^n$是两个解，
+且在$t_0\in I_1\cap I_2$处相同。令
+\[
+ E=\{t\in I_1\cap I_2:\vect{u}(t)=\vect{v}(t)\}.
+\]
+$E$非空；由连续性，$E$在公共区间中相对闭。
+对任意$t_*\in E$，把$(t_*,\vect{u}(t_*))$作为初值重复局部唯一性证明，
+便知$t_*$附近仍有$\vect{u}=\vect{v}$，所以$E$也相对开。
+公共区间是连通的，非空且同时相对开闭的子集只能是整个区间。
+故$\vect{u}$和$\vect{v}$在整个公共区间上一致。
+这就证明了定理2的唯一性；取$n=1$，也得到定理1。
+
+\subsection*{5. 最大解的存在与唯一}
+
+固定$(t_0,\vect{x}_0)$，考察所有满足该初值的解及其开定义区间。
+每个区间都含$t_0$，因此这些区间的并集仍是一个开区间，记为
+$I_{\max}=(\alpha,\beta)$。
+如果$t$属于两个这样的区间，上一段的唯一性保证两条解在$t$处取值相同。
+所以可以无歧义地定义
+\[
+ \vect{x}_{\max}(t)=\text{任意一个在$t$处有定义的上述解的值}.
+\]
+在每个$t\in I_{\max}$附近，$\vect{x}_{\max}$与某条已知解一致，
+因此$\vect{x}_{\max}$本身就是解。
+所有具有给定初值的解都是它的限制。
+如果它还能延拓到更大的开区间，那个延拓也应属于刚才取并的解族，
+这与$I_{\max}$的定义矛盾。因此它不可继续延拓，且唯一。
+
+\textbf{有限端点处为什么不能停在定义域内部？}
+假设$\beta<+\infty$，且当$t\uparrow\beta$时有$\vect{x}_{\max}(t)\to \vect{x}_*$，
+并且$(\beta,\vect{x}_*)\in\Omega$。
+在$(\beta,\vect{x}_*)$处局部存在解$\vect{z}$。
+把原解在$t=\beta$处补上$\vect{x}_*$，由积分恒等式和$\vect{f}$的连续性，
+补上的函数在端点也满足初值问题；
+局部唯一性保证它与$\vect{z}$在左侧重叠部分一致。
+于是二者可拼接成越过$\beta$的解，矛盾。
+所以最大解不会仅因到达定义域内部的某个普通点而停止。
+
+更一般地，如果$t\uparrow\beta$时整条时间—状态曲线始终留在某个
+紧集$K_*\subset\Omega$内，则$\vect{f}$在$K_*$上有界，设上界为$M_*$。
+对足够接近$\beta$的$s,t$，
+\[
+ \|\vect{x}_{\max}(t)-\vect{x}_{\max}(s)\|\le M_*|t-s|.
+\]
+因此$\vect{x}_{\max}(t)$存在有限极限；紧集的闭性保证极限点仍在$K_*$内，
+又回到上一个矛盾。
+这说明有限时间内不能延拓，必然伴随时间—状态曲线离开定义域内部的每个紧集。
+可能是状态趋于无穷，也可能是接近$\Omega$的边界；不能只考虑前一种情况。
+
+\subsection*{6. 线性系统为何在系数连续的整个区间上存在}
+
+设$I\subset\R$为开区间，
+$\mat{A}:I\to\R^{n\times n}$、$\vect{b}:I\to\R^n$连续。
+考虑定理3中的问题
+\[
+ \vect{x}'=\mat{A}(t)\vect{x}+\vect{b}(t),\qquad \vect{x}(t_0)=\vect{x}_0.
+\]
+在整个$I$上定义逐次逼近
+\[
+ \vect{u}_0(t)=\vect{x}_0,\qquad
+ \vect{u}_{k+1}(t)=\vect{x}_0+\int_{t_0}^t\bigl(\mat{A}(s)\vect{u}_k(s)+\vect{b}(s)\bigr)\,\dd s.
+\]
+每一步都在整个$I$上有意义。
+关键是证明它在$I$内每个紧时间区间上一致收敛，
+而不要求把这些区间缩短到$Lh<1$。
+
+任取$[a,b_*]\subset I$，其中$a<t_0<b_*$，设
+\[
+ L=\max_{[a,b_*]}\|\mat{A}(t)\|,\qquad
+ B=\max_{[a,b_*]}\|\mat{A}(t)\vect{x}_0+\vect{b}(t)\|,\qquad
+ H=\max(t_0-a,b_*-t_0).
+\]
+首先
+\[
+ \|\vect{u}_1(t)-\vect{u}_0(t)\|\le B|t-t_0|.
+\]
+假定
+\[
+ \|\vect{u}_{k+1}(t)-\vect{u}_k(t)\|
+ \le \frac{BL^k|t-t_0|^{k+1}}{(k+1)!}.
+\]
+利用线性性，相邻两次迭代之差为
+\[
+ \vect{u}_{k+2}(t)-\vect{u}_{k+1}(t)
+ =\int_{t_0}^t \mat{A}(s)\bigl(\vect{u}_{k+1}(s)-\vect{u}_k(s)\bigr)\,\dd s.
+\]
+取范数并积分，得到
+\[
+ \|\vect{u}_{k+2}(t)-\vect{u}_{k+1}(t)\|
+ \le \frac{BL^{k+1}|t-t_0|^{k+2}}{(k+2)!}.
+\]
+因此这一估计对所有$k\ge0$成立，且
+\[
+ \sum_{k=0}^\infty
+ \|\vect{u}_{k+1}-\vect{u}_k\|_\infty
+ \le
+ \sum_{k=0}^\infty\frac{BL^kH^{k+1}}{(k+1)!}<\infty.
+\]
+右侧是指数级数的一部分，不论$LH$有多大都收敛。
+若$L=0$，从第二次迭代起相邻差直接为零，结论同样成立。
+
+故$\vect{u}_k$在$[a,b_*]$上一致收敛于连续函数$\vect{x}$。
+由于$\mat{A}$有界，可以在积分中取极限：
+\[
+ \vect{x}(t)=\vect{x}_0+\int_{t_0}^t\bigl(\mat{A}(s)\vect{x}(s)+\vect{b}(s)\bigr)\,\dd s.
+\]
+任意$t\in I$都包含在某个这样的紧区间中，
+而所有紧区间上的极限来自同一个函数列，故彼此一致。
+这样就得到定义在整个$I$上的解，唯一性由定理2的已证部分给出。
+这完整证明了定理3。
+
+与一般非线性情形相比，差别在于线性系统的迭代差出现了阶乘分母。
+它使逐次逼近可在任意紧时间区间上收敛，
+无需在整个区间上满足压缩估计$q<1$。
+
+\subsection*{7. 原书逐次逼近例题的完整计算}
+
+对$x'=x,\ x(0)=1$，积分方程为
+\[
+ x(t)=1+\int_0^t x(s)\,\dd s.
+\]
+取$u_0(t)=1$，逐次得到
+\[
+ u_1(t)=1+t,\quad
+ u_2(t)=1+t+\frac{t^2}{2!},\quad
+ u_3(t)=1+t+\frac{t^2}{2!}+\frac{t^3}{3!}.
+\]
+若$u_k(t)=\sum_{j=0}^k t^j/j!$，则
+\[
+ u_{k+1}(t)
+ =1+\int_0^t\sum_{j=0}^k\frac{s^j}{j!}\,\dd s
+ =\sum_{j=0}^{k+1}\frac{t^j}{j!}.
+\]
+因此在任意有界时间区间上一致地有$u_k(t)\to e^t$，
+从而解为$x(t)=e^t$。
+这里既说明了逐次逼近怎样计算，也显示出解的幂级数如何由初值问题本身产生。

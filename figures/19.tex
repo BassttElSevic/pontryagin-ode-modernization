@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=1cm,y=1cm,thick,>=Stealth]
+  \def\radius{1.8}
+  % The full phase space is a circle; x is measured along its circumference.
+  \draw[dashed] (0,0) circle (\radius);
+  \draw[->,very thick]
+    (\radius,0) arc[start angle=0,end angle=62,radius=\radius]
+    node[midway,above right] {$x$};
+  \fill (\radius,0) circle (2pt) node[right=3pt] {$O$};
+  \fill ({\radius*cos(62)},{\radius*sin(62)}) circle (2pt)
+    node[above right=2pt] {$\xi$};
+  \node at (0,2.18) {$K$};
+\end{tikzpicture}

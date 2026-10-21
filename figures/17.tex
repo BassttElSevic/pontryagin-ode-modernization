@@ -1,0 +1,6 @@
+\begin{tikzpicture}[x=1cm,y=1cm,thick]
+  \draw[->] (-4.2,0)--(4.2,0);
+  \foreach \x/\lab in {-3/a,0/b,3/c} {\fill (\x,0) circle (2pt); \node[below] at (\x,0) {$\lab$};}
+  \foreach \a/\b in {-2.7/-0.5,0.3/2.7} {\draw[->] (\a,0.18)--(\b,0.18);}
+  \draw[->] (-3.9,0.18)--(-3.15,0.18); \draw[->] (3.15,0.18)--(3.9,0.18);
+\end{tikzpicture}

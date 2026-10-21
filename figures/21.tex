@@ -1,0 +1,16 @@
+\begin{tikzpicture}[x=0.92cm,y=0.92cm,thick]
+  % Perspective sketch of a torus: hidden rear rims are dashed, front rims solid.
+  \draw[dashed] (-3,0) arc[start angle=180,end angle=0,x radius=3,y radius=1.3];
+  \draw (-3,0) arc[start angle=180,end angle=360,x radius=3,y radius=1.3];
+  \draw[dashed] (-1.42,0) arc[start angle=180,end angle=0,x radius=1.42,y radius=0.62];
+  \draw (-1.42,0) arc[start angle=180,end angle=360,x radius=1.42,y radius=0.62];
+  % Meridian circle K on the near-right tube makes the tube cross-section explicit.
+  \begin{scope}[shift={(2.15,0.02)}]
+    \draw[dashed] (0,0.78) arc[start angle=90,end angle=270,x radius=0.52,y radius=0.78];
+    \draw[very thick] (0,0.78) arc[start angle=90,end angle=-90,x radius=0.52,y radius=0.78];
+  \end{scope}
+  \draw[->] (-3.45,-1.55)--(-3.45,2.0) node[above] {$z$};
+  \draw[->] (-3.45,-1.55)--(0.65,-1.55) node[right] {$x_1$};
+  \draw[->] (-3.45,-1.55)--(-4.8,-0.25) node[left] {$x_2$};
+  \node at (2.95,0.72) {$K$};
+\end{tikzpicture}

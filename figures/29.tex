@@ -1,0 +1,5 @@
+\begin{tikzpicture}[x=0.9cm,y=0.9cm,thick]
+  \draw[->] (-3.0,0)--(3.0,0); \draw[->] (0,-2.7)--(0,2.7);
+  \draw[->] (-2.6,-1.4)--(2.6,1.4) node[right] {$\xi_1$}; \draw[->] (-2.2,1.9)--(2.2,-1.9) node[right] {$\xi_2$};
+  \draw[->] plot[domain=0:1080,samples=220,variable=\t] ({2.4*(1-\t/1180)*cos(\t)},{1.55*(1-\t/1180)*sin(\t)});
+\end{tikzpicture}

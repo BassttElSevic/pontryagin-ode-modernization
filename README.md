@@ -1,0 +1,70 @@
+# 庞特里亚金ODE现代化
+
+这是庞特里亚金《常微分方程》的符号现代化项目。项目保留原书的章节结构、数学内容、定理与例题次序，改用现代线性代数和 ODE 记号，并以 TikZ 重绘插图。原书后置或省略的证明以补证单列，便于连续阅读与核对。
+
+当前版本收录第一章、第二章及相关补证，共 38 张 TikZ 插图。后续按原书顺序逐章推进。
+
+## 内容与记号
+
+- 用列向量、矩阵和 Jacobian 组织方程组，保留各节的条件、论证、例题和退化情形。
+- 向量与矩阵使用**粗正体**：分别写作 `\vect{x}`、`\mat{A}`。向量值函数、初值、特征向量、向量解和矩阵多项式均遵循此约定；向量希腊字母也使用粗正体。
+- 标量、标量分量 `x_i`、矩阵元素 `a_{ij}`、特征值、行列式和标量微分算子保持普通数学字体。`\vect{x}_i` 表示第 `i` 个完整向量解，与分量 `x_i` 区分。
+- TikZ 插图保留原图的数学用途、方向与对应关系；原扫描图的裁切图保留为参考资料。
+
+当前收录范围和原书页码对应关系见 [SOURCE-MAP.md](SOURCE-MAP.md)。
+
+## 目录
+
+```text
+main.tex                              主文档、版式与符号宏
+chapters/
+  contents.tex                        正文章节清单
+  frontmatter-modernization.tex       编写说明与当前进度
+  chapter1.tex                        第一章正文
+  chapter1-proofs.tex                 第一章补证
+  chapter2-part1.tex                  第二章前半部
+  chapter2-part2.tex                  第二章后半部
+  chapter2-hurwitz-proof.tex          Hurwitz 判据补证
+figures/01.tex ... 38.tex             38 张 TikZ 插图源码
+assets/figures/                       原扫描插图裁切图，仅供参考
+scripts/build.py                     统一构建入口
+build/                               PDF 与中间文件，构建生成，不提交
+SOURCE-MAP.md                        原书页码与内容映射
+LICENSE                              MIT 许可证
+```
+
+## 构建
+
+需要 Python 3，以及可在命令行调用的 Tectonic 或 XeLaTeX。在项目根目录执行：
+
+```sh
+python scripts/build.py
+```
+
+默认使用 Tectonic。也可以指定 XeLaTeX：
+
+```sh
+python scripts/build.py --engine xelatex
+```
+
+Tectonic 首次构建会联网下载所需的 TeX 资源，后续复用本机缓存。若编译器未加入 `PATH`，可用 `--compiler` 指定其可执行文件路径；Windows 下也会自动查找当前用户的常见 Tectonic 安装位置。
+
+XeLaTeX 环境需要安装 `ctex`、Fandol 字体、`amsmath`、`bm`、`upgreek`、TikZ 等文档所用的 TeX 包。
+
+使用编辑器中的 `latexmk` 构建方式时，还需安装 `latexmk`；仓库的 `.latexmkrc` 已配置 XeLaTeX 和 `build/` 输出目录。上面的 Python 构建入口不依赖 `latexmk`。
+
+构建完成后，教材位于 `build/main.pdf`；目录、交叉引用和其他编译中间文件也写入 `build/`。此目录由构建生成，不纳入版本控制。构建只使用仓库内的文档、插图源码和构建脚本，不需要原扫描 PDF、OCR 文件或本机的其他项目目录。
+
+## 继续编写
+
+1. 在 `chapters/` 新建章节文件，例如 `chapter3.tex`，在章首使用 `\chapter{原书章名}`，按原书顺序保留节号、定理次序和对应内容。拆分章节时，仅在该章首个文件中使用 `\chapter`。
+2. 在 `chapters/contents.tex` 中按顺序追加 `\input{chapters/chapter3.tex}`；补证文件同样列入章节清单。
+3. 延续 `\vect`、`\mat` 的符号约定，逐项区分完整向量、向量分量和标量，尤其注意同名字母在不同语境中的含义。
+4. 新增插图写入 `figures/NN.tex`，按原书图号继续编号。正文在 `figure` 环境内用 `\input{figures/39.tex}` 引入；需要统一缩放时，可参照已有图形使用 `\resizebox`。参考裁切图放入 `assets/figures/`，不作为正文插图的默认来源。
+5. 更新编写说明中的进度和 `SOURCE-MAP.md`，运行统一构建命令，核对正文、目录、公式、交叉引用和插图。
+
+## 许可与来源
+
+本项目新增代码及作者有权许可的修改采用 [MIT 许可证](LICENSE)，版权所有 © 2026 Basstt ElSevic。
+
+原书正文、原扫描资料与原扫描插图的权利仍归相应权利人所有。MIT 许可证不替这些原始资料声明版权，也不授予本项目作者无权授予的许可。TikZ 重绘的来源与原图对应关系记录在 `SOURCE-MAP.md`，重绘不改变原始资料的权利归属。

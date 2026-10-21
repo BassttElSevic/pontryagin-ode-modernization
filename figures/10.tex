@@ -1,0 +1,11 @@
+\begin{tikzpicture}[x=0.95cm,y=0.95cm,thick]
+  \draw (0,3.7)--(0.7,3.7); \draw[fill=white] (0.7,3.48) rectangle (1.65,3.92); \draw (1.65,3.7)--(2.3,3.7); \node[right] at (2.45,3.7) {电阻 $R$};
+  \draw (0,2.85)--(0.45,2.85); \draw[decorate,decoration={coil,segment length=2.5mm,amplitude=2.3mm}] (0.45,2.85)--(1.85,2.85); \draw (1.85,2.85)--(2.3,2.85); \node[right] at (2.45,2.85) {电感 $L$};
+  \draw[decorate,decoration={coil,segment length=2.6mm,amplitude=2.4mm}] (0.25,1.95)--(1.0,1.95);
+  \draw[decorate,decoration={coil,segment length=2.6mm,amplitude=2.4mm}] (1.25,1.95)--(2.0,1.95);
+  \node at (0.62,1.58) {$L_1$}; \node at (1.62,1.58) {$L_2$}; \node[right] at (2.45,1.95) {互感 $M$};
+  \draw (0,1.05)--(0.8,1.05); \draw (0.8,0.78)--(0.8,1.32); \draw (1.12,0.78)--(1.12,1.32); \draw (1.12,1.05)--(2.1,1.05); \node[right] at (2.45,1.05) {电容 $C$};
+  \draw (0,0.25)--(0.78,0.25); \draw (0.78,-0.02)--(0.78,0.52); \draw (1.02,0.08)--(1.02,0.42); \draw (1.02,0.25)--(2.1,0.25); \node[right] at (2.45,0.25) {直流电压源};
+  \draw (0,-0.58)--(0.5,-0.58); \draw (0.5,-0.58) circle (0.34); \draw (0.84,-0.58)--(2.1,-0.58); \draw (0.27,-0.58).. controls (0.38,-0.35) and (0.62,-0.81)..(0.73,-0.58); \node[right] at (2.45,-0.58) {简谐电压源};
+  \draw (0,-1.45)--(0.75,-1.45); \draw (0.75,-1.7) circle (0.25); \draw (0.75,-1.45) circle (0.04); \draw (0.75,-1.45)--(2.1,-1.45); \node[right] at (2.45,-1.45) {任意变动的电压源};
+\end{tikzpicture}

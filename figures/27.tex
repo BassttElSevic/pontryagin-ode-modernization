@@ -1,0 +1,8 @@
+\begin{tikzpicture}[x=0.85cm,y=0.85cm,thick]
+  \foreach \cx/\sgn/\title in {-2.45/-1/stable,2.45/1/unstable} {
+    \draw[->] (\cx-1.65,0)--(\cx+1.65,0); \draw[->] (\cx,-1.65)--(\cx,1.65);
+    \node[above] at (\cx,1.72) {$\title$}; \fill (\cx,0) circle (1.5pt);
+  }
+  \draw[->] plot[domain=0:1080,samples=220,variable=\t] ({-2.45+1.48*(1-\t/1180)*cos(\t)},{1.48*(1-\t/1180)*sin(\t)});
+  \draw[->] plot[domain=0:1080,samples=220,variable=\t] ({2.45+(0.23+0.00115*\t)*cos(\t)},{(0.23+0.00115*\t)*sin(\t)});
+\end{tikzpicture}

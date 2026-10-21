@@ -1,0 +1,14 @@
+\begin{tikzpicture}[x=0.82cm,y=0.82cm,thick]
+  % Oblique saddle: h1 is stable and h2 is unstable.
+  \draw[->] (-3.3,0)--(3.3,0); \draw[->] (0,-2.9)--(0,2.9);
+  \draw[very thick] (-1.05,-2.45)--(1.05,2.45) node[above right] {$\vect{h}_1$};
+  \draw[very thick] (-2.65,-1.46)--(2.65,1.46) node[right] {$\vect{h}_2$};
+  \draw[->] (-0.92,-2.15)--(-0.12,-0.25); \draw[->] (0.92,2.15)--(0.12,0.25);
+  \draw[->] (-0.12,-0.25)--(-2.35,-1.29); \draw[->] (0.12,0.25)--(2.35,1.29);
+  % In eigen-coordinates, non-separatrix orbits have v=C/u.
+  \foreach \su in {-1,1} {\foreach \sv in {-1,1} {
+    \draw[->] plot[domain=2.35:0.34,samples=70,variable=\s]
+      ({0.42*\su*\s+\sv*0.82/\s},{\su*\s+0.55*\sv*0.82/\s});
+  }}
+  \fill (0,0) circle (2pt);
+\end{tikzpicture}

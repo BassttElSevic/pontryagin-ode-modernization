@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=0.8cm,y=0.8cm,thick]
+  % Fixed supports and a mass between two elastic springs.
+  \fill[pattern=north east lines] (-4.1,-0.58) rectangle (-3.85,0.58);
+  \fill[pattern=north east lines] (3.85,-0.58) rectangle (4.1,0.58);
+  \draw[thick] (-3.85,0)--(3.85,0);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=4mm,amplitude=3mm}] (-3.65,0)--(-0.65,0);
+  \draw[decorate,decoration={coil,aspect=0.5,segment length=4mm,amplitude=3mm}] (0.65,0)--(3.65,0);
+  \draw[fill=white,thick] (0,0) circle (0.48);
+  \fill (0,0) circle (1.6pt) node[above right] {$p$};
+  \draw[<->] (-0.05,0.88)--(1.45,0.88) node[midway,above] {$x$};
+  \draw[->] (0,-0.72)--(-1.55,-0.72) node[midway,below] {$F$};
+\end{tikzpicture}

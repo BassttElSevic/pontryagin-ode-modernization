@@ -1,0 +1,1442 @@
+\section{标准的常系数线性齐次方程组}
+
+\newenvironment{sourceitem}[1]
+  {\par\medskip\noindent\textbf{#1}\quad\ignorespaces}
+  {\par\medskip}
+
+本节讨论常系数线性齐次方程组
+\begin{equation}
+ x_i'=\sum_{j=1}^{n}a_{ij}x_j,\qquad i=1,\ldots,n,
+ \tag{1}
+\end{equation}
+其中 \(\mat{A}=(a_{ij})\in\R^{n\times n}\)。把未知函数排成列向量
+\[
+ \vect{x}(t)=
+ \begin{pmatrix}
+  x_1(t)\\
+  \vdots\\
+  x_n(t)
+ \end{pmatrix},
+\]
+方程组便写成标准的向量形式
+\begin{equation}
+ \vect{x}'=\mat{A}\vect{x}.
+ \tag{2}
+\end{equation}
+这里 \(\vect{x}'(t)\) 是逐分量求导所得的列向量。以后若不另作说明，\(\mat{A}\) 的元素均为实常数；
+讨论复特征向量时，使用复向量空间 \(\C^n\)，但最终仍要从中分出实解。
+
+这个方程组当然可以用消去法求解，即将它写成多项式矩阵方程并利用第~\S11 中的消元程序；
+本节采用另一种组织方式：研究 \(\mat{A}\) 的特征向量、广义特征向量和 Jordan 链。若 \(\mat{A}\) 有
+\(n\) 个互不相同的特征值，则存在由特征向量组成的基，把 \(\mat{A}\) 对角化。这一步只依赖
+线性代数的基本结论，这种谱称为简单谱。若 \(\mat{A}\) 有重特征值而不能对角化，则一般
+Jordan 标准形需要较完整
+的线性代数证明；本书后面的内容并不要求读者先掌握一般 Jordan 标准形的构造。本节仍把
+相应结论写入命题 (C)、(D)、(G)，以便说明通解为何具有 \(t^k e^{\lambda t}\) 的形状，
+并保证关于常系数线性系统的叙述完整。只关心单特征值情形的读者可以先读到命题 (F)，再
+继续后面各节；Jordan 链部分不成为后续相平面讨论的必要前提。
+
+把矩阵化为 Jordan 标准形，通常伴随未知函数的线性变换。本节末尾的“变量的变换”会系统
+说明这一点。本节的直接构造则先以特征向量和 Jordan 链给出基本解，实际上仍是标准形思想
+的坐标表述。
+
+本节在固定标准基下暂时不再区分矩阵 \(\mat{A}\) 与它表示的线性算子，因为大部分公式不需要换基。
+只在命题 (F) 中选取特征向量基时，才有必要区分算子与它在不同基底下的矩阵。若把 \(\mat{A}\)
+看成 \(T_{\mat{A}}:\R^n\to\R^n\)，那么 \(\mat{A}\vect{h}=\lambda \vect{h}\) 就是 \(T_{\mat{A}}\vect{h}=\lambda \vect{h}\) 的矩阵写法。
+
+\subsection*{特征方程的根全是单根的情形}
+\addcontentsline{toc}{subsection}{特征方程的根全是单根的情形}
+
+\begin{sourceitem}{命题 (A)}
+设 \(\vect{h}\in\C^n\setminus\{\vect{0}\}\) 是 \(\mat{A}\) 对应于特征值 \(\lambda\) 的特征向量，即
+\begin{equation}
+ \mat{A}\vect{h}=\lambda \vect{h}.
+ \tag{3}
+\end{equation}
+则向量函数
+\begin{equation}
+ \vect{x}(t)=\vect{h}\,e^{\lambda t}
+ \tag{4}
+\end{equation}
+是方程 \(\vect{x}'=\mat{A}\vect{x}\) 的解。
+\end{sourceitem}
+
+把命题 (A) 中的候选函数直接代入即可：
+\[
+ \vect{x}'(t)=\lambda \vect{h} e^{\lambda t},\qquad
+ \mat{A}\vect{x}(t)=\mat{A} \vect{h} e^{\lambda t}=\lambda \vect{h} e^{\lambda t}.
+\]
+这里真正用到的是 \(\vect{h}\neq\vect{0}\)。若 \(\vect{h}=\vect{0}\)，公式虽然给出零解，却不能把任何方向标成特征
+方向。由线性性，若干个这样的解相加仍然给出解。关键问题是这些解是否已经覆盖了全部解。
+
+\begin{sourceitem}{定理 10}
+设
+\begin{equation}
+ \vect{x}'=\mat{A}\vect{x}
+ \tag{5}
+\end{equation}
+中的矩阵 \(\mat{A}\) 有 \(n\) 个两两不同的特征值
+\[
+ \lambda_1,\lambda_2,\ldots,\lambda_n,
+\]
+并设 \(\vect{h}_1,\ldots,\vect{h}_n\) 分别是与它们对应的特征向量。令
+\begin{equation}
+ \vect{x}_i(t)=\vect{h}_i e^{\lambda_i t},\qquad i=1,\ldots,n,
+ \tag{6}
+\end{equation}
+则
+\begin{equation}
+ \vect{x}(t)=c_1\vect{x}_1(t)+\cdots+c_n\vect{x}_n(t)
+   =\sum_{i=1}^{n}c_i \vect{h}_i e^{\lambda_i t}
+ \tag{7}
+\end{equation}
+是方程 (5) 的解，其中 \(c_1,\ldots,c_n\) 为任意常数；并且方程
+(5) 的每一个解都可以写成式 (7) 的形式。
+\end{sourceitem}
+
+由命题 (A)，每一个 \(\vect{x}_i\) 都是方程的解；由齐次线性方程组的叠加原理，任意线性组合
+式 (7) 仍是解。下面证明没有遗漏。
+
+设 \(\vect{\varphi}(t)\) 是方程的任一解。根据常系数线性系统解的整体存在唯一性，可以把它的
+定义区间延拓为整个实轴，因此 \(\vect{\varphi}(0)\) 有意义。记
+\[
+ \vect{x}_0=\vect{\varphi}(0).
+\]
+因为属于不同特征值的特征向量线性无关，而这里恰有 \(n\) 个，所以
+\(\vect{h}_1,\ldots,\vect{h}_n\) 构成 \(\C^n\) 的一组基。于是可唯一写出
+\begin{equation}
+ \vect{x}_0=c_1\vect{h}_1+\cdots+c_n\vect{h}_n.
+ \tag{8}
+\end{equation}
+由定义 \(\vect{x}_i(0)=\vect{h}_i\)，由式 (7) 定义的解满足
+\[
+ \vect{x}(0)=\sum_{i=1}^{n}c_i\vect{h}_i=\vect{x}_0.
+\]
+因此 \(\vect{x}(t)\) 与 \(\vect{\varphi}(t)\) 具有相同初始值。由初值问题解的唯一性，
+\(\vect{\varphi}(t)=\vect{x}(t)\)。这就证明了定理 10。
+
+当 \(\mat{A}\) 是实矩阵时，定理 10 的复解公式还不是实解公式。实矩阵的复特征值成共轭对出现，
+但若任意选取复特征向量，所得基中的复共轭关系也可能不整齐。通常按下列方式选基。
+
+\begin{sourceitem}{命题 (B)}
+设 \(\mat{A}\) 是实矩阵，并选取特征向量基 \(\vect{h}_1,\ldots,\vect{h}_n\)，使实特征值对应实特征向量，
+使复共轭特征值 \(\lambda\) 与 \(\overline\lambda\) 对应复共轭特征向量
+\(\vect{h}\) 与 \(\overline{\vect{h}}\)。那么公式 (7) 是实解，当且仅当实特征值所对
+应的系数取实常数，而每一对复共轭解所对应的系数取彼此复共轭的常数。
+\end{sourceitem}
+
+原因是实矩阵把 \(\overline{\vect{h}}\) 送到与 \(\overline\lambda\) 对应的特征向量，而
+\(e^{\overline\lambda t}=\overline{e^{\lambda t}}\)。只要系数按共轭方式配对，对
+式 (7) 取共轭后所得向量函数仍等于它自身，故解为实值。这一点与
+第~\S7 中实系数方程分离实解的命题完全一致。反过来，若组合为实值，按复特征基坐标的
+唯一性，实特征向量前的系数与复共轭特征向量前的系数也必须按同样方式配对。
+
+\subsection*{一般情形与 Jordan 链}
+\addcontentsline{toc}{subsection}{一般情形与 Jordan 链}
+
+现在允许 \(\mat{A}\) 有重特征值。若 \(\mat{A}\) 不能对角化，单靠 \(e^{\lambda t}\vect{h}\) 不足以产生
+全部解；Jordan 链会补充 \(t e^{\lambda t},t^2e^{\lambda t},\ldots\) 这类项。先取一个
+固定特征值 \(\lambda\)，设
+\begin{equation}
+ \vect{h}_1,\ldots,\vect{h}_k
+ \tag{9}
+\end{equation}
+是 \(\mat{A}\) 关于 \(\lambda\) 的一条 Jordan 链，即
+\begin{equation}
+ \mat{A}\vect{h}_1=\lambda \vect{h}_1,\qquad
+ \mat{A}\vect{h}_2=\lambda \vect{h}_2+\vect{h}_1,\qquad
+ \ldots,\qquad
+ \mat{A}\vect{h}_k=\lambda \vect{h}_k+\vect{h}_{k-1}.
+ \tag{10}
+\end{equation}
+这里 \(\vect{h}_1\neq\vect{0}\)，而 \(\vect{h}_2,\ldots,\vect{h}_k\) 一般只是广义特征向量。等价地，
+\((\mat{A}-\lambda \mat{I})\vect{h}_1=\vect{0}\)，并且 \((\mat{A}-\lambda \mat{I})\vect{h}_r=\vect{h}_{r-1}\) 对
+\(r=2,\ldots,k\) 成立。
+
+\begin{sourceitem}{命题 (C)}
+对 \(r=1,\ldots,k\)，定义向量多项式
+\begin{equation}
+ \vect{w}_r(t)=\frac{t^{r-1}}{(r-1)!}\vect{h}_1
+       +\frac{t^{r-2}}{(r-2)!}\vect{h}_2
+       +\cdots+\vect{h}_r,
+ \tag{11}
+\end{equation}
+并约定 \(\vect{w}_0(t)=\vect{0}\)。则
+\begin{equation}
+ \vect{x}_r(t)=\vect{w}_r(t)e^{\lambda t},\qquad r=1,\ldots,k,
+ \tag{12}
+\end{equation}
+都是 \(\vect{x}'=\mat{A}\vect{x}\) 的解，并且
+\begin{equation}
+ \vect{x}_r(0)=\vect{h}_r.
+ \tag{13}
+\end{equation}
+\end{sourceitem}
+
+先注意两个直接由定义得到的恒等式：
+\begin{equation}
+ \vect{w}_r'(t)=\vect{w}_{r-1}(t),\qquad
+ \mat{A}\vect{w}_r(t)=\lambda \vect{w}_r(t)+\vect{w}_{r-1}(t),
+ \qquad r=1,\ldots,k.
+ \tag{14}
+\end{equation}
+第二式在 \(r=1\) 时就是 \(\mat{A}\vect{w}_1=\lambda \vect{w}_1\)，因为 \(\vect{w}_0=\vect{0}\)。于是
+\[
+ \vect{x}_r'(t)
+ =\vect{w}_r'(t)e^{\lambda t}+\lambda \vect{w}_r(t)e^{\lambda t}
+ =\bigl(\vect{w}_{r-1}(t)+\lambda \vect{w}_r(t)\bigr)e^{\lambda t},
+\]
+而
+\[
+ \mat{A}\vect{x}_r(t)=\mat{A}\vect{w}_r(t)e^{\lambda t}
+ =\bigl(\lambda \vect{w}_r(t)+\vect{w}_{r-1}(t)\bigr)e^{\lambda t}.
+\]
+两边相等，所以 \(\vect{x}_r'=\mat{A}\vect{x}_r\)。在 \(t=0\) 时，\(\vect{w}_r(0)=\vect{h}_r\)，从而
+\(\vect{x}_r(0)=\vect{h}_r\)。
+
+若线性算子在某一组基下有多个 Jordan 块，每一块都给出一组如式 (12) 的解。把所有块得到
+的解合并，应该得到 \(n\) 个线性无关的解。下面的定理把这一结论写成
+不需要单独选择坐标的向量形式。
+
+\begin{sourceitem}{定理 11}
+设 \(\vect{x}'=\mat{A}\vect{x}\)。存在由若干条 Jordan 链组成的基
+\begin{equation}
+ \vect{h}_1,\ldots,\vect{h}_n.
+ \tag{15}
+\end{equation}
+按特征值把各链分组；为确定记号，假设
+\[
+ \vect{h}_1,\ldots,\vect{h}_{k_1}
+\]
+是关于 \(\lambda_1\) 的一条链，
+\[
+ \vect{h}_{k_1+1},\ldots,\vect{h}_{k_1+k_2}
+\]
+是关于 \(\lambda_2\) 的一条链，余此类推。每一组链都按命题 (C) 生成对应的解。把所得
+\(n\) 个解记为 \(\vect{x}_1,\ldots,\vect{x}_n\)。则
+\begin{equation}
+ \vect{x}(t)=c_1\vect{x}_1(t)+\cdots+c_n\vect{x}_n(t)
+ \tag{16}
+\end{equation}
+总是方程 \(\vect{x}'=\mat{A}\vect{x}\) 的解，其中 \(c_1,\ldots,c_n\) 任意；并且方程的每一个解都能由某个
+常数向量 \((c_1,\ldots,c_n)\) 按式 (16) 表示。
+\end{sourceitem}
+
+证明与定理 10 相同。先由叠加原理知道式 (16) 是解；再由命题 (C)，
+\(\vect{x}_i(0)=\vect{h}_i\)，而 \(\vect{h}_1,\ldots,\vect{h}_n\) 是基。对任一解 \(\vect{\varphi}(t)\)，把
+\(\vect{\varphi}(0)\) 沿这组基展开：
+\[
+ \vect{\varphi}(0)=c_1\vect{h}_1+\cdots+c_n\vect{h}_n.
+\]
+相应线性组合 \(\vect{x}(t)\) 与 \(\vect{\varphi}(t)\) 初值相同，由唯一性得
+\(\vect{\varphi}(t)=\vect{x}(t)\)。因此 Jordan 链确实提供了完整的解基。
+
+对于实矩阵，还需像命题 (B) 那样分离实解。
+
+从不变子空间的观点看，每个特征子空间
+\(E_\lambda=\ker(\mat{A}-\lambda \mat{I})\) 以及广义特征子空间
+\(E_\lambda^{(m)}=\ker((\mat{A}-\lambda \mat{I})^m)\) 都满足
+\(\mat{A}(E_\lambda^{(m)})\subseteq E_\lambda^{(m)}\)。空间 \(\C^n\) 分解为这些广义特征
+子空间的直和；在每一块上，算子写成“特征值乘以恒等算子”加一个幂零部分。Jordan 链正是
+这个幂零部分的一组适配基，而 \(t^r e^{\lambda t}\) 因子就是沿链逐次积分所得的现代
+线性代数解释。
+
+\begin{sourceitem}{命题 (D)}
+设 \(\mat{A}\) 是实矩阵，并按实 Jordan 基组织 \(\R^n\)，其中实特征值对应实链，复共轭特征值
+对应复共轭链。则在定理 11 给出的解中，实链给出实解，共轭链成对给出复共轭解。公式
+式 (16) 为实解，当且仅当实解前取实常数，复共轭解前取复共轭常数。
+\end{sourceitem}
+
+此命题与命题 (B) 的理由相同。复共轭的链在取共轭后互相交换，指数因子也互相共轭；只有
+系数同样配对，整个组合才保持不变。
+
+上述结果也解释了第~\S7、\S8 中单个 \(n\) 阶常系数齐次方程的结论。把
+\[
+ y^{(n)}+a_1y^{(n-1)}+\cdots+a_{n-1}y'+a_ny=0
+\]
+按第~\S4 的方法化成一阶系统后，所得系数矩阵的特征多项式与原方程的特征多项式相同。
+因此高阶方程解中的 \(e^{\lambda t},te^{\lambda t},\ldots\) 正是 Jordan 链在一阶系统
+中的表现。
+
+\subsection*{变量的变换}
+\addcontentsline{toc}{subsection}{变量的变换}
+
+\begin{sourceitem}{命题 (E)}
+在常系数系统 \(\vect{x}'=\mat{A}\vect{x}\) 中取可逆常矩阵 \(\mat{S}\)，引入新未知向量
+\begin{equation}
+ \vect{y}=\mat{S}\vect{x}.
+ \tag{17}
+\end{equation}
+则
+\begin{equation}
+ \vect{y}'=\mat{B}\vect{y},\qquad \mat{B}=\mat{S}\mat{A}\mat{S}^{-1}.
+ \tag{18}
+ \end{equation}
+\end{sourceitem}
+
+由于 \(\mat{S}\) 是常矩阵，
+\[
+ \vect{y}'=\mat{S}\vect{x}'=\mat{S}\mat{A}\vect{x}.
+\]
+又由 \(\vect{x}=\mat{S}^{-1}\vect{y}\)，代入得
+\[
+ \vect{y}'=\mat{S}\mat{A}\mat{S}^{-1}\vect{y}.
+\]
+所以新矩阵为 \(\mat{B}=\mat{S}\mat{A}\mat{S}^{-1}\)。这就是相似变换的微分方程意义。若分量写成
+\(y_i=\sum_jS_{ij}x_j\)，求导后同样得到
+\(y_i'=\sum_jS_{ij}x_j'\)。系数矩阵随坐标作相似变换，而解向量随坐标作 \(\mat{S}\) 变换；
+两者不能混为一谈。
+
+选取适当的 \(\mat{S}\) 可以把 \(\mat{A}\) 化为 Jordan 标准形。若特征值全是单根，则 Jordan 形就是
+对角形；若不能对角化，则会出现非零的上次对角线项。这就引出下面两个关于新变量系统的
+命题。
+
+\begin{sourceitem}{命题 (F)}
+若 \(\mat{A}\) 的特征值 \(\lambda_1,\ldots,\lambda_n\) 两两不同，则可选取可逆实或复线性变换
+\(\vect{y}=\mat{S}\vect{x}\)，使新方程组成为
+\begin{equation}
+ y_k'=\lambda_k y_k,\qquad k=1,\ldots,n.
+ \tag{19}
+\end{equation}
+若 \(\mat{A}\) 为实矩阵，还可把每一对复共轭方程合并为两个实方程。设
+\begin{equation}
+ \lambda_k=\mu_k+i\nu_k,\qquad
+ y_k=\xi_k+i\eta_k,
+ \tag{20}
+\end{equation}
+其中 \(\mu_k,\nu_k,\xi_k,\eta_k\in\R\)。则复共轭方程
+\[
+ y_k'=\lambda_k y_k,\qquad
+ \overline{y_k}'=\overline{\lambda_k}\,\overline{y_k}
+\]
+等价于实方程组
+\begin{equation}
+ \xi_k'=\mu_k\xi_k-\nu_k\eta_k,\qquad
+ \eta_k'=\nu_k\xi_k+\mu_k\eta_k.
+ \tag{21}
+\end{equation}
+\end{sourceitem}
+
+证明的关键只是换基。取 \(\mat{A}\) 的特征向量 \(\vect{h}_1,\ldots,\vect{h}_n\) 作为新基，并令 \(y_k\) 是
+向量 \(\vect{x}\) 在 \(\vect{h}_k\) 上的坐标。因为特征向量基使 \(\mat{A}\) 对角化，所以在这种坐标下矩阵
+为 \(\diag(\lambda_1,\ldots,\lambda_n)\)，方程就是式 (19)。
+
+对实矩阵，当特征值复共轭成对时，可以相应地选取复共轭特征向量。任意实向量写成
+\begin{equation}
+ \vect{x}=\sum_{j=1}^{n}y_j\vect{h}_j.
+ \tag{22}
+\end{equation}
+若 \(\vect{x}\) 为实向量，则实特征向量前的坐标应为实数，复共轭特征向量前的坐标应彼此共轭。
+把
+\[
+ \xi_k+i\eta_k
+ =(\mu_k+i\nu_k)(\xi_k+i\eta_k)
+\]
+的实部和虚部分开，即得式 (21)。这一步也说明，实系统中的一对复特征值
+不是两个互不相关的复坐标，而是一个二维实不变子空间上的旋转加伸缩。
+
+在单根情形，新方程 (19) 有显然解
+\[
+ y_k(t)=c_ke^{\lambda_k t},\qquad k=1,\ldots,n.
+\]
+要回到原变量 \(\vect{x}\)，必须知道特征向量矩阵，故命题 (F) 与定理 10 在计算上是等价的。
+
+\begin{sourceitem}{命题 (G)}
+设 \(\mat{A}\) 为任意常矩阵，并取 \(\mat{S}\) 使 \(\mat{B}=\mat{S}\mat{A}\mat{S}^{-1}\) 为 Jordan 形。设某个特征值为
+\(\lambda\)，相应的 Jordan 块阶数为 \(k\)，且位于 \(\mat{B}\) 的前 \(k\) 行。则对应于这一块
+的新方程组可写成
+\begin{equation}
+ \begin{aligned}
+  y_1'&=\lambda y_1+y_2,\\
+  y_2'&=\lambda y_2+y_3,\\
+  &\ \vdots\\
+  y_{k-1}'&=\lambda y_{k-1}+y_k,\\
+  y_k'&=\lambda y_k.
+ \end{aligned}
+ \tag{23}
+\end{equation}
+矩阵 \(\mat{B}\) 的其他 Jordan 块给出同型的彼此解耦方程组。
+\end{sourceitem}
+
+从式 (23) 的最后一个方程开始向前积分，可得
+\[
+ y_k=c_ke^{\lambda t},
+\]
+再往上得到含 \(e^{\lambda t},te^{\lambda t},\ldots,t^{k-1}e^{\lambda t}\) 的解。
+把新变量 \(\vect{y}\) 通过 \(\vect{x}=\mat{S}^{-1}\vect{y}\) 换回原变量，就是定理 11 中同一条 Jordan 链所给出的
+解组。因此命题 (G) 只是定理 11 的坐标版本。
+
+\subsection*{例题}
+
+\paragraph{例 1.}
+应用本节方法求 \(\vect{x}'=\mat{A}\vect{x}\) 时，可以先去求特征值和由 Jordan 链组成的基。不过，求基本身
+是一个独立的代数问题。根据定理 11，也可以直接用待定系数法，而不显式求出整组 Jordan
+链。设 \(\lambda\) 是 \(\mat{A}\) 的某个特征值。对应于 \(\lambda\) 可能有若干条 Jordan 链，
+用 \(k\) 表示这些链中的最大长度。于是所有属于 \(\lambda\) 的解都可以写成
+\begin{equation}
+ x_i(t)=f_i(t)e^{\lambda t},\qquad i=1,\ldots,n,
+ \tag{24}
+\end{equation}
+这里 \(x_i(t)\) 表示解向量 \(\vect{x}(t)\) 的第 \(i\) 个标量分量，
+与前面定理中的第 \(i\) 个向量解 \(\vect{x}_i(t)\) 不同。
+其中 \(f_i(t)\) 是次数不超过 \(k-1\) 的多项式。把这种形式代入原方程组，把各多项式的
+系数当作未知常数，比较同类项，就能由待定系数法得到属于 \(\lambda\) 的解。
+
+采用这种办法时，不需要知道每一条链的具体向量，只需知道链长的上界。确定 Jordan 链的
+准确最大长度属于矩阵初等因子理论；它比完整构造 Jordan 标准形容易，而且本书别处不必
+使用初等因子。若只求通解，直接按最大可能次数待定也常能完成计算；多余的系数会在比较
+系数时受到约束。
+
+\paragraph{例 2.}
+也可以把第~\S11 的消去法用于方程组 (1)。先把原系统移项并写成
+\begin{equation}
+ \sum_{j=1}^{n}L_j^{\,i}(D)x_j=0,\qquad i=1,\ldots,n,
+ \tag{25}
+\end{equation}
+其中 \(D=\dfrac{\dd}{\dd t}\)，而
+\[
+ L_j^{\,i}(p)=a_j^{\,i}-p\delta_j^{\,i}.
+\]
+此处 \(a_j^{\,i}\) 是原书按行列位置所写的系数；用现代矩阵记号就是
+\(\mat{L}(D)=\mat{A}-D\mat{I}\)，相应地 \(D\mat{I}-\mat{A}\) 只与它相差一个整体负号，不影响方程。矩阵
+\(\mat{L}(p)\) 的行列式 \(D_{\mat{A}}(p)=\det \mat{L}(p)\) 正是 \(\mat{A}\) 的特征多项式。
+
+设 \(\lambda\) 是 \(D_{\mat{A}}(p)\) 的根，也就是 \(\mat{A}\) 的特征值，并设其代数重数为 \(l\)。
+第~\S11 的消去法说明，所有属于 \(\lambda\) 的解都应在
+\[
+ x_i(t)=g_i(t)e^{\lambda t},\qquad i=1,\ldots,n
+\]
+中寻找，其中 \(g_i(t)\) 的次数不超过 \(l-1\)。与例 1 相比，两种待定系数法的主要差别
+只在多项式次数的上界：例 1 的 \(k\) 通常小于代数重数 \(l\)。实际上，与 \(\lambda\)
+对应的所有 Jordan 链长度之和等于 \(l\)，而 \(k\) 只是其中最长的一条链；只有在
+\(\lambda\) 仅对应一条链时才有 \(k=l\)。因此例 1 的次数估计更精细，而例 2 与消去法
+直接相连。
+
+\section{自治的微分方程组及其相空间}
+
+本节从相空间和轨线的观点解释自治微分方程组。它与第~\S1、\S3 中把解看成空间曲线的
+几何解释有本质区别。那里主要研究积分曲线；这里把同一个解理解为相空间中的点随时间运动。
+因此这里得到的是动力学解释：不仅画出曲线，还在曲线上标出运动方向，并研究哪些轨道会
+重复、相交、趋于平衡位置或绕成闭环。相空间解释在某些方面比积分曲线族更深刻，因为不同
+时间参数化下看起来不同的积分曲线，可以在相空间中描述同一条轨线。
+
+\subsection*{自治方程组}
+\addcontentsline{toc}{subsection}{自治方程组}
+
+若一阶方程组的右端不明显含自变量 \(t\)，就称它为自治的。也就是说，未知函数的变化规律
+不随时间的推移而改变。自治性首先给出时间平移不变性：如果
+\begin{equation}
+ x_i=\varphi_i(t),\qquad i=1,\ldots,n,
+ \tag{1}
+\end{equation}
+是某个自治方程组的解，那么对任意常数 \(c\)，
+\begin{equation}
+ x_i=\varphi_i(t+c),\qquad i=1,\ldots,n,
+ \tag{2}
+\end{equation}
+也是同一个方程组的解。
+
+\begin{sourceitem}{命题 (A)}
+设
+\begin{equation}
+ x_i'=f_i(x_1,\ldots,x_n),\qquad i=1,\ldots,n,
+ \tag{3}
+\end{equation}
+是 \(n\) 阶标准自治方程组，或写成向量形式
+\begin{equation}
+ \vect{x}'=\vect{f}(\vect{x}).
+ \tag{4}
+\end{equation}
+设 \(\vect{f}=(f_1,\ldots,f_n)\) 定义在 \(\R^n\) 的开集 \(\Delta\) 上，并且 \(f_i\) 及其一阶
+偏导数在 \(\Delta\) 上连续。若
+\begin{equation}
+ x_i=\varphi_i(t),\qquad i=1,\ldots,n
+ \tag{5}
+\end{equation}
+是方程的解，则对任意 \(c\in\R\)，函数
+\begin{equation}
+ x_i=\varphi_i(t+c),\qquad i=1,\ldots,n
+ \tag{6}
+\end{equation}
+仍是解。
+\end{sourceitem}
+
+记 \(\vect{\varphi}(t)=(\varphi_1(t),\ldots,\varphi_n(t))\)。复合函数求导给出
+\[
+ \frac{\dd}{\dd t}\varphi_i(t+c)
+ =\varphi_i'(t+c),
+\]
+而因为 \(\vect{\varphi}\) 是解，又有
+\[
+ \varphi_i'(t+c)
+ =f_i(\varphi_1(t+c),\ldots,\varphi_n(t+c)).
+\]
+所以时间平移后的函数满足同一方程组。这里不需要 \(\vect{f}\) 连续可微以外的额外结构；自治性
+正是 \(\vect{f}\) 不显含 \(t\)，因此把 \(t\) 换成 \(t+c\) 后右端形式不变。
+
+\subsection*{轨线、平衡位置和闭轨线}
+\addcontentsline{toc}{subsection}{轨线、平衡位置和闭轨线}
+
+\begin{sourceitem}{命题 (B)}
+对自治系统 \(\vect{x}'=\vect{f}(\vect{x})\) 的每一个解
+\begin{equation}
+ x_i=\varphi_i(t),\qquad i=1,\ldots,n,
+ \tag{7}
+\end{equation}
+把 \(t\) 看成时间，把 \((\varphi_1(t),\ldots,\varphi_n(t))\) 看成相空间中运动的点。
+这个点所描出的曲线称为运动的轨线或相轨线。若另一个解为
+\begin{equation}
+ x_i=\psi_i(t),\qquad i=1,\ldots,n,
+ \tag{8}
+\end{equation}
+且两条轨线至少有一个公共点，即存在 \(t_1,t_2\) 使
+\begin{equation}
+ \varphi_i(t_1)=\psi_i(t_2),\qquad i=1,\ldots,n,
+ \tag{9}
+\end{equation}
+则两条轨线整体重合，并且
+\begin{equation}
+ \psi_i(t)=\varphi_i(t+c),\qquad c=t_1-t_2,
+ \tag{10}
+\end{equation}
+这里在两个解都有定义的区间上成立。
+\end{sourceitem}
+
+若把解只看成平面或空间中的曲线，就丢失了经过各点的时间和运动方向；因此相图通常要在
+轨线上标出箭头。命题说明，自治系统的两条相轨线或者完全不相交，或者作为集合重合。它们
+甚至可以重合而时间参数只差一个平移：第一个解对应的点在时刻 \(t+c\) 到达的位置，第二
+个解对应的点可能已在时刻 \(t\) 到达过。
+
+为证明这一点，除解 \(\vect{\varphi}(t)\) 外考虑时间平移后的解
+\[
+ \vect{\varphi}_*(t)=\vect{\varphi}(t+c).
+\]
+取 \(c=t_1-t_2\)。由公共点条件，
+\[
+ \vect{\varphi}_*(t_2)=\vect{\varphi}(t_1)=\vect{\psi}(t_2).
+\]
+于是 \(\vect{\varphi}_*\) 与 \(\vect{\psi}\) 在同一时刻有相同初值，由初值问题唯一性，它们相等。故
+\(\vect{\psi}(t)=\vect{\varphi}(t+c)\)。
+
+\begin{sourceitem}{命题 (C)}
+设解
+\begin{equation}
+ x_i=\varphi_i(t),\qquad i=1,\ldots,n
+ \tag{11}
+\end{equation}
+的轨线在 \(t_1\neq t_2\) 时回到同一点：
+\begin{equation}
+ \varphi_i(t_1)=\varphi_i(t_2),\qquad i=1,\ldots,n.
+ \tag{12}
+\end{equation}
+则这个解可以延拓到整个实轴。延拓后只有两种互斥的可能：
+\begin{enumerate}[label=\arabic*.]
+ \item 对一切 \(t\) 有
+ \[
+  \varphi_i(t)=a_i,\qquad i=1,\ldots,n,
+ \]
+ 其中 \((a_1,\ldots,a_n)\in\Delta\) 是与 \(t\) 无关的点。这时点不运动，解以及点
+  \((a_1,\ldots,a_n)\) 都称为平衡位置。
+ \item 存在正数 \(T\)，使对一切 \(t\) 有
+ \[
+  \varphi_i(t+T)=\varphi_i(t),\qquad i=1,\ldots,n,
+ \]
+ 但存在 \(r_1,r_2\) 使 \(|r_1-r_2|<T\) 时，至少有一个分量满足
+  \(\varphi_i(r_1)\neq\varphi_i(r_2)\)。这时解称为以 \(T\) 为周期的周期解，轨线称为
+  闭轨线或环。
+\end{enumerate}
+\end{sourceitem}
+
+证明分两步。第一步说明解能够整体延拓。由回到同一点的条件 (11)，
+令 \(c=t_1-t_2\)，则
+\[
+ \vect{\varphi}(t+c)=\vect{\varphi}(t)
+\]
+在原来的定义区间上成立。函数 \(\vect{\varphi}(t+c)\) 仍是解。它与原解在公共部分相同，可以
+把两者拼接，从而把解向一侧延长一段。再利用同一个平移关系继续延长，最终得到定义在整个
+实轴上的解，并保持这个恒等关系。
+
+第二步研究所有周期。把满足
+\begin{equation}
+ \vect{\varphi}(t+c)=\vect{\varphi}(t)
+ \tag{13}
+\end{equation}
+的 \(c\) 称为解的一个周期，记所有周期组成的集合为 \(F\)。由式 (13)
+可知 \(F\) 含非零元素。若 \(c\in F\)，把 \(t\) 换成 \(t-c\)，便得
+\(\vect{\varphi}(t)=\vect{\varphi}(t-c)\)，所以 \(-c\in F\)。若 \(c_1,c_2\in F\)，则
+\[
+ \vect{\varphi}\bigl(t+(c_1+c_2)\bigr)
+ =\vect{\varphi}\bigl((t+c_2)+c_1\bigr)
+ =\vect{\varphi}(t+c_2)
+ =\vect{\varphi}(t),
+\]
+故 \(c_1+c_2\in F\)。因此 \(F\) 是 \(\R\) 的加法子群。
+
+再证明 \(F\) 是闭集。设 \(c_m\in F\)，且 \(c_m\to c_0\)。对固定 \(t\)，由连续性，
+\[
+ \vect{\varphi}(t+c_0)
+ =\lim_{m\to\infty}\vect{\varphi}(t+c_m)
+ =\vect{\varphi}(t).
+\]
+所以 \(c_0\in F\)。一个同时是闭集和加法子群的实数集合，只可能有两种形状：若不是
+\(\R\)，就存在最小正元素 \(T\)，且 \(F=T\mathbb Z\)。事实上，若 \(F\) 没有最小正数，
+就可取任意小的正周期；由整除性可得任意实数都是周期的极限，再由闭性知所有实数都是
+周期。若 \(F\) 有最小正数 \(T\)，对任意 \(c\in F\)，取整数 \(m\) 使
+\(|c-mT|<T\)。差 \(c-mT\) 也是周期；若它非零，就给出比 \(T\) 更小的正周期，矛盾。
+因此 \(c=mT\)。
+
+于是仅有三种相轨线：平衡位置；由非恒定周期解描出的闭轨线或环；以及自己不相交的轨线。
+最后一种在空间中最常见，但平衡位置和闭轨线具有特别的动力学意义。由唯一性，自治系统
+定义域 \(\Delta\) 中每一点都位于一条轨线上，整个区域被互不相交的相轨线填满。
+
+最原始的 \(t\)–\(\vect{x}\) 图像通常称为积分曲线或解的图形；它在相空间中的投影才是轨线。两条
+积分曲线可能因时间参数不同而看起来不同，却在相空间中给出同一轨线；而自治系统恰恰保证，
+只要两条相轨线有一个公共点，它们就整体重合。
+
+\subsection*{相空间和相速度}
+\addcontentsline{toc}{subsection}{相空间和相速度}
+
+\begin{sourceitem}{命题 (D)}
+自治系统 (4) 定义在开集 \(\Delta\subseteq\R^n\) 上时，在每一点
+\((x_1,\ldots,x_n)\in\Delta\) 给定一个从该点出发的向量
+\[
+ \vect{f}(x_1,\ldots,x_n)
+ =\bigl(f_1(x_1,\ldots,x_n),\ldots,f_n(x_1,\ldots,x_n)\bigr).
+\]
+这就给出了 \(\Delta\) 上的向量场。
+\end{sourceitem}
+
+若 \(\vect{x}(t)=\vect{\varphi}(t)\) 是满足
+\[
+ \varphi_i(t_0)=x_i^0,\qquad i=1,\ldots,n
+\]
+的解，则当点沿轨线经过 \((x_1^0,\ldots,x_n^0)\) 时，它的速度向量正是
+\(\vect{f}(x_1^0,\ldots,x_n^0)\)。也就是说，轨线的切向量与方程在相应位置指定的向量相同。
+
+包含轨线的 \(n\) 维空间称为自治系统的相空间；其中的轨线称为相轨线；向量
+\(\vect{f}(\vect{x})\) 称为相速度。相速度不是“运动点的总速度”经过人为选择后的装饰，而是方程
+在相空间各点指定的速度场。相空间中不同轨线不能相交，因为相交会给出同一初始状态的两个
+不同解；相空间可以更一般地是开集、圆周或环面，不能总将它等同于一个欧氏坐标空间。
+
+如果需要在某点研究相速度对状态的线性响应，就把 \(\vect{f}\) 的 Jacobian 记为
+\[
+ D_{\vect{x}}\vect{f}(\vect{x})=
+ \begin{pmatrix}
+  \dfrac{\partial f_1}{\partial x_1}&\cdots&
+  \dfrac{\partial f_1}{\partial x_n}\\
+  \vdots&\ddots&\vdots\\
+  \dfrac{\partial f_n}{\partial x_1}&\cdots&
+  \dfrac{\partial f_n}{\partial x_n}
+ \end{pmatrix}.
+\]
+本节只使用向量场 \(\vect{f}\) 本身；后面的常数矩阵 \(\mat{A}\) 正是线性场 \(\vect{f}(\vect{x})=\mat{A}\vect{x}\) 在每一点的
+Jacobian。采用 \(D_{\vect{x}}\vect{f}\) 这一记号可以避免把“对时间求导”和“对状态变量求导”混在一起。
+
+\begin{sourceitem}{命题 (E)}
+点 \(\vect{a}=(a_1,\ldots,a_n)\in\Delta\) 是自治系统 (4) 的平衡位置，
+当且仅当
+\begin{equation}
+ \vect{f}(a_1,\ldots,a_n)=\vect{0}.
+ \tag{14}
+\end{equation}
+因此求全部平衡位置就是解有限方程组 (14)，其中不出现导数。
+\end{sourceitem}
+
+若 \(\vect{a}\) 是平衡位置，则常值函数 \(\vect{x}(t)\equiv \vect{a}\) 是解；代入方程，左端为零，右端为
+\(\vect{f}(\vect{a})\)，故 \(\vect{f}(\vect{a})=\vect{0}\)。反过来，若 \(\vect{f}(\vect{a})=\vect{0}\)，常值函数 \(\vect{x}(t)\equiv \vect{a}\) 的导数
+为零，而右端也为零，所以它是解。这个判定看起来简单，却把微分问题转成了代数问题，后面
+相平面分类的全部特殊点都由此确定。
+
+\begin{sourceitem}{命题 (F)}
+对于非自治方程组，把
+\[
+ (t,x_1,\ldots,x_n)
+\]
+所在的空间称为扩展相空间或轨道空间，其中 \(t\) 也是一个坐标；非自治系统的积分曲线通常
+画在这个 \((n+1)\) 维空间中。若只看状态 \(x_1,\ldots,x_n\)，把 \(t\) 方向投影掉，所得
+像才是相空间中的轨线。投影后轨线可能相交，因为不同时刻到达同一点并不违反初值唯一性。
+\end{sourceitem}
+
+当 \(n=2\) 时，这一点特别直观：扩展空间是三维的，而相空间是平面。自治系统的积分曲线
+沿 \(t\) 轴平移不会改变它作为相轨线的投影；非自治系统则不同，同一相点在早晚时刻可以有
+不同速度，投影可能自我相交。因此不能无条件地把非自治系统的积分曲线当作平面相轨线。
+
+\subsection*{例题}
+
+\paragraph{例 1.}
+研究一阶自治方程
+\begin{equation}
+ x'=f(x).
+ \tag{15}
+\end{equation}
+设在变量 \(x\) 的整条直线上 \(f\) 连续且具有连续导数，并补充假设 \(f\) 的零点没有极限
+点；等价地，方程的平衡位置没有有限聚点。这个条件排除了平衡位置无限密集的异常情形。
+于是平衡位置把直线分成若干开区间。若将相邻平衡位置之间的区间以及两端可能的无限区间
+放在一起记成区间族 \(\Sigma\)，则每个区间 \((a,b)\in\Sigma\) 的内部都没有零点，而每个
+有限端点或者是 \(f\) 的零点，或者退化为 \(\pm\infty\)。因此 \(\Sigma\) 由有限个或可列个
+有限区间和至多两个半无限区间组成；若 \(f\) 恒不为零，则只有一个区间
+\((-\infty,+\infty)\)。
+
+取 \((a,b)\in\Sigma\)，并取 \(x_0\in(a,b)\)。设 \(x=\varphi(t)\) 是初值为
+\begin{equation}
+ \varphi(0)=x_0
+ \tag{16}
+\end{equation}
+的不可延拓解。假设 \(f(x_0)>0\)。则
+\begin{equation}
+ a<\varphi(t)<b,\qquad r_1<t<r_2,
+ \tag{17}
+\end{equation}
+并且
+\begin{equation}
+ \lim_{t\to r_1}\varphi(t)=a,\qquad
+ \lim_{t\to r_2}\varphi(t)=b,
+ \tag{18}
+\end{equation}
+其中 \(r_1,r_2\) 是最大存在区间的端点。若 \(a\) 有限，则 \(r_1=-\infty\)；若 \(b\)
+有限，则 \(r_2=+\infty\)。当 \(f(x_0)<0\) 时，运动方向完全反过来。
+
+这些结论说明，每一个区间 \((a,b)\) 本身是一条完整的相轨线。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.76\textwidth}{!}{\input{figures/17.tex}}
+ \caption{原书图 17：直线上各相邻平衡位置把相空间分成互不相交的区间；箭头表示当
+ \(f>0\) 时轨线随 \(t\) 增大而向右运动，因此每个开区间都是一条单独的相轨线。}
+ \label{fig:ch2-p2-17}
+\end{figure}
+
+证明先把 \(f(x_0)>0\) 局部化为 \(f>0\) 在 \((a,b)\) 上恒成立。只要 \(\varphi(t)\)
+仍在 \((a,b)\) 中，它就只能从左向右运动；若在某个有限时刻越出右端点 \(b\)，就会与另一
+条轨线 \(x=b\) 在有限时刻相遇，违反唯一性。左端同理。因此点不能在内部越界。
+
+再证明极限达到相邻零点。假设
+\(\lim_{t\to r_2}\varphi(t)=c\)，其中 \(c<b\)。取初值为 \(c\) 的另一条解。
+因为 \(f(c)>0\)，该解在某个较早时刻会经过 \(c\) 的值，而 \(c\) 不属于原轨线的取值
+范围，于是两条轨线相交，矛盾。因此只能有 \(\lim_{t\to r_2}\varphi(t)=b\)。左端
+\(\lim_{t\to r_1}\varphi(t)=a\) 同理。最后，若 \(b<+\infty\) 而 \(r_2<+\infty\)，
+把解在 \(r_2\) 之后接成常值 \(b\)，就会得到经过 \(b\) 的另一条解，也违反唯一性。
+所以有限端点对应的存在时间必须是无穷。对左端点作同样论证。
+
+现在设 \(b\) 是方程 \(x'=f(x)\) 的平衡位置，而 \((a,b)\) 与 \((b,c)\) 是左右相邻的
+两个区间。如果当 \(t\) 增大时，两个相邻区间中的点都趋近于 \(b\)，就称 \(b\) 为稳定平衡
+位置，见图~\ref{fig:ch2-p2-18}(a)。如果两边都离开 \(b\)，称它为不稳定的，见图
+\ref{fig:ch2-p2-18}(b)。如果一边趋近而另一边离开，称它为半稳定的，见图
+\ref{fig:ch2-p2-18}(c)。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.38\textwidth}{!}{\input{figures/18.tex}}
+ \caption{原书图 18：上、中、下三行分别表示稳定、不稳定和半稳定平衡位置。左右区间上
+ 的箭头由 \(f\) 的符号决定：指向 \(b\) 表示趋近，背离 \(b\) 表示离开；三个零点分别
+ 是 \(a,b,c\)。}
+ \label{fig:ch2-p2-18}
+\end{figure}
+
+用函数符号判断，平衡位置 \(b\) 稳定，当且仅当 \(f\) 在 \((a,b)\) 上为正、在
+\((b,c)\) 上为负；不稳定，当且仅当 \(f\) 在左侧为负、在右侧为正；半稳定，当且仅当
+两侧同号。若 \(f'(b)\neq0\)，在 \(b\) 附近 \(f(x)\) 的符号与 \(f'(b)(x-b)\) 一致。
+于是 \(f'(b)<0\) 时 \(b\) 稳定，\(f'(b)>0\) 时不稳定。若 \(f'(b)=0\)，一阶导数不能
+给出结论，必须检查更高阶项或直接看左右符号。
+
+\paragraph{例 2.}
+考察方程
+\begin{equation}
+ x'=f(x),
+ \tag{19}
+\end{equation}
+其中 \(f\) 是以 \(2\pi\) 为周期的连续可微函数：
+\[
+ f(x+2k\pi)=f(x),\qquad k\in\mathbb Z.
+\]
+例 1 的局部结论仍适用于每个标量解，但由于 \(f\) 的周期性，把相空间看成半径为 \(1\) 的
+圆周 \(K\) 更合适。固定圆周上的计算起点 \(O\) 和逆时针方向；在圆周上取从 \(O\) 沿逆时针
+方向弧长为 \(x\) 的点 \(\xi\)，再把所有实数 \(x\) 对应到 \(K\) 上的点。于是 \(x\) 与
+\(x+2k\pi\) 对应同一个 \(\xi\)。因为 \(f\) 有相同周期，可以令
+\[
+ f(\xi)=f(x)
+\]
+把 \(f\) 看成定义在圆周 \(K\) 上的函数。
+
+方程 \(x'=f(x)\) 于是描述了点在圆周上的运动。若 \(x(t)\) 是一个解，则对应的点
+\(\xi(t)\) 沿圆周运动。若 \(\alpha\in K\) 满足 \(f(\alpha)=0\)，则 \(\xi=\alpha\)
+是平衡位置。为简单起见，假设圆周上的平衡位置没有极限点，于是平衡位置只能有有限多个
+或者一个也没有。平衡位置把圆周分成若干个区间；若没有平衡位置，整个圆周就是一个区间；
+若恰有一个平衡位置 \(\alpha\)，则圆周去掉 \(\alpha\) 后也只有一个区间，其两个端点实际
+上重合。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.42\textwidth}{!}{\input{figures/19.tex}}
+ \caption{原书图 19：周期函数的相空间。圆周 \(K\) 上没有直角坐标轴，起点 \(O\)
+ 用来量弧长；实数 \(x\) 对应弧长 \(x\) 的点 \(\xi\)，\(x\) 与 \(x+2k\pi\) 落在
+ 同一点。参数条件是 \(f\) 以 \(2\pi\) 为周期。}
+ \label{fig:ch2-p2-19}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.42\textwidth}{!}{\input{figures/20.tex}}
+ \caption{原书图 20：圆周 \(K\) 上的平衡点把圆周切成带方向的弧段。箭头显示各弧段内
+ \(f\) 的符号所确定的运动方向；若没有平衡点，整圆是一条周期轨线，若只有一个平衡点，
+ 圆周去掉该点后仍是一条带有重合端点的轨线。}
+ \label{fig:ch2-p2-20}
+\end{figure}
+
+取区间 \(I\) 中一点 \(\xi_0\)，设 \(x(t)\) 是以 \(x(0)=x_0\) 为初值的标量解，而
+\(\xi(t)\) 是对应圆周上的点。若区间有端点，点沿确定方向运动，除端点外每一点都由轨线
+经过一次。若区间就是整个圆周，则从位置 \(\xi_0\) 出发的点经过某段时间 \(T\) 回到
+\(\xi_0\)，所以
+\[
+ \xi(0)=\xi(T).
+\]
+对应到原来的实变量 \(x(t)\)，有
+\[
+ x(t+T)=x(t)\pm2\pi,
+\]
+正负号由绕行方向决定。这个例子说明相空间不一定是欧氏坐标空间，可以是一个圆周；轨线的
+几何形状必须与函数展开的周期性一起理解。
+
+\paragraph{例 3.}
+考虑平面周期系统
+\begin{equation}
+ x_i'=f_i(x_1,x_2),\qquad i=1,2,
+ \tag{20}
+\end{equation}
+其中 \(f_i\) 连续可微，并有周期
+\[
+ f_i(x_1+2k\pi,x_2+2l\pi)=f_i(x_1,x_2),\qquad k,l\in\mathbb Z.
+\]
+此时把相空间看成环面最合适。在三维欧氏空间的 \((x,z)\) 平面中取圆心为 \((2,0,0)\)、
+半径为 \(1\) 的圆 \(K\)。取点 \((3,0,0)\) 为计算起点。对每个 \(x_1\)，按例 2 的弧长
+规则在 \(K\) 上取点 \(\xi_1\)。再绕 \(z\) 轴旋转 \((x,z)\) 平面，旋转角为 \(x_2\)；
+圆 \(K\) 旋转所描出的曲面就是环面。若旋转角由 \(x_2\) 增加到 \(x_2+2\pi\)，平面回到
+自身，环面上的点也回到同一点。因此环面上的一点由两个循环坐标 \((\xi_1,\xi_2)\)
+完全确定，而每一对循环坐标唯一确定一点。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.62\textwidth}{!}{\input{figures/21.tex}}
+ \caption{原书图 21：环面嵌入三维空间。第一个循环坐标沿小圆周 \(K\) 计量，第二个循环
+ 坐标绕 \(z\) 轴计量；\(x_1,x_2\) 分别增加 \(2\pi\) 时回到同一点，所以相空间不是普通
+ 平面，而是具有两个周期方向的环面。}
+ \label{fig:ch2-p2-21}
+\end{figure}
+
+设 \((x_1(t),x_2(t))\) 是解，令 \((\xi_1(t),\xi_2(t))\) 为对应的循环坐标。环面上的
+点 \((\xi_1(t),\xi_2(t))\) 随时间移动，每一时刻的运动方向由该点的函数值共同决定。
+整个环面被轨线填满；两条轨线或不相交，或整体重合。若轨线自我相交，则它是平衡位置或
+闭轨线。把轨线直接画在环面上，正是利用了右端的周期结构；若硬画在普通矩形平面中，必须
+同时画出边界粘合规则，否则会把本应相同的点误认成不同点。
+
+\paragraph{例 4.}
+讨论自治系统
+\[
+ x'=-\omega y,\qquad y'=\omega x,
+\]
+其中 \(\omega\neq0\)。每个解可写成
+\begin{equation}
+ x(t)=r\cos(\omega t+\alpha),\qquad
+ y(t)=r\sin(\omega t+\alpha),
+ \tag{21}
+\end{equation}
+其中 \(r,\alpha\) 是常数。
+
+在变量 \((t,x,y)\) 的三维空间中，当 \(r\neq0\) 时，方程组 (21)
+给出一条螺旋线；当 \(r=0\) 时，给出 \(t\) 轴上的直线。把三维曲线沿 \(t\) 轴方向投影到
+\((x,y)\) 平面，就得到相轨线：当 \(r\neq0\) 时是一个圆，当 \(r=0\) 时是一个点，即
+平衡位置。方向由 \(\omega\) 的符号决定；若 \(\omega>0\)，运动为逆时针，若
+\(\omega<0\)，运动为顺时针。半径为 \(r=\sqrt{x^2+y^2}\) 的每条圆都对应一个不同的
+周期运动；相图本身不记录周期，但周期可以在原时间坐标中读出。
+
+\paragraph{例 5.}
+考虑非自治方程组
+\[
+ x'=1,\qquad y'=t.
+\]
+它的每个解可写成
+\begin{equation}
+ x=t+a,\qquad y=\frac12t^2+b,
+ \tag{22}
+\end{equation}
+其中 \(a,b\) 是常数。在变量 \((t,x,y)\) 的三维空间中，由式 (22)
+确定的两条曲线或者不相交，或者重合；这是初值唯一性保证的。
+
+若投影到 \((x,y)\) 相平面，应从式 (22) 中消去 \(t\)。由
+\(t=x-a\)，得到
+\[
+ y=\frac12(x-a)^2+b.
+\]
+这是一族顶点为 \((a,b)\)、轴沿正 \(x\) 方向的抛物线。只有 \(a=a'\) 且 \(b=b'\)
+时，两条曲线才完全相同；若两个顶点不同，抛物线可以在平面上相交。例如
+\((x,y)=(a',b')\) 可能落在另一个顶点或另一条抛物线上。这不是违反唯一性，而是因为
+原系统不是自治的：平面上同一个点可以在不同 \(t\) 值被到达，因而允许不同轨道在相空间中
+相交。故非自治系统不适合直接以 \((x,y)\) 平面作为完整相空间。
+
+\section{常系数线性齐次方程组的相平面}
+
+本节在相平面上构造常系数线性齐次方程组
+\begin{equation}
+ \begin{cases}
+  x_1'=a_1^1x_1+a_2^1x_2,\\
+  x_2'=a_1^2x_1+a_2^2x_2,
+ \end{cases}
+ \tag{1}
+\end{equation}
+的相轨线。这里把分量排成列向量 \(\vect{x}=(x_1,x_2)^T\)，原书的系数上标在这里保留为矩阵元素的
+行列位置；矩阵
+\[
+ \mat{A}=
+ \begin{pmatrix}
+  a_1^1&a_2^1\\
+  a_1^2&a_2^2
+ \end{pmatrix}
+\]
+为实常矩阵。方程组的向量形式仍是
+\begin{equation}
+ \vect{x}'=\mat{A}\vect{x}.
+ \tag{2}
+\end{equation}
+相图本质上依赖矩阵特征值的位置、重数以及矩阵能否对角化；因此不能只按“系数正负”作一个
+没有条件的表。原书把若干典型情形分开讨论，下面逐一保留这些区分，并说明它们是局部相图
+的代数分类。
+
+坐标原点 \((0,0)\) 总是平衡位置。它是唯一平衡位置，当且仅当 \(\det \mat{A}\neq0\)，也就是
+\(\mat{A}\) 的两个特征值都不为零。若 \(\det \mat{A}=0\)，原点仍是平衡位置，但还会有其他平衡点；
+这些退化情形留到本节末尾。
+
+先假设 \(\mat{A}\) 的两个特征值 \(\lambda_1,\lambda_2\) 是实数、互不相同且都不为零。由定理 10，
+方程的任意实解可写成
+\begin{equation}
+ \vect{x}(t)=c_1\vect{h}_1e^{\lambda_1t}+c_2\vect{h}_2e^{\lambda_2t},
+ \tag{3}
+\end{equation}
+其中 \(\vect{h}_1,\vect{h}_2\) 是线性无关的实特征向量，\(c_1,c_2\) 是任意实常数。把 \(\vect{x}\) 相对于基
+\((\vect{h}_1,\vect{h}_2)\) 展开，令
+\begin{equation}
+ \vect{x}=\xi_1\vect{h}_1+\xi_2\vect{h}_2.
+ \tag{4}
+\end{equation}
+由特征向量的定义，代入方程后得到
+\begin{equation}
+ \xi_1'=\lambda_1\xi_1,\qquad
+ \xi_2'=\lambda_2\xi_2,
+ \tag{5}
+\end{equation}
+从而
+\begin{equation}
+ \xi_1(t)=c_1e^{\lambda_1t},\qquad
+ \xi_2(t)=c_2e^{\lambda_2t}.
+ \tag{6}
+\end{equation}
+这里的 \((\xi_1,\xi_2)\) 是特征向量基下的坐标，不是原相平面 \(P\) 中的正交长度坐标。
+
+为画图方便，用仿射映射把相平面 \(P\) 送到辅助平面 \(P^*\)：在两个平面上取基
+\((\vect{h}_1,\vect{h}_2)\)，使 \(\vect{h}_1,\vect{h}_2\) 分别变成 \(P^*\) 中以原点为起点、沿正横轴和正纵轴的
+标准正交单位向量。这个映射不是通常的等距变换，除非 \(\vect{h}_1,\vect{h}_2\) 本来正交且等长；它只
+保持直线、平行关系以及轨线在原点附近的相切关系。于是 \(P^*\) 中的直角坐标正好是
+\begin{equation}
+ \xi_1=c_1e^{\lambda_1t},\qquad
+ \xi_2=c_2e^{\lambda_2t}.
+ \tag{7}
+\end{equation}
+先研究这些较简单的曲线，再经仿射变换回到 \(P\)，就得到原方程组的相图。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.82\textwidth}{!}{\input{figures/22.tex}}
+ \caption{原书图 22：左侧相平面 \(P\) 中的斜交特征方向 \(\vect{h}_1,\vect{h}_2\) 经仿射映射变为
+ 右侧辅助平面 \(P^*\) 的坐标轴。右侧两条待画轨线在 \(P^*\) 中以 \((\xi_1,\xi_2)\)
+ 为直角坐标；参数条件是两个特征值为互异实数且都非零。}
+ \label{fig:ch2-p2-22}
+\end{figure}
+
+在 \(P^*\) 中，除了式 (7) 的轨线外，还分别有由
+\begin{equation}
+ \xi_1=c_1e^{\lambda_1t},\qquad
+ \xi_2=-c_2e^{\lambda_2t}
+ \tag{8}
+\end{equation}
+以及
+\begin{equation}
+ \xi_1=-c_1e^{\lambda_1t},\qquad
+ \xi_2=c_2e^{\lambda_2t}
+ \tag{9}
+\end{equation}
+给出的轨线。式 (7) 关于横轴作镜面反射得到式 (8)；关于纵轴作镜面反射到式 (9)。因此只要画出
+第一象限内的轨线，就能利用这两个反射补出整个 \(P^*\)。若 \(c_1=c_2=0\)，得到原点
+平衡位置；若 \(c_2=0,c_1>0\)，点在正半横轴上运动；若 \(c_1=0,c_2>0\)，点在正半纵轴
+上运动。当 \(\lambda_1<0\) 时，横轴上的点朝原点运动；当 \(\lambda_1>0\) 时，点背离
+原点而向无穷远运动。纵轴同理。只要 \(c_1,c_2>0\)，第一象限内的点不会越出象限边界，
+因为两个坐标的指数因子都保持正号。
+
+\subsection*{结点和鞍点}
+\addcontentsline{toc}{subsection}{结点和鞍点}
+
+\begin{sourceitem}{命题 (A)}
+设 \(\lambda_1,\lambda_2\) 都非零且同号，并按绝对值大小编号，使
+\begin{equation}
+ |\lambda_1|<|\lambda_2|.
+ \tag{10}
+\end{equation}
+若
+\[
+ \lambda_1<0,\qquad\lambda_2<0,
+\]
+则相图称为稳定结点；若
+\[
+ \lambda_1>0,\qquad\lambda_2>0,
+\]
+则称为不稳定结点。
+\end{sourceitem}
+
+以稳定结点为例。沿正半横轴的解为
+\(\vect{\xi}(t)=(c_1e^{\lambda_1t},0)\)，沿正半纵轴的解为
+\((0,c_2e^{\lambda_2t})\)，两者都随 \(t\) 增大而趋近原点。在第一象限内部，假设
+\(c_1,c_2>0\)，则
+\[
+ \xi_1=c_1e^{\lambda_1t},\qquad
+ \xi_2=c_2e^{\lambda_2t}.
+\]
+因为 \(\lambda_2\) 更负，纵坐标衰减更快，所以曲线在原点处与横轴相切；当
+\(t\to-\infty\) 时，两个坐标都增大，但纵坐标增长更快，因此远处的运动方向更偏向纵轴。
+把第一象限的曲线经平面反射平移，得到全平面图，即图 23(a)。若把两个指数同时反向，
+轨线形状不变而运动方向反转，得到不稳定结点，见图 23(b)。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.78\textwidth}{!}{\input{figures/23.tex}}
+ \caption{原书图 23：辅助平面 \(P^*\) 中的结点。两轴为特征方向；两幅图都满足
+ \(|\lambda_1|<|\lambda_2|\) 且特征值同号。左图 \(\lambda_1,\lambda_2<0\)，箭头
+ 指向原点，是稳定结点；右图 \(\lambda_1,\lambda_2>0\)，箭头背离原点，是不稳定结点。
+ 曲线在原点处切于横轴，说明衰减较慢的 \(\lambda_1\) 方向占主导。}
+ \label{fig:ch2-p2-23}
+\end{figure}
+
+\begin{sourceitem}{命题 (B)}
+若 \(\lambda_1,\lambda_2\) 异号，则两类坐标一个衰减、一个增长。为确定起见设
+\begin{equation}
+ \lambda_1<0<\lambda_2.
+ \tag{11}
+\end{equation}
+沿正半横轴的解走向原点，而沿正半纵轴的解离开原点。第一象限内的轨线是双曲线型曲线：
+沿稳定方向 \(\xi_2=0\) 趋近原点，沿不稳定方向 \(\xi_1=0\) 离开原点。这个相图称为
+鞍点。
+\end{sourceitem}
+
+辅助平面的标准图形即图 24。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.54\textwidth}{!}{\input{figures/24.tex}}
+ \caption{原书图 24：\(P^*\) 中的鞍点，参数条件为
+ \(\lambda_1<0<\lambda_2\)。横轴 \(\xi_2=0\) 是稳定特征方向，箭头从左右两侧指向原点；
+ 纵轴 \(\xi_1=0\) 是不稳定特征方向，箭头从原点向外。双曲线型轨线先靠近一条特征方向，
+ 再转向另一条。}
+ \label{fig:ch2-p2-24}
+\end{figure}
+
+图 23 与图 24 都是辅助平面 \(P^*\) 中的标准图。回到原相平面 \(P\) 时，特征向量的夹角
+和长度会改变图形，所以结点可能看起来倾斜，鞍点的两条渐近特征线也未必垂直。图 25、26
+给出这种仿射变形：轨线的拓扑类型不变，但弯曲程度和夹角会随 \(\vect{h}_1,\vect{h}_2\) 改变。尤其当
+两个特征向量接近共线时，标准图形在 \(P\) 中会被拉得很窄，不能只凭视觉角度判断矩阵结构。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.39\textwidth}{!}{\input{figures/25.tex}}
+ \caption{原书图 25：相平面 \(P\) 中的稳定结点，坐标轴是特征方向
+ \(\xi_1,\xi_2\) 的像。参数为 \(\lambda_1,\lambda_2<0\)，两个特征方向不垂直；
+ 轨线在原点附近偏向衰减较慢的特征方向。}
+ \label{fig:ch2-p2-25}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.44\textwidth}{!}{\input{figures/26.tex}}
+ \caption{原书图 26：相平面 \(P\) 中的鞍点，坐标轴是特征方向
+ \(\xi_1,\xi_2\) 的像。参数为 \(\lambda_1<0<\lambda_2\)，两条特征直线不垂直；
+ 箭头沿稳定特征方向趋近原点，并沿不稳定特征方向离开原点。}
+ \label{fig:ch2-p2-26}
+\end{figure}
+
+\subsection*{焦点和中心}
+\addcontentsline{toc}{subsection}{焦点和中心}
+
+\begin{sourceitem}{命题 (C)}
+现在考察矩阵有一对非实复共轭特征值的情形。写成
+\begin{equation}
+ \lambda=\mu+i\nu,\qquad
+ \overline\lambda=\mu-i\nu,\qquad \nu\neq0.
+ \tag{12}
+\end{equation}
+特征向量也可以选成共轭
+\(\vect{h}\) 与 \(\overline{\vect{h}}\)。把
+\[
+ \vect{h}=\frac12(\vect{h}_1-i\vect{h}_2)
+\]
+中的 \(\vect{h}_1,\vect{h}_2\) 取为实向量；可以证明 \(\vect{h}_1,\vect{h}_2\) 线性无关。若它们线性相关，则 \(\vect{h}\)
+与 \(\overline{\vect{h}}\) 也线性相关，这与复特征向量不属于同一个一维实方向相矛盾。因此
+\((\vect{h}_1,\vect{h}_2)\) 可以作为实相平面 \(P\) 的一组基。
+
+任一实解写成
+\begin{equation}
+ \vect{x}=c\,\vect{h} e^{\lambda t}
+  +\overline c\,\overline{\vect{h}} e^{\overline\lambda t},
+ \tag{13}
+\end{equation}
+其中 \(c\) 是复常数。令
+\[
+ \zeta=\xi_1+i\xi_2,\qquad
+ \xi_1+i\xi_2=c e^{\lambda t}.
+\]
+于是
+\[
+ \vect{x}=\xi_1\vect{h}_1+\xi_2\vect{h}_2.
+\]
+把相平面 \(P\) 仿射映射到变量 \(\zeta\) 的辅助平面 \(P^*\)，使 \(\vect{h}_1\) 的端点变到
+\(1\)，使 \(\vect{h}_2\) 的端点变到 \(i\)。则 \(\xi_1\vect{h}_1+\xi_2\vect{h}_2\) 对应
+\(\xi_1+i\xi_2=\zeta\)，相轨线满足
+\begin{equation}
+ \zeta(t)=c e^{\lambda t}.
+ \tag{14}
+\end{equation}
+
+把式 (14) 写成极坐标。令
+\[
+ \zeta=\rho e^{i\varphi},\qquad
+ c=Re^{i\alpha}.
+\]
+则
+\begin{equation}
+ \rho(t)=Re^{\mu t},\qquad
+ \varphi(t)=\nu t+\alpha.
+ \tag{15}
+\end{equation}
+当 \(\mu\neq0\) 时，\(P^*\) 中每条轨线都是对数螺线；原相平面 \(P\) 中经仿射变形后的
+对应图形称为焦点。若 \(\mu<0\)，当 \(t\) 增大时点沿螺线渐近地趋向原点，称为稳定焦点，
+见图 27(a)。若 \(\mu>0\)，点离开原点而趋于无穷，称为不稳定焦点，见图 27(b)。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.84\textwidth}{!}{\input{figures/27.tex}}
+ \caption{原书图 27：辅助平面 \(P^*\) 中的焦点。横轴为 \(\xi_1\)，纵轴为
+ \(\xi_2\)，\(\lambda=\mu\pm i\nu\) 且 \(\nu\neq0\)。左图 \(\mu<0\)，螺线随
+ \(t\) 增大而向原点收紧，是稳定焦点；右图 \(\mu>0\)，螺线向外扩展，是不稳定焦点。}
+ \label{fig:ch2-p2-27}
+\end{figure}
+
+若 \(\mu=0\)，则 \(\rho(t)=R\) 为常数，\(\varphi(t)=\nu t+\alpha\) 线性变化。除平衡
+位置 \((0,0)\) 外，每条轨线都是闭圆；这样的相图称为中心，见图 28。中心不是
+稳定焦点或渐近稳定平衡位置：解不趋近原点，只是周期地绕行。
+\end{sourceitem}
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.43\textwidth}{!}{\input{figures/28.tex}}
+ \caption{原书图 28：辅助平面 \(P^*\) 中的中心，横轴为 \(\xi_1\)、纵轴为
+ \(\xi_2\)，参数条件是 \(\mu=0,\nu\neq0\)。所有非零轨线都是以原点为圆心的闭环，
+ 箭头方向由 \(\nu\) 的符号决定；这里每圈半径由初值 \(|c|\) 保持不变。}
+ \label{fig:ch2-p2-28}
+\end{figure}
+
+图 27、28 给出 \(P^*\) 中的标准图形。回到 \(P\) 后，圆和螺线被仿射地拉成椭圆、螺线形
+椭圆。图 29、30 说明这种变形：中心的同心圆可以变成同心椭圆，焦点的螺线也可以被拉斜，
+但闭合与趋近原点的性质不变。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.39\textwidth}{!}{\input{figures/29.tex}}
+ \caption{原书图 29：相平面 \(P\) 中由焦点经仿射变形得到的稳定螺旋。斜轴标出
+ \(\xi_1,\xi_2\) 的像；参数为 \(\mu<0,\nu\neq0\)，沿轨线的箭头随 \(t\) 增大而向
+ 原点收紧。}
+ \label{fig:ch2-p2-29}
+\end{figure}
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.37\textwidth}{!}{\input{figures/30.tex}}
+ \caption{原书图 30：相平面 \(P\) 中的中心经仿射变形得到的同心椭圆族。斜轴标出
+ \(\xi_1,\xi_2\) 的像；参数为 \(\mu=0,\nu\neq0\)，每个椭圆都是闭轨线，运动方向由
+ \(\nu\) 的符号决定。}
+ \label{fig:ch2-p2-30}
+\end{figure}
+
+以上讨论的是非退化情形：\(\lambda_1,\lambda_2\) 不相等且都不为零。矩阵元素作足够小的
+扰动时，结点、鞍点和焦点的基本相图通常保持不变；中心是例外。中心条件
+\(\operatorname{tr}\mat{A}=0,\det \mat{A}>0\) 只是一个等式条件，微扰可能使实部变为负或正，于是
+中心分裂成稳定焦点或不稳定焦点。这就是中心的结构不稳定性。其他退化情形，即重根或至少
+一个零特征值，将在下面例题 1 和例题 3 中讨论。
+
+\subsection*{例题}
+
+\paragraph{例 1：退化结点.}
+设方程组 (2) 的矩阵 \(\mat{A}\) 只有一个特征值 \(\lambda\)。二重特征值并
+不自动意味着矩阵可对角化，因此有两种本质上不同的情形。以下用 \(\mat{A}\) 同时表示矩阵和它
+所定义的线性变换。
+
+\medskip
+\noindent\textbf{情形 I.}
+相平面 \(P\) 中存在由两个特征向量组成的基 \(\vect{h}_1,\vect{h}_2\)，使
+\begin{equation}
+ \mat{A}\vect{h}_1=\lambda \vect{h}_1,\qquad
+ \mat{A}\vect{h}_2=\lambda \vect{h}_2.
+ \tag{16}
+\end{equation}
+这等价于 \(\mat{A}=\lambda \mat{I}\) 在其特征基下可对角化，因而几何重数等于二。
+
+\medskip
+\noindent\textbf{情形 II.}
+相平面中存在一组基 \(\vect{h}_1,\vect{h}_2\)，使
+\begin{equation}
+ \mat{A}\vect{h}_1=\lambda \vect{h}_1,\qquad
+ \mat{A}\vect{h}_2=\lambda \vect{h}_2+\vect{h}_1.
+ \tag{17}
+\end{equation}
+这时 \(\vect{h}_2\) 是二级广义特征向量，\((\vect{h}_1,\vect{h}_2)\) 是一条长度为一的 Jordan 链。
+
+一般 Jordan 标准形定理直接保证两种基至少有一种存在。这里也可以直接验证。先取
+\(\vect{h}_1\neq\vect{0}\) 为特征向量，再取任意与 \(\vect{h}_1\) 不共线的 \(\vect{h}_2\)。因为
+\(\vect{h}_1,\vect{h}_2\) 构成基，可写
+\[
+ \mat{A}\vect{h}_2=a \vect{h}_1+\mu \vect{h}_2.
+\]
+在这组基下，变换矩阵为
+\[
+ \begin{pmatrix}
+  \lambda&a\\
+  0&\mu
+ \end{pmatrix}.
+\]
+它的特征值为 \(\lambda,\mu\)，而根据假设只有唯一特征值 \(\lambda\)，所以
+\(\mu=\lambda\)。若 \(a=0\)，就是情形 I。若 \(a\neq0\)，把 \(\vect{h}_1\) 换成
+\(a \vect{h}_1\)；这个向量仍属于同一特征空间，并且
+\[
+ \mat{A} \vect{h}_2=\lambda \vect{h}_2+a \vect{h}_1
+ =\lambda \vect{h}_2+(a \vect{h}_1),
+\]
+于是得到情形 II 的关系式 (17)。
+
+在情形 I 中，通解可以直接写成
+\begin{equation}
+ \vect{x}(t)=c_1\vect{h}_1e^{\lambda t}+c_2\vect{h}_2e^{\lambda t}
+ =\vect{x}_0e^{\lambda t}.
+ \tag{18}
+\end{equation}
+只要 \(\vect{x}_0\neq\vect{0}\)，\(\lambda\neq0\) 时每个解都沿过原点、方向为 \(\vect{x}_0\) 的半射线
+运动。\(\lambda<0\) 时朝原点运动，\(\lambda>0\) 时离开原点。每条由初值决定的射线本身
+是一条轨线；与通常的稳定结点不同，这里没有另一条趋于较慢的特征方向，而是所有方向都以
+相同指数速率伸缩。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.57\textwidth}{!}{\input{figures/31.tex}}
+ \caption{原书图 31：例 1 情形 I 的二重特征值、可对角化情形。左图
+ \(\lambda<0\)，沿每条从原点出发的半射线向内运动，原点为稳定退化结点，而且不出现
+ 螺旋项；右图 \(\lambda>0\)，方向反转，所有点向外运动。此情形在二维中正是
+ \(\mat{A}=\lambda \mat{I}\)；图中所有半射线都是轨线。}
+ \label{fig:ch2-p2-31}
+\end{figure}
+
+在情形 II 中，任意解都可写成
+\begin{equation}
+ \vect{x}(t)=c_1\vect{h}_1e^{\lambda t}
+      +c_2(t\vect{h}_1+\vect{h}_2)e^{\lambda t}.
+ \tag{19}
+\end{equation}
+把它按基 \((\vect{h}_1,\vect{h}_2)\) 展开为
+\(\vect{x}=\xi_1\vect{h}_1+\xi_2\vect{h}_2\)，得到
+\begin{equation}
+ \xi_1(t)=(c_1+c_2t)e^{\lambda t},\qquad
+ \xi_2(t)=c_2e^{\lambda t}.
+ \tag{20}
+\end{equation}
+由于 \(\vect{h}_1,\vect{h}_2\) 可能不垂直，仿射映射把 \(P\) 送到辅助平面 \(P^*\)，并把 \(\vect{h}_1,\vect{h}_2\)
+变成沿两个坐标轴的互相正交单位向量。在 \(P^*\) 中，式 (20) 给出
+普通直角坐标下的轨线；回到 \(P\) 时再作仿射变形。
+
+以下讨论 \(\lambda\neq0\)，\(\lambda=0\) 见例题 3。由于同时改变 \(c_1,c_2\) 的符号
+把 \(P^*\) 中的点关于原点中心对称，并把轨线送到轨线，所以只要研究上半平面的轨线。
+当 \(c_2=0,c_1\neq0\) 时，得到两条与横轴重合的轨线：正半横轴和负半横轴，两者都朝原点
+运动。再取 \(c_1=0,c_2>0\)，得到
+\begin{equation}
+ \xi_1(t)=c_2te^{\lambda t},\qquad
+ \xi_2(t)=c_2e^{\lambda t}.
+ \tag{21}
+\end{equation}
+
+当 \(t=0\) 时，点在纵轴上的 \((0,c_2)\)。随着 \(t\) 从零增大，纵坐标以指数速度下降，
+而横坐标 \(c_2te^{\lambda t}\) 先向右、随后在 \(t=-1/\lambda\) 处转向左；但整条轨线
+始终向原点弯曲，并在原点处与正横轴相切。当 \(t\) 从零减到 \(-\infty\) 时，纵坐标变得
+很大，横坐标为负且绝对值增长更快，整体趋势朝向负横轴。让 \(c_2\) 取遍所有正值，这样
+的轨线填满上半平面。当 \(\lambda<0\) 时，所有箭头都指向原点，称为稳定的退化结点。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.80\textwidth}{!}{\input{figures/32.tex}}
+ \caption{原书图 32：Jordan 链基下辅助平面 \(P^*\) 的退化结点。坐标轴就是
+ \((\vect{h}_1,\vect{h}_2)\) 的像。左图 \(\lambda<0\)，轨线在原点与横轴相切，运动向内，是稳定
+ 退化结点；右图 \(\lambda>0\)，运动向外，是不稳定退化结点。两幅图都对应二重特征值且
+ 只有一个独立特征向量。}
+ \label{fig:ch2-p2-32}
+\end{figure}
+
+若 \(\lambda>0\)，把上面的图形关于纵轴作镜面反射并反转时间方向，就得到不稳定退化结点，
+见图 32(b)。图 33(a),(b) 回到原相平面 \(P\)，显示非正交特征基造成的倾斜变形。相切的
+方向仍然是唯一的特征直线 \(\vect{h}_1\)；另一条 Jordan 方向的像 \(\vect{h}_2\) 只决定曲线从哪一侧
+接入。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.86\textwidth}{!}{\input{figures/33.tex}}
+ \caption{原书图 33：原相平面 \(P\) 中的退化结点。与图 32 相比，坐标轴不再正交，曲线被
+ 仿射拉斜，但两个特征方向 \(\vect{h}_1,\vect{h}_2\) 仍然保留；轨线在原点附近仍切于特征方向
+ \(\vect{h}_1\)。左、右两个图形对应稳定和不稳定两个时间方向。}
+ \label{fig:ch2-p2-33}
+\end{figure}
+
+\paragraph{例 2：二阶常系数线性齐次方程.}
+考虑标量方程
+\begin{equation}
+ \ddot x+a\dot x+bx=0,
+ \qquad a,b\in\R,
+ \tag{22}
+\end{equation}
+其中 \(\dot x\) 表示对时间的导数。按第~\S4 的方法引入状态变量 \((x,\dot x)\)，可写成
+标准方程组
+\begin{equation}
+ \dot x=y,\qquad
+ \dot y=-bx-ay.
+ \tag{23}
+\end{equation}
+把 \((x,y)\) 平面看成原方程的相平面。直接计算可知，方程组 (23)
+的系数矩阵特征多项式为
+\begin{equation}
+ p^2+ap+b.
+ \tag{24}
+\end{equation}
+它正好是原二阶方程的特征多项式。因此前面关于相平面的结点、鞍点、焦点和中心结论都可以
+直接用于二阶方程。
+
+若式 (24) 的根为复数，则相平面出现焦点或中心。下面讨论两根非零、
+互不相同且为实数的情形。设 \(\lambda\) 是根，\(\vect{h}=(h^1,h^2)\neq\vect{0}\) 是对应特征向量。
+由方程组 (23) 的形式，
+\[
+ \lambda h^1=h^2.
+\]
+因此特征方向由
+\begin{equation}
+ y=\lambda x
+ \tag{25}
+\end{equation}
+确定；这条直线称为特征直线。这里第一坐标是位移，第二坐标是速度；图中的横轴标为
+\(x\)，纵轴标为 \(\dot x\)，两者都是同一标量函数的相位坐标。
+
+若 \(\lambda_1,\lambda_2<0\)，就有稳定结点，见命题 (A)。两条特征直线都经过第二、
+第四象限；在原点附近，轨线切于靠近横轴的那条特征直线。其原因是该方向对应的
+\(|\lambda|\) 较小，指数衰减较慢，故成为进入原点时的主导方向。图 34 给出这一情形。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.51\textwidth}{!}{\input{figures/34.tex}}
+ \caption{原书图 34：方程 (24) 的两根皆为负实根时的稳定结点。
+ 横轴为位移 \(x\)，纵轴为速度 \(\dot x\)；两条斜线是满足 \(\dot x=\lambda x\) 的
+ 特征直线。所有箭头指向原点，轨线在原点附近切于衰减较慢的特征直线。}
+ \label{fig:ch2-p2-34}
+\end{figure}
+
+若 \(\lambda_1,\lambda_2>0\)，则有拓扑上的不稳定结点。两条特征直线经过第一、第三象限，
+轨线在原点附近仍切于位置较靠近横轴的那条特征直线，但箭头反向，点随时间离开原点。
+见图 35。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.51\textwidth}{!}{\input{figures/35.tex}}
+ \caption{原书图 35：方程 (24) 的两根皆为正实根时的不稳定结点。
+ 横轴 \(x\)、纵轴 \(\dot x\)；两条特征直线 \(\dot x=\lambda_i x\) 均经过第一、第三
+ 象限，箭头由原点向外。原点附近的主导方向仍是衰减较慢（这里等价于增长较慢）的特征
+ 直线。}
+ \label{fig:ch2-p2-35}
+\end{figure}
+
+若两根异号，则原方程为鞍点。两条特征直线中一条经过第二、第四象限，另一条经过第一、
+第三象限。轨线沿稳定的特征方向接近原点，而沿不稳定方向离开原点。图 36 给出这一力学
+相图；两条双曲线分支的连接方式由 \(b<0\) 和根的符号确定。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.50\textwidth}{!}{\input{figures/36.tex}}
+ \caption{原书图 36：方程 (24) 的根一正一负时的相图。横轴为
+ \(x\)，纵轴为 \(\dot x\)。一条特征直线经过第二、第四象限，另一条经过第一、第三象限；
+ 箭头沿前者趋近原点、沿后者离开原点，故为鞍点。}
+ \label{fig:ch2-p2-36}
+\end{figure}
+
+\paragraph{例 3：至少一个特征值等于零.}
+
+\medskip
+\noindent\textbf{情形 I.}
+只有一个特征值等于零：
+\begin{equation}
+ \lambda_1\neq0,\qquad\lambda_2=0.
+ \tag{26}
+\end{equation}
+这时解仍按式 (3) 写，其中
+\begin{equation}
+ \xi_1(t)=c_1e^{\lambda_1t},\qquad
+ \xi_2(t)=c_2.
+ \tag{27}
+\end{equation}
+因为 \(\xi_2=c_2\) 为常数，所有沿固定直线 \(\xi_2=\text{常数}\) 的运动都平行于
+\(\xi_1\) 轴；当 \(\lambda_1<0\) 时朝直线 \(\xi_1=0\) 运动，当 \(\lambda_1>0\) 时背离
+它运动。直线 \(\xi_1=0\) 上每一点都满足 \(\vect{f}(\vect{x})=\vect{0}\)，因此整条直线由平衡位置组成。
+原点不再是唯一平衡位置，所以不能用孤立的结点、鞍点或焦点来称呼这一相图。图 37 给出
+辅助平面中的这一结构。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.58\textwidth}{!}{\input{figures/37.tex}}
+ \caption{原书图 37：零特征值情形 I，特征值为 \(\lambda_1\neq0,\lambda_2=0\)。
+ 两条坐标轴为特征方向；直线 \(\xi_1=0\) 上每一点都是平衡位置。轨迹沿水平直线
+ \(\xi_2=\text{常数}\) 指向或背离 \(\xi_1=0\)，方向由 \(\lambda_1\) 的符号决定。
+ 图示 \(\lambda_1<0\)，轨线指向平衡直线；当 \(\lambda_1>0\) 时，所有箭头反向。}
+ \label{fig:ch2-p2-37}
+\end{figure}
+
+\medskip
+\noindent\textbf{情形 II.}
+若唯一特征值为
+\begin{equation}
+ \lambda_1=\lambda_2=0,
+ \tag{28}
+\end{equation}
+则可能分别落在例题 1 的两种情形。
+
+\emph{情形 II.1.} 见关系式 (16) 且 \(\lambda=0\)。通解
+(18) 成为
+\begin{equation}
+ \vect{x}(t)=\vect{x}_0.
+ \tag{29}
+\end{equation}
+这只有当方程组 (1) 的所有系数都等于零时才发生；此时相平面每一点
+都是平衡位置，整个平面都是静止的，没有需要分类的轨线。
+
+\emph{情形 II.2.} 见关系式 (17) 且 \(\lambda=0\)。通解
+(19) 成为
+\begin{equation}
+ \xi_1(t)=c_1+c_2t,\qquad
+ \xi_2(t)=c_2.
+ \tag{30}
+\end{equation}
+沿着每一条固定直线 \(\xi_2=\text{常数}\)，运动都以常速度 \(c_2\) 进行；当 \(c_2>0\)
+时向右，当 \(c_2<0\) 时向左。直线 \(\xi_2=0\) 上所有点都有 \(c_2=0\)，因此都是平衡
+位置。图 38 显示这种一维平移的平行轨线族。
+
+\begin{figure}[H]
+ \centering
+ \resizebox{0.62\textwidth}{!}{\input{figures/38.tex}}
+ \caption{原书图 38：零特征值且矩阵不可对角化的情形。坐标轴为
+ \((\xi_1,\xi_2)\) 的特征链方向；每条水平直线 \(\xi_2=\text{常数}\) 是一条轨线，
+ 运动匀速并沿 \(\xi_1\) 方向。直线 \(\xi_2=0\) 由平衡位置组成。与图 37 相比，这里
+ 没有非零指数伸缩，时间依赖是线性的。}
+ \label{fig:ch2-p2-38}
+\end{figure}

@@ -1,0 +1,51 @@
+% !TeX program = latexmk
+\documentclass[UTF8,zihao=-4,openany,fontset=fandol]{ctexbook}
+\usepackage[a4paper,margin=25mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{upgreek}
+\usepackage{graphicx,booktabs,longtable,array,enumitem,float,tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,decorations.pathmorphing,patterns}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\hypersetup{
+  hypertexnames=false,
+  pdftitle={庞特里亚金ODE现代化},
+  pdfauthor={依据庞特里亚金《常微分方程》原著中文扫描本},
+  pdfsubject={《常微分方程》现代化重编}
+}
+\usepackage{xcolor}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.3em}
+\allowdisplaybreaks
+\graphicspath{{assets/figures/}}
+\tikzset{>=Stealth, every picture/.style={line cap=round,line join=round}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\dd}{\mathrm d}
+% 向量与矩阵使用线性代数中的粗正体；分量、矩阵元素和标量保持普通数学字体。
+% 向量中的希腊字母局部切换为正体，避免影响标量公式的常规斜体。
+\newcommand{\vect}[1]{%
+  \begingroup
+  \def\varphi{\bm{\upvarphi}}%
+  \def\psi{\bm{\uppsi}}%
+  \def\chi{\bm{\upchi}}%
+  \def\zeta{\bm{\upzeta}}%
+  \def\xi{\bm{\upxi}}%
+  \mathbf{#1}%
+  \endgroup
+}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\adj}{adj}
+\title{庞特里亚金ODE现代化\\[0.5em]\large《常微分方程》现代化重编}
+\author{依据庞特里亚金《常微分方程》原著中文扫描本}
+\date{}
+\numberwithin{equation}{chapter}
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\mainmatter
+\input{chapters/frontmatter-modernization.tex}
+\input{chapters/contents.tex}
+\end{document}

@@ -1,0 +1,19 @@
+\begin{tikzpicture}[x=0.8cm,y=0.8cm,thick,>=Stealth]
+  \draw[->] (-4.4,0)--(4.4,0) node[right] {$x$};
+  \draw[->] (0,-3.5)--(0,3.5) node[above] {$\dot x$};
+  % Unstable eigenlines have positive slopes.
+  \draw[very thick] (-4.0,-1.4)--(4.0,1.4);
+  \draw[very thick] (-2.55,-3.45)--(2.55,3.45);
+  \draw[->] (0.24,0.084)--(2.65,0.93);
+  \draw[->] (-0.24,-0.084)--(-2.65,-0.93);
+  \draw[->] (0.18,0.24)--(1.85,2.50);
+  \draw[->] (-0.18,-0.24)--(-1.85,-2.50);
+  % Reverse-flow companions of the stable-node curves; all arrows leave zero.
+  \draw[<-] (3.75,2.95).. controls (3.05,2.75) and (1.05,0.42)..(0.14,0.05);
+  \draw[<-] (3.35,2.20).. controls (2.65,2.05) and (0.92,0.34)..(0.14,0.05);
+  \draw[<-] (3.05,1.45).. controls (2.35,1.42) and (0.82,0.29)..(0.14,0.05);
+  \draw[<-] (-3.75,-2.95).. controls (-3.05,-2.75) and (-1.05,-0.42)..(-0.14,-0.05);
+  \draw[<-] (-3.35,-2.20).. controls (-2.65,-2.05) and (-0.92,-0.34)..(-0.14,-0.05);
+  \draw[<-] (-3.05,-1.45).. controls (-2.35,-1.42) and (-0.82,-0.29)..(-0.14,-0.05);
+  \fill (0,0) circle (2pt);
+\end{tikzpicture}

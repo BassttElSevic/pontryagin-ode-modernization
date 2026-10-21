@@ -1,0 +1,12 @@
+\begin{tikzpicture}[x=1cm,y=1cm,thick]
+  \coordinate (a) at (0,0);
+  \foreach \ang/\name/\lab in {25/b_1/I_{b_1a},85/b_2/I_{b_2a},145/b_3/I_{b_3a},215/b_4/I_{b_4a},285/b_5/I_{b_5a}} {
+    \draw (a)--({2.6*cos(\ang)},{2.6*sin(\ang)});
+    \draw[fill=white] ({1.3*cos(\ang)-0.25*sin(\ang)},{1.3*sin(\ang)+0.25*cos(\ang)}) rectangle
+      ({1.3*cos(\ang)+0.25*sin(\ang)},{1.3*sin(\ang)-0.25*cos(\ang)});
+    \draw[->] ({2.15*cos(\ang)},{2.15*sin(\ang)})--({0.55*cos(\ang)},{0.55*sin(\ang)})
+      node[midway,sloped,above] {$\lab$};
+    \node at ({2.85*cos(\ang)},{2.85*sin(\ang)}) {$\name$};
+  }
+  \fill (a) circle (2pt) node[above right] {$a$};
+\end{tikzpicture}

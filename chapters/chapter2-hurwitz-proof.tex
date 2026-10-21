@@ -1,0 +1,161 @@
+\section*{补证：Hurwitz判据为何成立}
+\addcontentsline{toc}{section}{补证：Hurwitz判据为何成立}
+\label{sec:hurwitz-proof}
+
+\noindent\textbf{编者补证。}
+原书§9只陈述定理7，另引文献给出证明。
+为使本稿可独立使用，这里补上证明；它不冒充原书已有的段落。
+证明采用与控制理论相通的Routh降阶思路，再把降阶条件写成Hurwitz顺序主子式。
+沿用本章已使用的代数事实：固定次数多项式的根作为一个带重数的集合，随系数连续变化。
+这不要求能把所有根在全参数范围内逐个编号为单值函数。
+
+\subsection*{1. 奇偶部分与降阶多项式}
+
+设
+\[
+ P(s)=a_0s^n+a_1s^{n-1}+\cdots+a_n,\qquad a_0>0,
+\]
+各$a_j$均为实数，且$n\ge2$。
+先假定$a_1>0$。把多项式按幂次的奇偶性分成
+\[
+ U(s)=a_0s^n+a_2s^{n-2}+a_4s^{n-4}+\cdots,
+ \qquad
+ V(s)=a_1s^{n-1}+a_3s^{n-3}+a_5s^{n-5}+\cdots.
+\]
+令$c=a_0/a_1>0$，定义
+\[
+ W(s)=U(s)-csV(s),\qquad Q(s)=V(s)+W(s).
+\]
+$U$与$csV$的最高次项相消，所以$\deg W\le n-2$，
+而$Q$恰为$n-1$次多项式，首项系数$a_1>0$。
+写开即为
+\[
+ Q(s)=a_1s^{n-1}
+ +\left(a_2-\frac{a_0a_3}{a_1}\right)s^{n-2}
+ +a_3s^{n-3}
+ +\left(a_4-\frac{a_0a_5}{a_1}\right)s^{n-4}
+ +\cdots.
+\]
+系数越界时取零。它就是Routh过程的一次降阶。
+
+\subsection*{2. 降阶为什么保持左半平面稳定性}
+
+我们证明
+\begin{equation}
+ P\text{稳定}
+ \quad\Longleftrightarrow\quad
+ a_1>0\ \text{且}\ Q\text{稳定}.
+ \label{eq:routh-reduction}
+\end{equation}
+先注意：若$P$稳定，实根给出因子$s+r$，$r>0$；
+一对共轭根$-\alpha\pm i\beta$给出
+$s^2+2\alpha s+\alpha^2+\beta^2$，$\alpha>0$。
+这些因子的系数均为正，故乘积的系数均为正，特别有$a_1>0$。
+
+在$a_1>0$的条件下，考虑实参数族
+\[
+ P_\tau(s)=W(s)+V(s)+\tau sV(s),\qquad \tau>0.
+\]
+其中$P_c=P$，而当$\tau\downarrow0$时$P_\tau\to Q$。
+对实数$\omega$，$W(i\omega)$与$i\omega V(i\omega)$
+都属于同一个实直线$i^n\R$，
+$V(i\omega)$则属于与它垂直的实直线$i^{n-1}\R$。
+因此
+\[
+ P_\tau(i\omega)=0
+ \quad\Longleftrightarrow\quad
+ V(i\omega)=0\ \text{且}\ W(i\omega)=0
+ \quad\Longleftrightarrow\quad Q(i\omega)=0.
+\]
+这个条件与$\tau$无关。
+所以，只要$P$或$Q$中一个没有虚轴根，整个$\tau>0$的多项式族都没有虚轴根。
+
+在任意闭参数区间$0<\tau_1\le\tau\le\tau_2$上，
+$P_\tau$的首项系数为$\tau a_1$，不会消失。
+根随系数连续变化，并且在这个闭参数区间内有统一的根模上界。
+因此右半平面的根数若发生改变，必有某个根经过虚轴。
+既然虚轴根不存在，右半平面根数就在所有$\tau>0$上保持不变。
+
+还需要检查$\tau\downarrow0$时那个因降阶而“走向无穷”的根。
+$Q$有$n-1$个有限根，按重数计；$P_\tau$有$n-1$个根趋向这些根，
+余下一个根记为$r_\tau$。
+由根与系数的关系，$P_\tau$全部根之和恰为$-1/\tau$。
+有限的$n-1$个根之和有界，所以
+\[
+ r_\tau=-\frac1\tau+O(1).
+\]
+由于系数为实数，非实根必须成共轭对；
+只有一个根离开所有有界区域，因此这个根在充分小的$\tau$下必为实数，
+并且为负。
+关于有限根的收敛，也可把
+$P_\tau(s)=\tau a_1\prod_{j=1}^n(s-r_j(\tau))$
+局限在包含$Q$全部根的一个大圆内来理解：圆内的根按重数保持为$n-1$个，
+剩下的一个根离开圆。
+
+若$Q$稳定，则充分小$\tau>0$时，趋向$Q$根的$n-1$个根都在左半平面，
+额外的实根也为负。因此小$\tau$时$P_\tau$稳定；
+再由没有虚轴穿越，得到$P=P_c$稳定。
+
+反过来，若$P$稳定，则所有$\tau>0$的$P_\tau$都稳定。
+令$\tau\downarrow0$，$Q$的有限根只能位于闭左半平面。
+但若$Q$有虚轴根，上面的等价式会使$P$也有同一个虚轴根，矛盾。
+因此$Q$所有根实部严格为负。降阶等价式得证。
+
+\subsection*{3. Hurwitz顺序主子式的递推}
+
+定义
+\[
+ \mat{H}(P)=(a_{2j-i})_{i,j=1}^n
+ =
+ \begin{pmatrix}
+ a_1&a_3&a_5&\cdots\\
+ a_0&a_2&a_4&\cdots\\
+ 0&a_1&a_3&\cdots\\
+ 0&a_0&a_2&\cdots\\
+ \vdots&\vdots&\vdots&\ddots
+ \end{pmatrix},
+\]
+并令$\Delta_k(P)$为其左上角$k\times k$子矩阵的行列式。
+对任意$k\ge2$，在这个子矩阵中，
+把每个偶数行减去其上一个奇数行的$c=a_0/a_1$倍。
+这不改变行列式，并把第一列变成$(a_1,0,\ldots,0)^{\mathsf T}$。
+按第一列展开，剩余的子矩阵恰为$\mat{H}(Q)$的左上角$(k-1)\times(k-1)$部分。
+故
+\begin{equation}
+ \Delta_1(P)=a_1,\qquad
+ \Delta_k(P)=a_1\Delta_{k-1}(Q)\quad(2\le k\le n).
+ \label{eq:hurwitz-recursion}
+\end{equation}
+例如第二阶给出
+\[
+ \Delta_2(P)
+ =a_1\left(a_2-\frac{a_0a_3}{a_1}\right)
+ =a_1a_2-a_0a_3,
+\]
+正是降阶后首两项系数所决定的第一个条件。
+
+\subsection*{4. 归纳完成定理7}
+
+当$n=1$时，$P(s)=a_0s+a_1$，其唯一根为$-a_1/a_0$；
+在$a_0>0$下，稳定当且仅当$a_1>0$，也就是$\Delta_1(P)>0$。
+
+假设结论对$n-1$次多项式成立。
+若$n$次多项式$P$稳定，由\eqref{eq:routh-reduction}有$a_1>0$且$Q$稳定。
+归纳假设给出$\Delta_j(Q)>0$，$1\le j\le n-1$。
+再由\eqref{eq:hurwitz-recursion}得到$\Delta_k(P)>0$，$1\le k\le n$。
+
+反过来，若所有$\Delta_k(P)>0$，则$a_1=\Delta_1(P)>0$，
+所以降阶多项式$Q$可定义，并由\eqref{eq:hurwitz-recursion}得到
+$\Delta_j(Q)>0$，$1\le j\le n-1$。
+归纳假设说明$Q$稳定，降阶等价式再说明$P$稳定。
+于是
+\[
+ \boxed{\quad P\text{的全部根满足}\ \Re s<0
+ \quad\Longleftrightarrow\quad
+ \Delta_1(P),\ldots,\Delta_n(P)>0.\quad}
+\]
+证明完成。
+
+这里判定的是严格左半平面稳定性。
+某个顺序主子式为零时，不能把上述严格不等式改成非严格不等式继续套用；
+边界根、零行等情形需要另行分析。
