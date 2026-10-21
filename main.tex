@@ -6,11 +6,12 @@
 \usepackage{graphicx,booktabs,longtable,array,enumitem,float,tabularx}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,calc,decorations.pathmorphing,patterns}
+\input{cover-style.tex}
 \usepackage[unicode,colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
 \hypersetup{
   hypertexnames=false,
-  pdftitle={庞特里亚金ODE现代化},
-  pdfauthor={依据庞特里亚金《常微分方程》原著中文扫描本},
+  pdftitle={常微分方程 / Обыкновенные дифференциальные уравнения：现代化重编},
+  pdfauthor={Л. С. 庞特里亚金 / Л. С. Понтрягин（原著）},
   pdfsubject={《常微分方程》现代化重编}
 }
 \usepackage{xcolor}
@@ -37,13 +38,14 @@
 \newcommand{\mat}[1]{\mathbf{#1}}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\adj}{adj}
-\title{庞特里亚金ODE现代化\\[0.5em]\large《常微分方程》现代化重编}
-\author{依据庞特里亚金《常微分方程》原著中文扫描本}
+\title{常微分方程\\{\coverru Обыкновенные дифференциальные уравнения}\\[0.5em]\large 现代化重编}
+\author{{\coverru Л. С.} 庞特里亚金 / {\coverru Л. С. Понтрягин}}
 \date{}
 \numberwithin{equation}{chapter}
 \begin{document}
 \frontmatter
-\maketitle
+\input{cover.tex}
+\input{chapters/pontryagin-tribute.tex}
 \tableofcontents
 \mainmatter
 \input{chapters/frontmatter-modernization.tex}

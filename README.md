@@ -1,4 +1,6 @@
-# 庞特里亚金ODE现代化
+# 常微分方程 / Обыкновенные дифференциальные уравнения
+
+**Л. С. 庞特里亚金 / Л. С. Понтрягин · 现代化重编**
 
 这是庞特里亚金《常微分方程》的符号现代化项目。项目保留原书的章节结构、数学内容、定理与例题次序，改用现代线性代数和 ODE 记号，并以 TikZ 重绘插图。原书后置或省略的证明以补证单列，便于连续阅读与核对。
 
@@ -13,11 +15,24 @@
 
 当前收录范围和原书页码对应关系见 [SOURCE-MAP.md](SOURCE-MAP.md)。
 
+## 封面
+
+书名采用中俄双语：**常微分方程 / Обыкновенные дифференциальные уравнения**。作者署名为**列夫·谢苗诺维奇·庞特里亚金 / Лев Семёнович Понтрягин**；正文仍为中文现代化重编。
+
+封面使用米白、朱红与黑色，以圆盘、红色楔形、倾斜格构和西里尔字母呼应苏联构成主义与俄国先锋派。圆盘中的曲线按稳定焦点系统的解绘制，下方为 `u = r - Kx` 的状态反馈回路。所有图形均为 LaTeX/TikZ 矢量源码，不使用位图；字体、颜色和页面图形分别在 `cover-style.tex` 与 `cover.tex` 中维护。
+
+作者姓名核对依据：[Math-Net.Ru 作者条目](https://www.mathnet.ru/person21723)。俄文书名核对依据：[WorldCat 书目](https://search.worldcat.org/title/13273302)。封面为本项目新作，表达对原作者的敬意。
+
+封面之后为同风格的独立人物介绍页，收录历史肖像、中文传记、生平年表与编者致意，并作为不编号章节列入目录。照片约摄于 1950 年，摄影者不详，Commons 文件页标注 CC BY 4.0；原文件、署名、许可及传记核对说明见 [照片与传记来源](assets/portraits/SOURCES.md)。正文引用莫斯科大学人物档案、MacTutor 与俄罗斯国立图书馆书目；致意文字为本项目原创。
+
 ## 目录
 
 ```text
 main.tex                              主文档、版式与符号宏
+cover.tex                             中俄双语构成主义封面，纯 TikZ 矢量绘制
+cover-style.tex                       封面专用字体与配色
 chapters/
+  pontryagin-tribute.tex               封面之后的人物介绍与致敬页，不编号
   contents.tex                        正文章节清单
   frontmatter-modernization.tex       编写说明与当前进度
   chapter1.tex                        第一章正文
@@ -27,6 +42,7 @@ chapters/
   chapter2-hurwitz-proof.tex          Hurwitz 判据补证
 figures/01.tex ... 38.tex             38 张 TikZ 插图源码
 assets/figures/                       原扫描插图裁切图，仅供参考
+assets/portraits/                     历史肖像及照片许可、传记来源记录
 scripts/build.py                     统一构建入口
 build/                               PDF 与中间文件，构建生成，不提交
 SOURCE-MAP.md                        原书页码与内容映射
@@ -49,7 +65,7 @@ python scripts/build.py --engine xelatex
 
 Tectonic 首次构建会联网下载所需的 TeX 资源，后续复用本机缓存。若编译器未加入 `PATH`，可用 `--compiler` 指定其可执行文件路径；Windows 下也会自动查找当前用户的常见 Tectonic 安装位置。
 
-XeLaTeX 环境需要安装 `ctex`、Fandol 字体、`amsmath`、`bm`、`upgreek`、TikZ 等文档所用的 TeX 包。
+XeLaTeX 环境需要安装 `ctex`、Fandol 字体、`amsmath`、`bm`、`upgreek`、TikZ 等文档所用的 TeX 包，以及 `fontspec` 和 TeX Live 的 `dejavu` 字体包。封面俄文使用 DejaVu Sans Condensed，按字体文件名加载；不依赖 Windows 专有字体。Tectonic 会按需下载对应字体资源。
 
 使用编辑器中的 `latexmk` 构建方式时，还需安装 `latexmk`；仓库的 `.latexmkrc` 已配置 XeLaTeX 和 `build/` 输出目录。上面的 Python 构建入口不依赖 `latexmk`。
 

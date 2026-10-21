@@ -1,0 +1,134 @@
+% Original vector cover, drawn entirely in TikZ. Coordinates are in millimetres
+% on an A4 page. All styling stays local to this title page.
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.south west)},x=1mm,y=1mm,
+  line cap=butt,line join=miter,
+  every node/.style={inner sep=0pt,outer sep=0pt,text=coverink}]
+  \clip (0,0) rectangle (210,297);
+  \fill[coverpaper] (0,0) rectangle (210,297);
+  \fill[coverred] (0,0) rectangle (6,297);
+
+  % A restrained author line precedes the bilingual title.
+  \node[anchor=west,font=\coverru\bfseries\fontsize{12}{14}\selectfont]
+    at (18,281) {Л. С. ПОНТРЯГИН};
+  \node[anchor=east,font=\sffamily\fontsize{11}{13}\selectfont]
+    at (192,281) {{\coverru Л. С.} 庞特里亚金};
+  \draw[coverink,line width=0.65pt] (18,275) -- (192,275);
+  \node[anchor=north west,font=\sffamily\bfseries\fontsize{49}{52}\selectfont]
+    at (17,269) {常微分方程};
+  \node[anchor=north west,font=\coverru\bfseries\fontsize{20}{23}\selectfont]
+    at (18,245) {ОБЫКНОВЕННЫЕ};
+  \node[anchor=north west,font=\coverru\bfseries\fontsize{20}{23}\selectfont]
+    at (18,235) {ДИФФЕРЕНЦИАЛЬНЫЕ};
+  \node[anchor=north west,font=\coverru\bfseries\fontsize{20}{23}\selectfont]
+    at (18,225) {УРАВНЕНИЯ};
+  \fill[coverred] (160,249) rectangle (192,267);
+  \node[text=coverpaper,font=\coverru\bfseries\fontsize{25}{28}\selectfont]
+    at (176,258) {ODE};
+  \node[anchor=east,font=\sffamily\fontsize{10}{12}\selectfont]
+    at (192,240) {现代化重编};
+
+  % An abstract leaning lattice tower recalls Russian avant-garde architecture.
+  % This is an original geometric motif, not a historical architectural diagram.
+  \begin{scope}[shift={(43,158)},rotate=-16]
+    \foreach \a in {0,30,...,150}{
+      \draw[covergray!65!coverpaper,line width=0.5pt]
+        ({17*cos(\a)},-43) -- ({5*cos(\a+120)},43);
+      \draw[covergray!65!coverpaper,line width=0.5pt]
+        ({17*cos(\a+180)},-43) -- ({5*cos(\a+300)},43);
+    }
+    \draw[coverink,line width=1pt] (-17,-43) -- (-5,43)
+      (17,-43) -- (5,43) (0,-47) -- (0,49);
+    \foreach \h/\r in {-43/17,-22/13.5,0/10.5,22/7.5,43/5}{
+      \draw[coverink,line width=0.65pt] (0,\h) ellipse[x radius=\r mm,y radius=2.4mm];
+    }
+  \end{scope}
+
+  % Constructivist geometry: disk, oblique bar, red wedge and counterweight.
+  \draw[coverred,line width=2.4pt] (43,109) -- (195,207);
+  \fill[coverink] (128,151) circle[radius=49mm];
+  \draw[coverink,line width=0.7pt] (128,151) circle[radius=53mm];
+  \fill[coverred] (188,194) circle[radius=4mm];
+  \fill[coverink] (19,208) rectangle (29,211);
+  \fill[coverred] (32,208) rectangle (42,211);
+
+  % Genuine stable-focus trajectories: x' = A x,
+  % A = [-0.126, -1; 1, -0.126]. Angles below are measured in degrees.
+  % exp(-0.0022 theta) = exp(-0.12605 t), theta = 180 t / pi.
+  \begin{scope}[shift={(128,151)}]
+    \clip (0,0) circle[radius=48.5mm];
+    \foreach \g in {-40,-30,...,40}{
+      \draw[coverpaper!14!coverink,line width=0.25pt] (\g,-49) -- (\g,49);
+      \draw[coverpaper!14!coverink,line width=0.25pt] (-49,\g) -- (49,\g);
+    }
+    \draw[coverpaper!48!coverink,line width=0.5pt,-{Stealth[length=2mm]}]
+      (-46,0) -- (47,0);
+    \draw[coverpaper!48!coverink,line width=0.5pt,-{Stealth[length=2mm]}]
+      (0,-46) -- (0,47);
+    \foreach \phase in {0,120,240}{
+      \draw[coverpaper,line width=0.85pt]
+        plot[domain=0:850,samples=240,smooth,variable=\t]
+        ({46*exp(-0.0022*\t)*cos(\t+\phase)},
+         {46*exp(-0.0022*\t)*sin(\t+\phase)});
+      \foreach \angle in {110,420}{
+        \draw[coverpaper,line width=0.85pt,-{Stealth[length=1.8mm]}]
+          ({46*exp(-0.0022*\angle)*cos(\angle+\phase)},
+           {46*exp(-0.0022*\angle)*sin(\angle+\phase)}) --
+          ({46*exp(-0.0022*(\angle+6))*cos(\angle+6+\phase)},
+           {46*exp(-0.0022*(\angle+6))*sin(\angle+6+\phase)});
+      }
+    }
+    \fill[coverpaper] (0,0) circle[radius=1.1mm];
+    \node[text=coverpaper,anchor=north east,font=\fontsize{11}{12}\selectfont]
+      at (43,-3) {$x_1$};
+    \node[text=coverpaper,anchor=north west,font=\fontsize{11}{12}\selectfont]
+      at (3,44) {$x_2$};
+  \end{scope}
+  \fill[coverred] (-8,128) -- (16,86) -- (128,151) -- cycle;
+  \node[anchor=west,rotate=30,text=coverpaper,font=\fontsize{23}{25}\selectfont]
+    at (20,110) {$\dot{\mathbf{x}}=\mathbf{A}\mathbf{x}$};
+  \node[rotate=90,anchor=west,font=\coverru\fontsize{8}{10}\selectfont]
+    at (195,110) {ДИНАМИКА / УПРАВЛЕНИЕ};
+  \node[anchor=west,text=covergray,font=\coverru\fontsize{8}{10}\selectfont]
+    at (35,91) {КИБЕРНЕТИКА};
+  \node[anchor=east,text=covergray,font=\sffamily\fontsize{9}{10}\selectfont]
+    at (192,91) {微分方程 · 动力系统 · 控制论};
+
+  % Feedback interconnect: u = r - Kx, with x' = Ax + Bu.
+  \draw[coverink,line width=0.6pt] (18,85) -- (192,85);
+  \begin{scope}[line width=0.85pt,>={Stealth[length=2mm]}]
+    \node[anchor=east,font=\fontsize{12}{14}\selectfont] at (25,71) {$\mathbf r$};
+    \draw[->] (28,71) -- (40,71);
+    \draw (43,71) circle[radius=3mm];
+    \node[font=\fontsize{8}{9}\selectfont] at (38,75) {$+$};
+    \node[font=\fontsize{9}{10}\selectfont] at (47,65) {$-$};
+    \draw[->] (46,71) -- (70,71);
+    \node[font=\fontsize{11}{12}\selectfont] at (58,76) {$\mathbf u$};
+    \draw (70,64) rectangle (136,78);
+    \node[font=\fontsize{16}{18}\selectfont]
+      at (103,71) {$\dot{\mathbf x}=\mathbf A\mathbf x+\mathbf B\mathbf u$};
+    \draw[->] (136,71) -- (183,71);
+    \node[anchor=west,font=\fontsize{12}{14}\selectfont] at (186,71) {$\mathbf x$};
+    \fill[coverred] (158,71) circle[radius=1.1mm];
+    \draw[->] (158,71) -- (158,53) -- (114,53);
+    \fill[coverred] (92,48) rectangle (114,58);
+    \node[text=coverpaper,font=\fontsize{14}{16}\selectfont] at (103,53) {$\mathbf K$};
+    \draw[->] (92,53) -- (43,53) -- (43,68);
+  \end{scope}
+
+  % Full bilingual attribution and a modest dedication.
+  \node[anchor=west,font=\sffamily\bfseries\fontsize{15}{18}\selectfont]
+    at (18,36) {列夫·谢苗诺维奇·庞特里亚金};
+  \node[anchor=west,font=\coverru\fontsize{13}{16}\selectfont]
+    at (18,27) {Лев Семёнович Понтрягин};
+  \draw[coverred,line width=2pt] (18,19) -- (192,19);
+  \node[anchor=west,text=covergray,font=\sffamily\fontsize{8}{10}\selectfont]
+    at (18,11) {谨向原作者致敬 · 依据原著中文译本重编};
+  \node[anchor=east,text=covergray,font=\coverru\fontsize{8}{10}\selectfont]
+    at (192,11) {С УВАЖЕНИЕМ К АВТОРУ};
+\end{scope}
+\end{tikzpicture}
+\null
+\end{titlepage}
