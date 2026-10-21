@@ -208,9 +208,9 @@
   \overline z_1\\ \vdots\\ \overline z_n
  \end{pmatrix}.
 \]
-向量 \(\vect{z}\) 为实向量当且仅当 \(\overline{\vect{z}}=\vect{z}\)。有限个向量 \(\vect{z}_1,\ldots,\vect{z}_r\in\C^n\) 线性相关，是指存在不全为零的复常数 \(\alpha^1,\ldots,\alpha^r\)，使得
+向量 \(\vect{z}\) 为实向量当且仅当 \(\overline{\vect{z}}=\vect{z}\)。有限个向量 \(\vect{z}_1,\ldots,\vect{z}_r\in\C^n\) 线性相关，是指存在不全为零的复常数 \(\alpha_1,\ldots,\alpha_r\)，使得
 \[
- \alpha^1\vect{z}_1+\cdots+\alpha^r\vect{z}_r=\vect{0};
+ \alpha_1\vect{z}_1+\cdots+\alpha_r\vect{z}_r=\vect{0};
 \]
 不存在这样的常数时称它们线性无关。若 \(r=n\)，把 \(\vect{z}_j\) 作为第 \(j\) 列组成方阵，则这些列向量线性无关当且仅当该方阵的行列式不为零。
 
@@ -218,7 +218,7 @@
 \noindent\textbf{命题 (D).}
 设 \(\vect{z}_1,\ldots,\vect{z}_n\) 是 \(\C^n\) 中 \(n\) 个线性无关的复向量，并假设这组向量在含有某个向量的同时也含有它的复共轭。对于
 \begin{equation}
- \vect{z}=c^1\vect{z}_1+\cdots+c^n\vect{z}_n,
+ \vect{z}=c_1\vect{z}_1+\cdots+c_n\vect{z}_n,
  \label{eq:ch2-7-complex-linear-combination}
 \end{equation}
 向量 \(\vect{z}\) 是实向量，当且仅当互为共轭的一对向量前面的系数也互为共轭，实向量前面的系数为实数。
@@ -233,24 +233,24 @@
 \]
 于是
 \begin{align}
- \vect{z}&=c^1\vect{z}_1+c^2\vect{z}_2+\cdots+c^{2k-1}\vect{z}_{2k-1}
-   +c^{2k}\vect{z}_{2k}
-   +c^{2k+1}\vect{z}_{2k+1}+\cdots+c^n\vect{z}_n,\notag\\
+ \vect{z}&=c_1\vect{z}_1+c_2\vect{z}_2+\cdots+c_{2k-1}\vect{z}_{2k-1}
+   +c_{2k}\vect{z}_{2k}
+   +c_{2k+1}\vect{z}_{2k+1}+\cdots+c_n\vect{z}_n,\notag\\
  \overline{\vect{z}}
- &=\overline{c^1}\,\vect{z}_2+\overline{c^2}\,\vect{z}_1+\cdots
-   +\overline{c^{2k-1}}\,\vect{z}_{2k}
-   +\overline{c^{2k}}\,\vect{z}_{2k-1}\notag\\
- &\qquad+\overline{c^{2k+1}}\,\vect{z}_{2k+1}+\cdots
-   +\overline{c^n}\,\vect{z}_n.
+ &=\overline{c_1}\,\vect{z}_2+\overline{c_2}\,\vect{z}_1+\cdots
+   +\overline{c_{2k-1}}\,\vect{z}_{2k}
+   +\overline{c_{2k}}\,\vect{z}_{2k-1}\notag\\
+ &\qquad+\overline{c_{2k+1}}\,\vect{z}_{2k+1}+\cdots
+   +\overline{c_n}\,\vect{z}_n.
  \label{eq:ch2-7-conjugate-combination}
 \end{align}
 若
 \begin{equation}
- c^1=\overline{c^2},\quad\ldots,\quad
- c^{2k-1}=\overline{c^{2k}},
+ c_1=\overline{c_2},\quad\ldots,\quad
+ c_{2k-1}=\overline{c_{2k}},
  \qquad
- c^{2k+1}=\overline{c^{2k+1}},\ldots,
- c^n=\overline{c^n},
+ c_{2k+1}=\overline{c_{2k+1}},\ldots,
+ c_n=\overline{c_n},
  \label{eq:ch2-7-real-coefficient-conditions}
 \end{equation}
 则由两式立即得到 \(\overline{\vect{z}}=\vect{z}\)。反过来，若 \(\vect{z}=\overline{\vect{z}}\)，把 \(\vect{z}\) 与 \(\overline{\vect{z}}\) 都按同一组基向量 \(\vect{z}_1,\ldots,\vect{z}_n\) 展开，比较系数，并利用这组向量的线性无关性，便得到 \eqref{eq:ch2-7-real-coefficient-conditions}。故命题成立。
@@ -334,24 +334,24 @@
 \]
 其中 \(x_j,y_j\) 都是实函数。若取
 \begin{equation}
- c^{2j-1}=\frac12(a^j-ib^j),
+ c_{2j-1}=\frac12(a_j-ib_j),
  \qquad
- c^{2j}=\frac12(a^j+ib^j),
- \qquad a^j,b^j\in\R,
+ c_{2j}=\frac12(a_j+ib_j),
+ \qquad a_j,b_j\in\R,
  \label{eq:ch2-7-example2-real-constants}
 \end{equation}
 则相应的复共轭项之和为
 \[
- c^{2j-1}z_{2j-1}+c^{2j}z_{2j}
- =a^jx_j+b^jy_j.
+ c_{2j-1}z_{2j-1}+c_{2j}z_{2j}
+ =a_jx_j+b_jy_j.
 \]
 所以方程的实通解可写成
 \begin{equation}
- y=a^1x_1+b^1y_1+\cdots+a^kx_k+b^ky_k
- +c^{2k+1}z_{2k+1}+\cdots+c^nz_n,
+ y=a_1x_1+b_1y_1+\cdots+a_kx_k+b_ky_k
+ +c_{2k+1}z_{2k+1}+\cdots+c_nz_n,
  \label{eq:ch2-7-example2-real-general}
 \end{equation}
-其中 \(a^1,b^1,\ldots,a^k,b^k,c^{2k+1},\ldots,c^n\) 是任意实常数。
+其中 \(a_1,b_1,\ldots,a_k,b_k,c_{2k+1},\ldots,c_n\) 是任意实常数。
 
 \noindent\textbf{例 3.}
 仍采用上一例的共轭配对，并把复特征根写成
@@ -361,9 +361,9 @@
 \]
 取
 \begin{equation}
- c^{2j-1}=\frac12\rho_je^{i\alpha_j},
+ c_{2j-1}=\frac12\rho_je^{i\alpha_j},
  \qquad
- c^{2j}=\frac12\rho_je^{-i\alpha_j},
+ c_{2j}=\frac12\rho_je^{-i\alpha_j},
  \qquad \rho_j\ge0,\quad \alpha_j\in\R.
  \label{eq:ch2-7-example3-polar-constants}
 \end{equation}
@@ -371,7 +371,7 @@
 \begin{equation}
  y=\rho_1e^{\mu_1t}\cos(\nu_1t+\alpha_1)+\cdots
    +\rho_ke^{\mu_kt}\cos(\nu_kt+\alpha_k)
-   +c^{2k+1}e^{\lambda_{2k+1}t}+\cdots+c^ne^{\lambda_nt}.
+   +c_{2k+1}e^{\lambda_{2k+1}t}+\cdots+c_ne^{\lambda_nt}.
  \label{eq:ch2-7-example3-real-solution}
 \end{equation}
 这里 \(\rho_j,\alpha_j\) 以及余下的实根系数都是任意实常数。这个形式说明：非零虚部 \(\nu_j\) 产生振动因子；实部 \(\mu_j>0\) 使振动振幅按指数增长，\(\mu_j<0\) 则使其按指数衰减。
