@@ -6,6 +6,10 @@
 
 当前版本收录第一章、第二章及相关补证，共 38 张 TikZ 插图。后续按原书顺序逐章推进。
 
+## 下载
+
+最新 PDF 发布版本见 [GitHub Releases](https://github.com/BassttElSevic/pontryagin-ode-modernization/releases/latest)。
+
 ## 内容与记号
 
 - 用列向量、矩阵和 Jacobian 组织方程组，保留各节的条件、论证、例题和退化情形。
