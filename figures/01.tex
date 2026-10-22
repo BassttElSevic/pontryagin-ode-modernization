@@ -22,7 +22,7 @@
   }
   % Coordinate axes.
   \draw[axis] (-1.1,0)--(4.7,0) node[right] {$t$};
-  \draw[axis] (0,-0.75)--(0,3.55) node[above] {$x$};
+  \draw[axis] (0,-0.75)--(0,3.55) node[above] {$y$};
   \node[below left=1pt] at (0,0) {$O$};
 
   % Clip all integral curves to the open domain Gamma.
@@ -43,6 +43,6 @@
   \draw[boundary] \GammaPath;
   \fill (0.75,0.97) circle (1.7pt);
   \node[below left=1pt] at (0.75,0.97) {$p$};
-  \node[rotate=8] at (2.15,1.43) {$x=\varphi(t)$};
-  \node at (3.30,2.24) {$\Gamma$};
+  \node[rotate=8,font=\footnotesize] at (2.15,1.43) {$y=\varphi(t)$};
+  \node at (2.95,2.24) {$\Gamma$};
 \end{tikzpicture}
