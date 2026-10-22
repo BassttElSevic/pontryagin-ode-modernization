@@ -1,6 +1,17 @@
-\begin{tikzpicture}[x=0.9cm,y=0.9cm,thick]
-  \draw[->] (-2.6,0)--(2.6,0) node[right] {$\xi_1$}; \draw[->] (0,-2.6)--(0,2.6) node[above] {$\xi_2$};
-  \foreach \r in {0.55,1.05,1.55,2.05} {\draw (0,0) circle (\r);}
-  \foreach \r in {0.55,1.05,1.55,2.05} {\draw[->] ({\r*cos(35)},{\r*sin(35)}) arc[start angle=35,end angle=70,radius=\r];}
-  \fill (0,0) circle (2pt);
+\begin{tikzpicture}[scale=2.5390,font=\small,x=0.9cm,y=0.9cm,line width=0.7pt]
+  % xi_1'=-xi_2, xi_2'=xi_1: concentric counterclockwise periodic orbits.
+  \foreach \r in {0.52,0.82,1.12,1.42,1.72} {
+    \draw plot[domain=0:360,samples=160,variable=\a]
+      ({\r*cos(\a)},{\r*sin(\a)})--cycle;
+    \foreach \b in {55,225,330} {
+      \draw[->] plot[domain={\b-5}:{\b+5},samples=9,variable=\a]
+        ({\r*cos(\a)},{\r*sin(\a)});
+    }
+  }
+  \draw[->] (-1.88,0)--(2.08,0);
+  \draw[->] (0,-1.90)--(0,2.08);
+  \fill[white] (0,0) circle (1.6pt);
+  \draw (0,0) circle (1.6pt);
+  \node[below right=2pt] at (2.08,0) {$\xi_1$};
+  \node[above right=2pt] at (0,2.08) {$\xi_2$};
 \end{tikzpicture}

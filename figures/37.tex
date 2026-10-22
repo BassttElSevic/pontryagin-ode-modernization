@@ -1,6 +1,17 @@
-\begin{tikzpicture}[x=1cm,y=1cm,thick]
-  \draw[->] (-4.2,0)--(4.2,0) node[right] {$\xi_1$}; \draw[->] (0,-2.7)--(0,2.7) node[above] {$\xi_2$};
-  \draw[very thick] (0,-2.55)--(0,2.55);
-  \foreach \y in {-2,-1.35,-0.7,0.7,1.35,2} {\draw[->] (-3.8,\y)--(-0.3,\y); \draw[->] (3.8,\y)--(0.3,\y);}
-  \foreach \y in {-2,-1.35,-0.7,0,0.7,1.35,2} {\fill (0,\y) circle (1.1pt);}
+\begin{tikzpicture}[scale=2.1634,font=\small,x={(1cm,-.27cm)},y={(.68cm,.74cm)},
+  line width=.65pt,>=Stealth]
+  % Affine image of xi_1'=lambda_1 xi_1, xi_2'=0, lambda_1<0.
+  % The whole oblique xi_2 axis consists of equilibria.
+  \foreach \h in {-1.65,-1.10,-.55,.55,1.10,1.65} {
+    \draw (-1.90,\h)--(1.90,\h);
+    \draw[->] (-1.42,\h)--(-.78,\h);
+    \draw[->] (1.42,\h)--(.78,\h);
+  }
+  \draw[line width=.45pt] (-2.10,0)--(2.10,0)
+    node[right,xshift=3pt] {$\xi_1$};
+  \draw[->,line width=.55pt] (0,-2.05)--(0,2.05)
+    node[above right,xshift=2pt] {$\xi_2$};
+  \draw[->] (-1.42,0)--(-.78,0);
+  \draw[->] (1.42,0)--(.78,0);
+  \filldraw[fill=white,line width=.45pt] (0,0) circle (1.5pt);
 \end{tikzpicture}

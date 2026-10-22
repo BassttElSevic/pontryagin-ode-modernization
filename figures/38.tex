@@ -1,7 +1,17 @@
-\begin{tikzpicture}[x=1cm,y=0.9cm,thick]
-  \draw[->] (-4.3,0)--(4.3,0) node[right] {$\xi_1$}; \draw[->] (0,-2.7)--(0,2.7) node[above] {$\xi_2$};
-  \draw[very thick] (-4.0,0)--(4.0,0);
-  \foreach \y in {-2,-1.5,-1,-0.5} {\draw[<-] (-4.0,\y)--(4.0,\y);}
-  \foreach \y in {0.5,1,1.5,2} {\draw[->] (-4.0,\y)--(4.0,\y);}
-  \foreach \x in {-3,-2,-1,0,1,2,3} {\fill (\x,0) circle (1pt);}
+\begin{tikzpicture}[scale=2.1989,font=\small,x={(.87cm,.22cm)},y={(.12cm,.74cm)},
+  line width=.65pt,>=Stealth]
+  % Keep the scanned oblique layout; correct its reversed flow arrows
+  % according to xi_1'=xi_2, xi_2'=0 in equation (30).
+  \foreach \h in {.35,.70,1.05,1.40,1.75,2.10} {
+    \draw (-3.10,\h)--(3.10,\h);
+    \draw (-3.10,-\h)--(3.10,-\h);
+    \foreach \p in {-2.30,-.45,1.40} {
+      \draw[->] (\p,\h)--({\p+.55},\h);
+      \draw[<-] (\p,-\h)--({\p+.55},-\h);
+    }
+  }
+  \draw[line width=.8pt] (-3.10,0)--(3.10,0)
+    node[right,xshift=3pt] {$\xi_1$};
+  \draw[line width=.45pt] (0,-2.45)--(0,2.45)
+    node[above right,xshift=2pt] {$\xi_2$};
 \end{tikzpicture}

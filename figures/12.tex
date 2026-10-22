@@ -1,9 +1,17 @@
 \begin{tikzpicture}[x=1cm,y=1cm,thick]
-  \draw (0,0)--(0.8,0); \draw[decorate,decoration={coil,segment length=2.8mm,amplitude=2.3mm}] (0.8,0)--(2.1,0); \draw (2.1,0)--(2.3,0);
-  \draw (2.3,-0.22) rectangle (3.25,0.22); \node at (2.78,0) {$R$}; \draw (3.25,0)--(3.5,0);
-  \draw (3.5,-0.28)--(3.5,0.28); \draw (3.75,-0.28)--(3.75,0.28); \draw (3.75,0)--(4.5,0);
-  \fill (0,0) circle (2pt) node[above] {$b$}; \fill (4.5,0) circle (2pt) node[above] {$a$};
-  \node[below] at (1.45,-0.05) {$L$}; \node[below] at (3.62,-0.32) {$C$};
-  \draw[dashed] (0,-0.72) rectangle (4.5,0.72);
-  \node at (2.35,-1.3) {$Z(D)=LD+R+\dfrac{1}{CD}$};
+  % Removing source da leaves the external terminals a and d.
+  \draw (0,0)--(1.05,0);
+  \foreach \k in {0,...,3}
+    \draw ({1.05+0.36*\k},0) arc[start angle=180,end angle=0,radius=0.18];
+  \draw (2.49,0)--(3.2,0);
+  \draw (3.2,-0.15) rectangle (4.5,0.15);
+  \draw (4.5,0)--(5.12,0);
+  \draw[line width=2pt] (5.12,-0.29)--(5.12,0.29) (5.32,-0.29)--(5.32,0.29);
+  \draw (5.32,0)--(6.8,0);
+  \fill (0,0) circle (2pt) node[below left] {$a$};
+  \fill (6.8,0) circle (2pt) node[below right] {$d$};
+  \node[above] at (1.77,0.18) {$L$};
+  \node[above] at (3.85,0.15) {$R$}; \node[above] at (5.22,0.29) {$C$};
+  \draw[dashed] (0.75,-0.78) rectangle (6.05,0.85);
+  \node[below] at (3.4,-0.91) {$Z(D)=LD+R+\dfrac{1}{CD}$};
 \end{tikzpicture}

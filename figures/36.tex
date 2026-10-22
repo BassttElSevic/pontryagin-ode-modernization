@@ -1,16 +1,34 @@
-\begin{tikzpicture}[x=0.82cm,y=0.82cm,thick]
-  \draw[->] (-3.8,0)--(3.8,0) node[right] {$x$};
-  \draw[->] (0,-3.2)--(0,3.2) node[above] {$\dot x$};
-  % Stable eigenline has negative slope; unstable eigenline has positive slope.
-  \draw[very thick] (-2.8,1.96)--(2.8,-1.96);
-  \draw[very thick] (-2.55,-1.79)--(2.55,1.79);
-  \draw[->] (-2.5,1.75)--(-0.2,0.14); \draw[->] (2.5,-1.75)--(0.2,-0.14);
-  \draw[->] (0.2,0.14)--(2.3,1.61); \draw[->] (-0.2,-0.14)--(-2.3,-1.61);
-  % Hyperbolic sample orbits for one negative and one positive eigenvalue.
-  \foreach \cOne/\cTwo in {0.5/0.5,0.5/-0.5,-0.5/0.5,-0.5/-0.5} {
-    \draw[->] plot[domain=-2:2,samples=140,variable=\t]
-      ({\cOne*exp(-0.7*\t)+\cTwo*exp(0.7*\t)},
-       {-0.7*\cOne*exp(-0.7*\t)+0.7*\cTwo*exp(0.7*\t)});
+\begin{tikzpicture}[scale=1.8242,font=\small,x=1cm,y=1cm,line width=.62pt,>=Stealth]
+  % True second-order saddle: x=c_s e^{-1.9t}+c_u e^{.72t},
+  % velocity=-1.9 c_s e^{-1.9t}+.72 c_u e^{.72t}.
+  \begin{scope}
+    \clip (-2.55,-2.70) rectangle (2.55,2.70);
+    \draw[line width=.8pt] (-1.421053,2.70)--(1.421053,-2.70);
+    \draw[line width=.8pt] (-2.55,-1.836)--(2.55,1.836);
+    \foreach \a in {.32,.62,.94} {
+      \foreach \cs in {-1,1} {
+        \foreach \cu in {-1,1} {
+          \draw plot[domain=-1.4:3.2,samples=180,variable=\t]
+            ({\a*(\cs*exp(-1.9*\t)+\cu*exp(.72*\t))},
+             {\a*(-1.9*\cs*exp(-1.9*\t)+.72*\cu*exp(.72*\t))});
+          \foreach \ta/\tb in {-.28/-.18,.75/.87} {
+            \draw[->] plot[domain=\ta:\tb,samples=12,variable=\t]
+              ({\a*(\cs*exp(-1.9*\t)+\cu*exp(.72*\t))},
+               {\a*(-1.9*\cs*exp(-1.9*\t)+.72*\cu*exp(.72*\t))});
+          }
+        }
+      }
+    }
+  \end{scope}
+  \draw[->,line width=.45pt] (-2.77,0)--(2.77,0)
+    node[right,xshift=2pt] {$x$};
+  \draw[->,line width=.45pt] (0,-2.90)--(0,2.90)
+    node[above,yshift=2pt] {$\dot x$};
+  \foreach \sgn in {-1,1} {
+    \draw[->] ({1.18*\sgn},{-2.242*\sgn})
+      --({.91*\sgn},{-1.729*\sgn});
+    \draw[->] ({1.45*\sgn},{1.044*\sgn})
+      --({1.98*\sgn},{1.4256*\sgn});
   }
-  \fill (0,0) circle (2pt);
+  \fill (0,0) circle (1.25pt);
 \end{tikzpicture}

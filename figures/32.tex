@@ -1,35 +1,43 @@
-\begin{tikzpicture}[x=0.76cm,y=0.76cm,thick,>=Stealth]
-  % Auxiliary Jordan coordinates: trajectories are tangent to the xi_1 axis.
-  \begin{scope}[shift={(-2.35,0)}]
-    \draw[thin] (-1.8,0)--(1.8,0) node[right] {$\xi_1$};
-    \draw[thin] (0,-1.7)--(0,1.7) node[above] {$\xi_2$};
-    \node[above] at (0,2.28) {$stable$};
-    \fill (0,0) circle (1.4pt);
-    % Stable flow along the eigendirection.
-    \draw[->] (-1.55,0)--(-0.28,0);
-    \draw[<-] (0.28,0)--(1.55,0);
-    % Upper trajectories enter from the left, bend around, then approach tangent to xi_1.
-    \draw[->] (-2.15,1.50).. controls (-1.55,1.70) and (0.95,0.03)..(0.16,0.03);
-    \draw[->] (-1.80,1.08).. controls (-1.25,1.25) and (0.70,0.02)..(0.14,0.02);
-    \draw[->] (-1.45,0.68).. controls (-0.98,0.80) and (0.48,0.01)..(0.12,0.01);
-    % Lower trajectories are the reflected family.
-    \draw[->] (2.15,-1.50).. controls (1.55,-1.70) and (-0.95,-0.03)..(-0.16,-0.03);
-    \draw[->] (1.80,-1.08).. controls (1.25,-1.25) and (-0.70,-0.02)..(-0.14,-0.02);
-    \draw[->] (1.45,-0.68).. controls (0.98,-0.80) and (-0.48,-0.01)..(-0.12,-0.01);
-  \end{scope}
-  \begin{scope}[shift={(2.35,0)}]
-    \draw[thin] (-1.8,0)--(1.8,0) node[right] {$\xi_1$};
-    \draw[thin] (0,-1.7)--(0,1.7) node[above] {$\xi_2$};
-    \node[above] at (0,2.28) {$unstable$};
-    \fill (0,0) circle (1.4pt);
-    % Reverse every arrow for the unstable case.
-    \draw[<-] (-1.55,0)--(-0.28,0);
-    \draw[->] (0.28,0)--(1.55,0);
-    \draw[<-] (-2.15,1.50).. controls (-1.55,1.70) and (0.95,0.03)..(0.16,0.03);
-    \draw[<-] (-1.80,1.08).. controls (-1.25,1.25) and (0.70,0.02)..(0.14,0.02);
-    \draw[<-] (-1.45,0.68).. controls (-0.98,0.80) and (0.48,0.01)..(0.12,0.01);
-    \draw[<-] (2.15,-1.50).. controls (1.55,-1.70) and (-0.95,-0.03)..(-0.16,-0.03);
-    \draw[<-] (1.80,-1.08).. controls (1.25,-1.25) and (-0.70,-0.02)..(-0.14,-0.02);
-    \draw[<-] (1.45,-0.68).. controls (0.98,-0.80) and (-0.48,-0.01)..(-0.12,-0.01);
-  \end{scope}
+\begin{tikzpicture}[scale=1.5586,font=\small,x=.82cm,y=.82cm,line width=.65pt,>=Stealth]
+  % Exact Jordan orbits, with a scaled time parameter:
+  % stable: (xi_1,xi_2)=(2.7 a t e^{-t},a e^{-t});
+  % unstable: reflect xi_1 and reverse the parameter direction.
+  \foreach \cx/\mirror/\panel in {-3.15/1/a,3.15/-1/b} {
+    \begin{scope}[shift={(\cx,0)}]
+      \begin{scope}
+        \clip (-2.35,-2.30) rectangle (2.35,2.30);
+        \foreach \a in {.65,1.20,1.80} {
+          \foreach \sgn in {-1,1} {
+            \draw plot[domain=-1.5:8,samples=190,variable=\t]
+              ({\mirror*\sgn*2.7*\a*\t*exp(-\t)},
+               {\sgn*\a*exp(-\t)});
+            \foreach \ta/\tb in {-.28/-.12,.65/.82} {
+              \ifnum\mirror=1
+                \draw[->] plot[domain=\ta:\tb,samples=12,variable=\t]
+                  ({\mirror*\sgn*2.7*\a*\t*exp(-\t)},
+                   {\sgn*\a*exp(-\t)});
+              \else
+                \draw[<-] plot[domain=\ta:\tb,samples=12,variable=\t]
+                  ({\mirror*\sgn*2.7*\a*\t*exp(-\t)},
+                   {\sgn*\a*exp(-\t)});
+              \fi
+            }
+          }
+        }
+      \end{scope}
+      \draw[line width=.45pt] (-2.55,0)--(2.55,0)
+        node[right,xshift=2pt] {$\xi_1$};
+      \draw[line width=.45pt] (0,-2.47)--(0,2.47)
+        node[above,yshift=2pt] {$\xi_2$};
+      \ifnum\mirror=1
+        \draw[->] (-1.92,0)--(-1.42,0);
+        \draw[->] (1.92,0)--(1.42,0);
+      \else
+        \draw[->] (-1.42,0)--(-1.92,0);
+        \draw[->] (1.42,0)--(1.92,0);
+      \fi
+      \filldraw[fill=white,line width=.45pt] (0,0) circle (1.5pt);
+      \node[below] at (0,-2.72) {(\panel)};
+    \end{scope}
+  }
 \end{tikzpicture}

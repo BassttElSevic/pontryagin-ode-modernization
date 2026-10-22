@@ -1,14 +1,49 @@
 \begin{tikzpicture}[x=1cm,y=1cm,thick]
-  % Coupled primary and secondary loops with distinct current arrows.
-  \draw (0,0)--(0.7,0); \draw (0.7,-0.38) circle (0.38); \node at (0.7,-0.38) {$U(t)$}; \draw (0.7,-0.76)--(0,-0.76)--(0,-2.8);
-  \draw (0,-2.8)--(1.2,-2.8); \draw[fill=white] (1.2,-3.03) rectangle (2.2,-2.57); \node[below] at (1.7,-3.03) {$R_1$}; \draw (2.2,-2.8)--(2.8,-2.8);
-  \draw[decorate,decoration={coil,segment length=3mm,amplitude=2.5mm}] (2.8,-2.8)--(2.8,-0.25); \draw (2.8,-0.25)--(0,-0.25);
-  \draw (4.2,-0.25)--(6.7,-0.25); \draw[decorate,decoration={coil,segment length=3mm,amplitude=2.5mm}] (4.2,-0.25)--(4.2,-2.8); \draw (4.2,-2.8)--(5.1,-2.8);
-  \draw[fill=white] (5.1,-3.03) rectangle (6.1,-2.57); \node[below] at (5.6,-3.03) {$R_2$}; \draw (6.1,-2.8)--(6.7,-2.8);
-  \draw (6.7,-2.8)--(6.7,-0.25); \draw (6.7,-1.0)--(6.7,-2.1); \draw[fill=white] (6.48,-2.1) rectangle (6.92,-1.0); \node[right] at (6.92,-1.55) {$R$};
-  \node[left] at (2.8,-1.55) {$L_1$}; \node[left] at (4.2,-1.55) {$L_2$};
-  \node at (3.5,0.25) {$M$}; \draw[<->,dashed] (3.5,-0.05)--(3.5,-2.35);
-  \draw[->] (0.8,-1.0) arc[start angle=90,end angle=-200,radius=0.65] node[midway,left] {$I_1$};
-  \draw[->] (4.9,-1.0) arc[start angle=90,end angle=-200,radius=0.65] node[midway,right] {$I_2$};
-  \node at (0,-0.1) {$a_1$}; \node at (2.8,0) {$b_1$}; \node at (4.2,0) {$b_2$}; \node at (6.7,0) {$a_2$};
+  % Electrically separate primary and secondary; only magnetic coupling M.
+  \draw (0,0)--(0,1.37);
+  \draw (0,1.8) circle (0.43);
+  \draw (0,2.23)--(0,3.6)--(3.6,3.6)--(3.6,3.33);
+  \foreach \k in {0,...,8}
+    \draw (3.6,{0.27+0.34*\k}) arc[start angle=-90,end angle=90,radius=0.17];
+  \draw (3.6,0.27)--(3.6,0)--(2.35,0);
+  \draw (1.3,-0.15) rectangle (2.35,0.15);
+  \draw (1.3,0)--(0,0);
+  \node at (0,1.8) {$U(t)$};
+  \node[right] at (0.04,2.4) {$+$}; \node[right] at (0.04,1.2) {$-$};
+  \node[left] at (3.52,2.82) {$L_1$}; \node[below] at (1.825,-0.15) {$R_1$};
+  \fill (1.75,3.6) circle (1.8pt) node[above] {$a_1$};
+  \fill (3.1,0) circle (1.8pt) node[below] {$b_1$};
+  \fill (0.35,0) circle (1.8pt) node[below] {$c_1$};
+  \draw (4.1,3.33)--(4.1,3.6)--(7.7,3.6)--(7.7,2.45);
+  \foreach \k in {0,...,8}
+    \draw (4.1,{0.27+0.34*\k}) arc[start angle=-90,end angle=-270,radius=0.17];
+  \draw (4.1,0.27)--(4.1,0)--(5.35,0);
+  \draw (5.35,-0.15) rectangle (6.4,0.15);
+  \draw (6.4,0)--(7.7,0)--(7.7,1.15);
+  \draw (7.55,1.15) rectangle (7.85,2.45);
+  \node[right] at (7.85,1.8) {$R$};
+  \node[right] at (4.18,2.82) {$L_2$}; \node[below] at (5.875,-0.15) {$R_2$};
+  \fill (5.95,3.6) circle (1.8pt) node[above] {$a_2$};
+  \fill (4.6,0) circle (1.8pt) node[below] {$b_2$};
+  \fill (7.35,0) circle (1.8pt) node[below] {$c_2$};
+  \draw (3.28,3.84) .. controls (3.6,4.06) and (4.1,4.06) .. (4.42,3.84);
+  \node[above] at (3.85,4.02) {$M$};
+  \draw[->] (0.62,2.82)
+    .. controls (0.62,3.05) and (0.78,3.15) .. (1.08,3.15)
+    --(2.35,3.15)
+    .. controls (2.71,3.15) and (2.85,2.97) .. (2.85,2.62)
+    --(2.85,1.0)
+    .. controls (2.85,0.65) and (2.68,0.48) .. (2.33,0.48)
+    --(1.1,0.48)
+    .. controls (0.75,0.48) and (0.62,0.65) .. (0.62,1.07);
+  \node[right] at (0.73,0.98) {$I_1$};
+  \draw[->] (7.08,2.82)
+    .. controls (7.08,3.05) and (6.92,3.15) .. (6.62,3.15)
+    --(5.35,3.15)
+    .. controls (4.99,3.15) and (4.85,2.97) .. (4.85,2.62)
+    --(4.85,1.0)
+    .. controls (4.85,0.65) and (5.02,0.48) .. (5.37,0.48)
+    --(6.6,0.48)
+    .. controls (6.95,0.48) and (7.08,0.65) .. (7.08,1.07);
+  \node[left] at (6.97,0.98) {$I_2$};
 \end{tikzpicture}

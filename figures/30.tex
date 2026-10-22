@@ -1,6 +1,14 @@
-\begin{tikzpicture}[x=0.9cm,y=0.9cm,thick]
-  \draw[->] (-3.0,0)--(3.0,0); \draw[->] (0,-2.7)--(0,2.7);
-  \draw[->] (-2.6,-1.5)--(2.6,1.5) node[right] {$\xi_1$}; \draw[->] (-2.2,1.9)--(2.2,-1.9) node[right] {$\xi_2$};
-  \foreach \r in {0.5,0.9,1.3,1.7,2.1} {\draw (0,0) ellipse ({\r} and {0.58*\r});}
-  \foreach \r in {0.9,1.5,2.1} {\draw[->] ({\r*cos(35)},{0.58*\r*sin(35)}) arc[start angle=35,end angle=70,x radius=\r,y radius=0.58*\r];}
+\begin{tikzpicture}[scale=2.4742,font=\small,x=0.9cm,y=0.9cm,line width=0.7pt]
+  % Affine image of u'=-v, v'=u under P=[(0.70,0)^T,(0.52,1.30)^T].
+  % The source shows closed orbits without flow arrows.
+  \foreach \r in {0.45,0.78,1.10,1.40,1.70} {
+    \draw plot[domain=0:360,samples=180,variable=\a]
+      ({\r*(0.70*cos(\a)+0.52*sin(\a))},{1.30*\r*sin(\a)})--cycle;
+  }
+  \draw[->] (-1.85,0)--(1.98,0);
+  \draw[->] (-0.97,-2.425)--(1.02,2.55);
+  \fill[white] (0,0) circle (1.6pt);
+  \draw (0,0) circle (1.6pt);
+  \node[right=3pt] at (1.98,0) {$\xi_1$};
+  \node[above right=2pt] at (1.02,2.55) {$\xi_2$};
 \end{tikzpicture}

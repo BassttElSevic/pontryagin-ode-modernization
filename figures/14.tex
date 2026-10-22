@@ -1,5 +1,10 @@
 \begin{tikzpicture}[x=1cm,y=1cm,thick]
-  \draw (0,0)--(0,0.5); \draw[decorate,decoration={coil,segment length=3mm,amplitude=2.5mm}] (0,0.5)--(0,3.3);
-  \draw (0,3.3)--(2.6,3.3); \draw (2.6,3.3)--(2.6,2.35); \draw (2.35,2.35)--(2.85,2.35); \draw (2.35,2.1)--(2.85,2.1); \draw (2.6,2.1)--(2.6,0); \draw (0,0)--(2.6,0);
-  \node[left] at (0,1.9) {$L$}; \node[right] at (2.6,2.22) {$C$};
+  \draw (0,0)--(0,0.65);
+  \foreach \k in {0,...,7}
+    \draw (0,{0.65+0.325*\k}) arc[start angle=-90,end angle=-270,radius=0.1625];
+  \draw (0,3.25)--(0,4)--(4,4)--(4,2.11);
+  \draw[line width=2pt] (3.72,2.11)--(4.28,2.11) (3.72,1.89)--(4.28,1.89);
+  \draw (4,1.89)--(4,0)--(0,0);
+  \foreach \p in {(0,0),(0,4),(4,4),(4,0)} \fill \p circle (1.8pt);
+  \node[left] at (-0.2,2) {$L$}; \node[right] at (4.28,2) {$C$};
 \end{tikzpicture}

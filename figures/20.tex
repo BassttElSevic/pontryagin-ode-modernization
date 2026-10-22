@@ -1,12 +1,9 @@
-\begin{tikzpicture}[x=1cm,y=1cm,thick]
-  % One circle only: four equilibria divide it into alternating flow arcs.
-  \draw (0,0) circle (2.15);
-  \foreach \ang in {0,70,215,260}
-    \fill ({2.15*cos(\ang)},{2.15*sin(\ang)}) circle (2pt);
-  % Short tangent arrows avoid drawing a second, mismatched circle.
-  \draw[->] ({2.15*cos(24)},{2.15*sin(24)}) arc[start angle=24,end angle=46,radius=2.15];
-  \draw[->] ({2.15*cos(150)},{2.15*sin(150)}) arc[start angle=150,end angle=128,radius=2.15];
-  \draw[->] ({2.15*cos(230)},{2.15*sin(230)}) arc[start angle=230,end angle=245,radius=2.15];
-  \draw[->] ({2.15*cos(335)},{2.15*sin(335)}) arc[start angle=335,end angle=285,radius=2.15];
-  \node at (-2.55,2.3) {$K$};
+\begin{tikzpicture}[scale=2.3542,font=\small,x=1cm,y=1cm,line width=0.8pt]
+  % Six equilibria: three sinks alternate with three sources on the circle.
+  \draw (0,0) circle (2);
+  \foreach \ang in {0,76,132,213,256,286}
+    \fill ({2*cos(\ang)},{2*sin(\ang)}) circle (1.6pt);
+  \foreach \a/\b in {15/4,-15/-4,117/128,147/136,241/252,271/260}
+    \draw[->] ({2*cos(\a)},{2*sin(\a)})
+      arc[start angle=\a,end angle=\b,radius=2];
 \end{tikzpicture}

@@ -1,13 +1,22 @@
-\begin{tikzpicture}[x=0.9cm,y=0.9cm,thick]
-  \draw[->] (-3.2,0)--(3.3,0) node[right] {$\xi_1$};
-  \draw[->] (0,-3.0)--(0,3.0) node[above] {$\xi_2$};
-  % Stable horizontal and unstable vertical separatrices.
-  \draw[->] (-2.8,0)--(-0.25,0); \draw[->] (2.8,0)--(0.25,0);
-  \draw[->] (0,0.25)--(0,2.8); \draw[->] (0,-0.25)--(0,-2.8);
-  % Hyperbolas: forward motion goes from the stable direction toward the unstable one.
-  \foreach \sx in {-1,1} {\foreach \sy in {-1,1} {
-    \draw[->] plot[domain=2.8:0.34,samples=70,variable=\s]
-      ({\sx*\s},{\sy*0.82/\s});
-  }}
-  \fill (0,0) circle (2pt);
+\begin{tikzpicture}[scale=2.1916,font=\small,x=0.9cm,y=0.9cm,line width=0.7pt]
+  % xi_1'=-xi_1, xi_2'=xi_2; each nonseparatrix orbit has xi_1*xi_2=const.
+  \foreach \sx in {-1,1} {
+    \foreach \sy in {-1,1} {
+      \foreach \k in {0.07,0.17,0.34,0.60,0.96,1.42} {
+        \draw plot[domain={\k/2.45}:2.45,samples=110,variable=\s]
+          ({\sx*\s},{\sy*\k/\s});
+        \draw[->] plot[domain={1.12*sqrt(\k)}:{0.92*sqrt(\k)},
+          samples=9,variable=\s] ({\sx*\s},{\sy*\k/\s});
+      }
+    }
+  }
+  \draw (-2.50,0)--(2.50,0) (0,-2.50)--(0,2.50);
+  \foreach \sgn in {-1,1} {
+    \draw[->] ({1.00*\sgn},0)--({0.72*\sgn},0);
+    \draw[->] (0,{0.66*\sgn})--(0,{0.96*\sgn});
+  }
+  \fill[white] (0,0) circle (1.8pt);
+  \draw (0,0) circle (1.8pt);
+  \node[right=3pt] at (2.50,0) {$\xi_1$};
+  \node[above=3pt] at (0,2.50) {$\xi_2$};
 \end{tikzpicture}

@@ -1,19 +1,72 @@
-\begin{tikzpicture}[x=0.8cm,y=0.8cm,thick,>=Stealth]
-  \draw[->] (-4.4,0)--(4.4,0) node[right] {$x$};
-  \draw[->] (0,-3.5)--(0,3.5) node[above] {$\dot x$};
-  % Unstable eigenlines have positive slopes.
-  \draw[very thick] (-4.0,-1.4)--(4.0,1.4);
-  \draw[very thick] (-2.55,-3.45)--(2.55,3.45);
-  \draw[->] (0.24,0.084)--(2.65,0.93);
-  \draw[->] (-0.24,-0.084)--(-2.65,-0.93);
-  \draw[->] (0.18,0.24)--(1.85,2.50);
-  \draw[->] (-0.18,-0.24)--(-1.85,-2.50);
-  % Reverse-flow companions of the stable-node curves; all arrows leave zero.
-  \draw[<-] (3.75,2.95).. controls (3.05,2.75) and (1.05,0.42)..(0.14,0.05);
-  \draw[<-] (3.35,2.20).. controls (2.65,2.05) and (0.92,0.34)..(0.14,0.05);
-  \draw[<-] (3.05,1.45).. controls (2.35,1.42) and (0.82,0.29)..(0.14,0.05);
-  \draw[<-] (-3.75,-2.95).. controls (-3.05,-2.75) and (-1.05,-0.42)..(-0.14,-0.05);
-  \draw[<-] (-3.35,-2.20).. controls (-2.65,-2.05) and (-0.92,-0.34)..(-0.14,-0.05);
-  \draw[<-] (-3.05,-1.45).. controls (-2.35,-1.42) and (-0.82,-0.29)..(-0.14,-0.05);
-  \fill (0,0) circle (2pt);
+\begin{tikzpicture}[scale=1.7778,font=\small,x=1cm,y=1cm,line width=.62pt,>=Stealth]
+  % Exact solutions of x''+2.6x'+1.2x=0 (Figure 34).
+  % Figure 35 reflects velocity and reverses time: roots +.6 and +2.
+  \begin{scope}
+    \clip (-2.65,-2.85) rectangle (2.65,2.85);
+    \draw[line width=.8pt] (-2.65,-1.590000) -- (2.65,1.590000);
+    \draw[line width=.8pt] (-1.425,-2.850000) -- (1.425,2.850000);
+    % Trajectories that cross the velocity-zero axis at x=+/- a.
+    \foreach \a in {.42,.78,1.14,1.50,1.86,2.22} {
+      \foreach \sgn in {-1,1} {
+        \draw plot[domain=-1.5:11,samples=200,variable=\t]
+          ({\sgn*\a*(2*exp(-.6*\t)-.6*exp(-2*\t))/1.4},
+           {-1*\sgn*1.2*\a*(exp(-2*\t)-exp(-.6*\t))/1.4});
+        \draw[<-] plot[domain=-.48:-.39,samples=12,variable=\t]
+          ({\sgn*\a*(2*exp(-.6*\t)-.6*exp(-2*\t))/1.4},
+           {-1*\sgn*1.2*\a*(exp(-2*\t)-exp(-.6*\t))/1.4});
+      }
+    }
+    % Remaining sectors: same-sign coefficients of the two eigenmodes.
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-1.5:11,samples=200,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.06*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.12*exp(-2*\t))});
+      \draw[<-] plot[domain=-0.966114:-0.876114,samples=12,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.06*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.12*exp(-2*\t))});
+    }
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-1.5:11,samples=200,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.18*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.36*exp(-2*\t))});
+      \draw[<-] plot[domain=-0.549689:-0.459689,samples=12,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.18*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.36*exp(-2*\t))});
+    }
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-1.5:11,samples=200,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.48*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.96*exp(-2*\t))});
+      \draw[<-] plot[domain=-0.141451:-0.051451,samples=12,variable=\t]
+        ({\sgn*(exp(-.6*\t)+0.48*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-0.96*exp(-2*\t))});
+    }
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-1.5:11,samples=200,variable=\t]
+        ({\sgn*(exp(-.6*\t)+1.2*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-2.4*exp(-2*\t))});
+      \draw[<-] plot[domain=0.261275:0.351275,samples=12,variable=\t]
+        ({\sgn*(exp(-.6*\t)+1.2*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-2.4*exp(-2*\t))});
+    }
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-1.5:11,samples=200,variable=\t]
+        ({\sgn*(exp(-.6*\t)+3.2*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-6.4*exp(-2*\t))});
+      \draw[<-] plot[domain=0.708450:0.798450,samples=12,variable=\t]
+        ({\sgn*(exp(-.6*\t)+3.2*exp(-2*\t))},
+         {-1*\sgn*(-.6*exp(-.6*\t)-6.4*exp(-2*\t))});
+    }
+  \end{scope}
+  \draw[->,line width=.45pt] (-2.85,0)--(2.85,0)
+    node[right,xshift=2pt] {$x$};
+  \draw[->,line width=.45pt] (0,-3.00)--(0,3.00)
+    node[above,yshift=2pt] {$\dot x$};
+  \foreach \sgn in {-1,1} {
+    \draw[<-] ({2.15*\sgn},{1.290000*\sgn})
+      --({1.62*\sgn},{0.972000*\sgn});
+    \draw[<-] ({1.05*\sgn},{2.100000*\sgn})
+      --({.80*\sgn},{1.600000*\sgn});
+  }
+  \fill (0,0) circle (1.25pt);
 \end{tikzpicture}

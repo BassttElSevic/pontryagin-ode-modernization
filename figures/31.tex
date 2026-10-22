@@ -1,14 +1,21 @@
-\begin{tikzpicture}[x=0.75cm,y=0.75cm,thick]
-  \def\dirIn{in}
-  \foreach \cx/\dir/\title in {-2.3/in/stable,2.3/out/unstable} {
-    \draw[->] (\cx-1.55,0)--(\cx+1.55,0); \draw[->] (\cx,-1.55)--(\cx,1.55);
-    \node[above] at (\cx,1.62) {$\title$}; \fill (\cx,0) circle (1.5pt);
-    \foreach \ang in {15,45,75,105,135,165,195,225,255,285,315,345} {
-      \ifx\dir\dirIn
-        \draw[->] ({\cx+1.38*cos(\ang)},{1.38*sin(\ang)})--({\cx+0.35*cos(\ang)},{0.35*sin(\ang)});
-      \else
-        \draw[->] ({\cx+0.35*cos(\ang)},{0.35*sin(\ang)})--({\cx+1.38*cos(\ang)},{1.38*sin(\ang)});
-      \fi
-    }
+\begin{tikzpicture}[scale=1.7587,font=\small,x=.82cm,y=.82cm,line width=.65pt,>=Stealth]
+  % Scalar matrices: every half-ray is a complete trajectory.
+  \foreach \cx/\sense/\panel in {-2.8/in/a,2.8/out/b} {
+    \begin{scope}[shift={(\cx,0)}]
+      \foreach \ang in {0,22.5,...,337.5} {
+        \draw ({.055*cos(\ang)},{.055*sin(\ang)})
+          --({2.18*cos(\ang)},{2.18*sin(\ang)});
+        \def\inward{in}
+        \ifx\sense\inward
+          \draw[->] ({1.55*cos(\ang)},{1.55*sin(\ang)})
+            --({1.10*cos(\ang)},{1.10*sin(\ang)});
+        \else
+          \draw[->] ({.92*cos(\ang)},{.92*sin(\ang)})
+            --({1.40*cos(\ang)},{1.40*sin(\ang)});
+        \fi
+      }
+      \filldraw[fill=white,line width=.45pt] (0,0) circle (1.5pt);
+      \node[below] at (0,-2.38) {(\panel)};
+    \end{scope}
   }
 \end{tikzpicture}

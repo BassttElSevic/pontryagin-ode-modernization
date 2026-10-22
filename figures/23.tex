@@ -1,15 +1,27 @@
-\begin{tikzpicture}[x=0.88cm,y=0.88cm,thick]
-  \foreach \cx/\title in {-2.7/stable,2.7/unstable} {
-    \draw[->] (\cx-1.95,0)--(\cx+1.95,0) node[right] {$\xi_1$};
-    \draw[->] (\cx,-2.55)--(\cx,2.55) node[above] {$\xi_2$};
-    \node[above] at (\cx,2.75) {$\title$};
-    \fill (\cx,0) circle (1.7pt);
+\begin{tikzpicture}[scale=1.6938,font=\small,x=0.88cm,y=0.88cm,line width=0.7pt]
+  % xi_1' = -xi_1, xi_2' = -2xi_2 in (a); reverse time in (b).
+  % s=exp(-t): (xi_1,xi_2)=(epsilon_1*k*s,epsilon_2*s^2).
+  \foreach \cx/\direction/\panel in {-2.65/-1/a,2.65/1/b} {
+    \begin{scope}[shift={(\cx,0)}]
+      \draw (-2.18,0)--(2.18,0) (0,-2.60)--(0,2.65);
+      \foreach \sx in {-1,1} {
+        \foreach \sy in {-1,1} {
+          \foreach \k in {0.12,0.28,0.48,0.72,1.00,1.25} {
+            \draw plot[domain=0.025:1.58,samples=75,variable=\s]
+              ({\sx*\k*\s},{\sy*\s*\s});
+            \draw[->] plot[domain={1.03-0.05*\direction}:{1.03+0.05*\direction},
+              samples=8,variable=\s] ({\sx*\k*\s},{\sy*\s*\s});
+          }
+        }
+        \draw[->] ({\sx*(1.15-0.10*\direction)},0)
+          --({\sx*(1.15+0.10*\direction)},0);
+        \draw[->] (0,{\sx*(1.55-0.10*\direction)})
+          --(0,{\sx*(1.55+0.10*\direction)});
+      }
+      \fill (0,0) circle (1.5pt);
+      \node[right=3pt] at (2.18,0) {$\xi_1$};
+      \node[above=3pt] at (0,2.65) {$\xi_2$};
+      \node at (0,-2.96) {(\panel)};
+    \end{scope}
   }
-  % Curves are tangent to the slow horizontal eigendirection at the node.
-  \foreach \sgnx in {-1,1} {\foreach \sgny in {-1,1} {
-    \draw[->] plot[domain=2.05:0.08,samples=65,variable=\s]
-      ({-2.7+\sgnx*\s},{\sgny*0.48*\s*\s});
-    \draw[->] plot[domain=0.08:2.05,samples=65,variable=\s]
-      ({2.7+\sgnx*\s},{\sgny*0.48*\s*\s});
-  }}
 \end{tikzpicture}

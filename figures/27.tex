@@ -1,8 +1,42 @@
-\begin{tikzpicture}[x=0.85cm,y=0.85cm,thick]
-  \foreach \cx/\sgn/\title in {-2.45/-1/stable,2.45/1/unstable} {
-    \draw[->] (\cx-1.65,0)--(\cx+1.65,0); \draw[->] (\cx,-1.65)--(\cx,1.65);
-    \node[above] at (\cx,1.72) {$\title$}; \fill (\cx,0) circle (1.5pt);
-  }
-  \draw[->] plot[domain=0:1080,samples=220,variable=\t] ({-2.45+1.48*(1-\t/1180)*cos(\t)},{1.48*(1-\t/1180)*sin(\t)});
-  \draw[->] plot[domain=0:1080,samples=220,variable=\t] ({2.45+(0.23+0.00115*\t)*cos(\t)},{(0.23+0.00115*\t)*sin(\t)});
+\begin{tikzpicture}[scale=1.6013,font=\small,x=0.85cm,y=0.85cm,line width=0.7pt]
+  % Two distinct logarithmic spirals, related by central inversion.
+  % rho'=mu*rho, phi'=nu>0; mu/nu=+-0.0027*180/pi.
+  \begin{scope}[shift={(-3.05,0)}]
+    \draw[->] (-2.45,0)--(2.48,0);
+    \draw[->] (0,-2.45)--(0,2.48);
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=70:1330,samples=490,variable=\a]
+        ({\sgn*2.25*exp(-0.0027*(\a-70))*cos(\a)},
+         {\sgn*2.25*exp(-0.0027*(\a-70))*sin(\a)});
+      \foreach \j in {110,330,550,770,990} {
+        \draw[->] plot[domain={70+\j-5}:{70+\j+5},samples=9,variable=\a]
+          ({\sgn*2.25*exp(-0.0027*(\a-70))*cos(\a)},
+           {\sgn*2.25*exp(-0.0027*(\a-70))*sin(\a)});
+      }
+    }
+    \fill[white] (0,0) circle (1.6pt);
+    \draw (0,0) circle (1.6pt);
+    \node[right=3pt] at (2.48,0) {$\xi_1$};
+    \node[above right=2pt] at (0,2.48) {$\xi_2$};
+    \node at (0,-2.91) {(a)};
+  \end{scope}
+  \begin{scope}[shift={(3.05,0)}]
+    \draw[->] (-2.45,0)--(2.48,0);
+    \draw[->] (0,-2.45)--(0,2.48);
+    \foreach \sgn in {-1,1} {
+      \draw plot[domain=-950:310,samples=490,variable=\a]
+        ({\sgn*2.25*exp(0.0027*(\a-310))*cos(\a)},
+         {\sgn*2.25*exp(0.0027*(\a-310))*sin(\a)});
+      \foreach \j in {110,330,550,770,990} {
+        \draw[->] plot[domain={310-\j-5}:{310-\j+5},samples=9,variable=\a]
+          ({\sgn*2.25*exp(0.0027*(\a-310))*cos(\a)},
+           {\sgn*2.25*exp(0.0027*(\a-310))*sin(\a)});
+      }
+    }
+    \fill[white] (0,0) circle (1.6pt);
+    \draw (0,0) circle (1.6pt);
+    \node[right=3pt] at (2.48,0) {$\xi_1$};
+    \node[above right=2pt] at (0,2.48) {$\xi_2$};
+    \node at (0,-2.91) {(b)};
+  \end{scope}
 \end{tikzpicture}

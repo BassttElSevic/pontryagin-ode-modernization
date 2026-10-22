@@ -1,31 +1,50 @@
-\begin{tikzpicture}[thick,>=Stealth]
-  % Apply the same oblique linear map to the Jordan portrait in each panel.
-  \begin{scope}[shift={(-2.55,0)},x={(0.76cm,-0.34cm)},y={(0.42cm,0.76cm)}]
-    \draw[->] (-1.8,0)--(1.8,0) node[below right] {$\vect{h}_1$};
-    \draw[->] (0,-1.65)--(0,1.65) node[above right] {$\vect{h}_2$};
-    \node[below] at (0,-2.0) {$stable$};
-    \fill (0,0) circle (1.5pt);
-    \draw[->] (-1.55,0)--(-0.28,0);
-    \draw[<-] (0.28,0)--(1.55,0);
-    \draw[->] (-2.15,1.50).. controls (-1.55,1.70) and (0.95,0.03)..(0.16,0.03);
-    \draw[->] (-1.80,1.08).. controls (-1.25,1.25) and (0.70,0.02)..(0.14,0.02);
-    \draw[->] (-1.45,0.68).. controls (-0.98,0.80) and (0.48,0.01)..(0.12,0.01);
-    \draw[->] (2.15,-1.50).. controls (1.55,-1.70) and (-0.95,-0.03)..(-0.16,-0.03);
-    \draw[->] (1.80,-1.08).. controls (1.25,-1.25) and (-0.70,-0.02)..(-0.14,-0.02);
-    \draw[->] (1.45,-0.68).. controls (0.98,-0.80) and (-0.48,-0.01)..(-0.12,-0.01);
+\begin{tikzpicture}[scale=1.1900,font=\small,line width=.65pt,>=Stealth]
+  % The two original panels use different oblique bases.  Each is a
+  % linear image of the exact Jordan portrait of Figure 32.
+  \begin{scope}[shift={(-3.0,0)},x={(.58cm,.92cm)},y={(-.35cm,.74cm)}]
+    \begin{scope}
+      \clip (-2.55,-2.25)--(2.55,-2.25)--(2.55,2.25)--(-2.55,2.25)--cycle;
+      \foreach \a in {.55,1.05,1.60} {
+        \foreach \sgn in {-1,1} {
+          \draw plot[domain=-1.5:8,samples=190,variable=\t]
+            ({\sgn*2.7*\a*\t*exp(-\t)},{\sgn*\a*exp(-\t)});
+          \foreach \ta/\tb in {-.28/-.12,.65/.82} {
+            \draw[->] plot[domain=\ta:\tb,samples=12,variable=\t]
+              ({\sgn*2.7*\a*\t*exp(-\t)},{\sgn*\a*exp(-\t)});
+          }
+        }
+      }
+    \end{scope}
+    \draw[line width=.45pt] (-2.70,0)--(2.70,0)
+      node[above right,xshift=2pt] {$\xi_1$};
+    \draw[line width=.45pt] (0,-2.30)--(0,2.30)
+      node[above left,xshift=-2pt] {$\xi_2$};
+    \draw[->] (-2.2,0)--(-1.75,0);
+    \draw[->] (2.2,0)--(1.75,0);
+    \filldraw[fill=white,line width=.45pt] (0,0) circle (1.5pt);
   \end{scope}
-  \begin{scope}[shift={(2.55,0)},x={(0.76cm,-0.34cm)},y={(0.42cm,0.76cm)}]
-    \draw[->] (-1.8,0)--(1.8,0) node[below right] {$\vect{h}_1$};
-    \draw[->] (0,-1.65)--(0,1.65) node[above right] {$\vect{h}_2$};
-    \node[below] at (0,-2.0) {$unstable$};
-    \fill (0,0) circle (1.5pt);
-    \draw[<-] (-1.55,0)--(-0.28,0);
-    \draw[->] (0.28,0)--(1.55,0);
-    \draw[<-] (-2.15,1.50).. controls (-1.55,1.70) and (0.95,0.03)..(0.16,0.03);
-    \draw[<-] (-1.80,1.08).. controls (-1.25,1.25) and (0.70,0.02)..(0.14,0.02);
-    \draw[<-] (-1.45,0.68).. controls (-0.98,0.80) and (0.48,0.01)..(0.12,0.01);
-    \draw[<-] (2.15,-1.50).. controls (1.55,-1.70) and (-0.95,-0.03)..(-0.16,-0.03);
-    \draw[<-] (1.80,-1.08).. controls (1.25,-1.25) and (-0.70,-0.02)..(-0.14,-0.02);
-    \draw[<-] (1.45,-0.68).. controls (0.98,-0.80) and (-0.48,-0.01)..(-0.12,-0.01);
+  \node[below] at (-3.0,-2.95) {(a)};
+  \begin{scope}[shift={(3.0,0)},x={(.78cm,.78cm)},y={(-1.20cm,0cm)}]
+    \begin{scope}
+      \clip (-2.55,-2.25)--(2.55,-2.25)--(2.55,2.25)--(-2.55,2.25)--cycle;
+      \foreach \a in {.55,1.05,1.60} {
+        \foreach \sgn in {-1,1} {
+          \draw plot[domain=-1.5:8,samples=190,variable=\t]
+            ({-\sgn*2.7*\a*\t*exp(-\t)},{\sgn*\a*exp(-\t)});
+          \foreach \ta/\tb in {-.28/-.12,.65/.82} {
+            \draw[<-] plot[domain=\ta:\tb,samples=12,variable=\t]
+              ({-\sgn*2.7*\a*\t*exp(-\t)},{\sgn*\a*exp(-\t)});
+          }
+        }
+      }
+    \end{scope}
+    \draw[line width=.45pt] (-2.70,0)--(2.70,0)
+      node[above right,xshift=2pt] {$\xi_1$};
+    \draw[line width=.45pt] (0,-2.30)--(0,2.30)
+      node[left,xshift=-2pt] {$\xi_2$};
+    \draw[->] (-1.75,0)--(-2.2,0);
+    \draw[->] (1.75,0)--(2.2,0);
+    \filldraw[fill=white,line width=.45pt] (0,0) circle (1.5pt);
   \end{scope}
+  \node[below] at (3.0,-2.95) {(b)};
 \end{tikzpicture}

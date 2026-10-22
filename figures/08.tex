@@ -1,20 +1,34 @@
-\begin{tikzpicture}[x=1cm,y=1cm,thick]
-  \coordinate (a) at (0,1.6); \coordinate (b) at (1.5,2.2); \coordinate (c) at (3.0,1.6);
-  \coordinate (d) at (3.0,-1.4); \coordinate (e) at (1.5,-2.0); \coordinate (f) at (0,-1.4);
-  \coordinate (g) at (-1.5,-0.5); \coordinate (h) at (-1.5,0.8);
-  \draw (a)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (b);
-  \draw (b)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (c);
-  \draw (c)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (d);
-  \draw (d)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (e);
-  \draw (e)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (f);
-  \draw (f)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (g);
-  \draw (g)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (h);
-  \draw (h)--node[midway,sloped,draw,fill=white,minimum width=7mm,minimum height=2mm,inner sep=0pt]{} (a);
-  \node at (0,1.95) {$a$}; \node at (1.5,2.55) {$b$}; \node at (3.35,1.6) {$c$}; \node at (3.35,-1.4) {$d$};
-  \node at (1.5,-2.35) {$e$}; \node at (-0.35,-1.4) {$f$}; \node at (-1.85,-0.5) {$g$}; \node at (-1.85,0.8) {$h$};
-  \draw[->] (0.18,1.67).. controls (0.42,1.94) and (0.72,2.06)..(1.1,2.12);
-  \draw[->] (1.9,2.1)--(2.45,1.82); \draw[->] (3.12,1.0)--(3.12,0.1);
-  \draw[->] (2.75,-1.55)--(2.05,-1.82); \draw[->] (1.1,-2.04)--(0.35,-1.75);
-  \draw[->] (-0.2,-1.23)--(-0.95,-0.8); \draw[->] (-1.63,-0.2)--(-1.63,0.34);
-  \draw[->] (-1.15,1.02)--(-0.5,1.42);
+\begin{tikzpicture}[x=1cm,y=1cm,line width=0.8pt]
+  \coordinate (a) at (0,2.35);
+  \coordinate (b) at (1.95,1.23);
+  \coordinate (c) at (1.95,-1.12);
+  \coordinate (m) at (0,-2.30);
+  \coordinate (h) at (-1.95,-1.12);
+  \coordinate (k) at (-1.95,1.23);
+
+  % The unlabelled lower vertex represents intermediate nodes in ab,bc,...,hk,ka.
+  \foreach \from/\to in {a/b,b/c,c/m,m/h,h/k,k/a} {
+    \draw (\from)--node[midway,sloped,draw,fill=white,
+      minimum width=8mm,minimum height=2.5mm,inner sep=0pt]{} (\to);
+  }
+
+  % Other branches incident at the loop vertices remain visible.
+  \draw (a)--++(0.43,0.65);
+  \draw (a)--node[pos=0.60,sloped,draw,fill=white,
+    minimum width=7mm,minimum height=2.5mm,inner sep=0pt]{} ++(-0.64,1.00);
+  \draw (b)--node[pos=0.60,sloped,draw,fill=white,
+    minimum width=7mm,minimum height=2.5mm,inner sep=0pt]{} ++(0.92,0.66);
+  \draw (c)--++(0.48,-0.31);
+  \draw (m)--++(-0.85,-0.50) (m)--++(0.70,-0.45) (m)--++(0,-0.68);
+  \draw (h)--++(-0.78,-0.24);
+  \draw (k)--node[pos=0.58,sloped,draw,fill=white,
+    minimum width=7mm,minimum height=2.5mm,inner sep=0pt]{} ++(-0.95,0.53);
+
+  \foreach \p in {a,b,c,m,h,k} {\fill (\p) circle (1.8pt);}
+  \node[below=3pt] at (a) {$a$};
+  \node[below right=2pt] at (b) {$b$};
+  \node[above left=2pt] at (c) {$c$};
+  \node[above right=3pt] at (h) {$h$};
+  \node[below right=3pt] at (k) {$k$};
+  \node at (1.86,2.96) {$S$};
 \end{tikzpicture}

@@ -1,6 +1,7 @@
-\begin{tikzpicture}[x=1cm,y=1cm,thick]
-  \draw[->] (-4.2,0)--(4.2,0);
-  \foreach \x/\lab in {-3/a,0/b,3/c} {\fill (\x,0) circle (2pt); \node[below] at (\x,0) {$\lab$};}
-  \foreach \a/\b in {-2.7/-0.5,0.3/2.7} {\draw[->] (\a,0.18)--(\b,0.18);}
-  \draw[->] (-3.9,0.18)--(-3.15,0.18); \draw[->] (3.15,0.18)--(3.9,0.18);
+\begin{tikzpicture}[scale=1.6890,font=\small,x=1cm,y=1cm,line width=0.8pt]
+  % The five equilibria and the alternating interval directions of original 17.
+  \draw (-4.25,0)--(4.25,0);
+  \foreach \x in {-3.65,-2.45,-1.10,0.35,2.40} \fill (\x,0) circle (1.8pt);
+  \foreach \a/\b in {-3.84/-4.22,-3.12/-2.68,-1.82/-2.24,-0.54/0.12,1.18/0.59,2.95/3.42,3.83/4.23}
+    \draw[->] (\a,0)--(\b,0);
 \end{tikzpicture}
