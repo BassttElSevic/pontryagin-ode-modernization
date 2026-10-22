@@ -71,6 +71,12 @@ XeLaTeX 环境需要安装 `ctex`、Fandol 字体、`amsmath`、`bm`、`upgreek`
 
 构建完成后，教材位于 `build/main.pdf`；目录、交叉引用和其他编译中间文件也写入 `build/`。此目录由构建生成，不纳入版本控制。构建只使用仓库内的文档、插图源码和构建脚本，不需要原扫描 PDF、OCR 文件或本机的其他项目目录。
 
+## 发布 PDF
+
+在 GitHub 创建并发布 Release 后，`Release PDF` 工作流会检出该 Release 标签，使用 Tectonic 构建 PDF，并将带版本号的 PDF 和 SHA-256 校验文件上传到同一个 Release。
+
+如需重新构建已有 Release，可在 Actions 中手动运行 `Release PDF`，并填写该 Release 的标签。手动运行会更新同名附件；它不会创建新的 Release。
+
 ## 继续编写
 
 1. 在 `chapters/` 新建章节文件，例如 `chapter3.tex`，在章首使用 `\chapter{原书章名}`，按原书顺序保留节号、定理次序和对应内容。拆分章节时，仅在该章首个文件中使用 `\chapter`。
