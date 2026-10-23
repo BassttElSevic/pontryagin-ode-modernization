@@ -73,14 +73,36 @@
       at (25,\yy-3.5) {\txt};
   }
 
-  % An angular saddle portrait gives this page its own visual identity.
-  % Its four hyperbola families solve x' = x, y' = -y; red eigenrays show
-  % the stable and unstable directions. No circular motif is reused here.
-  \fill[coverred] (101,105) -- (108,113) -- (190,75) -- (184,67) -- cycle;
-  \fill[coverink] (146,110) -- (169,87) -- (146,64) -- (123,87) -- cycle;
-  \draw[coverink,line width=0.8pt]
-    (146,110) -- (169,87) -- (146,64) -- (123,87) -- cycle;
-  \begin{scope}[shift={(146,87)}]
+  % Constructivist study: a saddle phase portrait carried by an oblique beam.
+  % The concentric frame and parallel rails echo the cover's engineering lines.
+  % All trajectories satisfy xy = C for x' = x, y' = -y.
+  \node[anchor=west,font=\coverru\bfseries\fontsize{9}{11}\selectfont]
+    at (102,120) {СЕДЛО};
+  \node[anchor=east,text=covergray,font=\sffamily\fontsize{7}{9}\selectfont]
+    at (190,120) {相平面 · 鞍点};
+  \draw[coverink,line width=0.55pt] (102,116.5) -- (124,116.5);
+  \fill[coverred] (102,116) rectangle (109,117);
+
+  % A shared local frame keeps the beam, rails and end tick exactly aligned.
+  \begin{scope}[shift={(147,88)},rotate=-28]
+    \fill[coverred] (-48,-4.5) rectangle (48,4.5);
+    \draw[coverink,line width=0.65pt] (-43,6.5) -- (48,6.5);
+    \draw[covergray,line width=0.45pt] (-48,-6.5) -- (48,-6.5);
+    \draw[coverink,line width=0.65pt] (48,4.7) -- (48,8.3);
+  \end{scope}
+
+  % Both diamonds share (147,88); corresponding sides are exactly parallel.
+  \draw[coverink,line width=0.65pt]
+    (147,117) -- (176,88) -- (147,59) -- (118,88) -- cycle;
+  \draw[coverred,line width=1.1pt] (118,88) -- (147,59);
+  \draw[covergray,line width=0.45pt] (105,88) -- (189,88);
+  \draw[covergray,line width=0.45pt] (147,59) -- (147,117);
+  \fill[coverink] (104,87) rectangle (106,89);
+  \fill[coverred] (146.1,116.1) rectangle (147.9,117.9);
+
+  % Preserve the black diamond and the four white hyperbola families.
+  \fill[coverink] (147,113.5) -- (172.5,88) -- (147,62.5) -- (121.5,88) -- cycle;
+  \begin{scope}[shift={(147,88)},scale=1.1087]
     \clip (0,23) -- (23,0) -- (0,-23) -- (-23,0) -- cycle;
     \foreach \g in {-18,-12,...,18}{
       \draw[coverpaper!12!coverink,line width=0.3pt] (\g,-23) -- (\g,23);
@@ -88,26 +110,44 @@
     }
     \foreach \c in {12,36,72}{
       \draw[coverpaper!92!coverink,line width=0.8pt]
-        plot[domain=0.5:20,samples=90,smooth,variable=\t]
+        plot[domain=0.5:23,samples=90,smooth,variable=\t]
           (\t,{\c/\t})
-        plot[domain=20:0.5,samples=90,smooth,variable=\t]
+        plot[domain=23:0.5,samples=90,smooth,variable=\t]
           ({-\t},{-\c/\t})
-        plot[domain=0.5:20,samples=90,smooth,variable=\t]
+        plot[domain=0.5:23,samples=90,smooth,variable=\t]
           (\t,{-\c/\t})
-        plot[domain=20:0.5,samples=90,smooth,variable=\t]
+        plot[domain=23:0.5,samples=90,smooth,variable=\t]
           ({-\t},{\c/\t});
     }
     \draw[coverpaper!75!coverink,line width=0.55pt] (-21,0) -- (21,0);
     \draw[coverpaper!75!coverink,line width=0.55pt] (0,-21) -- (0,21);
-    \draw[coverred,line width=1.25pt,-{Stealth[length=2mm]}]
-      (10,0) -- (20,0) (-10,0) -- (-20,0)
-      (0,20) -- (0,10) (0,-20) -- (0,-10);
-    \fill[coverred] (-1.2,-1.2) -- (0,1.2) -- (1.2,-1.2) -- cycle;
+    % Separate paths give all four separatrices their own time-direction arrow.
+    \foreach \sgn in {-1,1}{
+      \draw[coverred,line width=1.25pt,-{Stealth[length=1.8mm]}]
+        ({\sgn*9},0) -- ({\sgn*19},0);
+      \draw[coverred,line width=1.25pt,-{Stealth[length=1.8mm]}]
+        (0,{\sgn*19}) -- (0,{\sgn*9});
+    }
+    \fill[coverpaper] (-0.65,-0.65) rectangle (0.65,0.65);
   \end{scope}
+
+  % Sparse external labels keep the mathematical object legible at book scale.
+  \node[anchor=west,font=\fontsize{8}{10}\selectfont]
+    at (182,91) {$x$};
+  \node[anchor=west,font=\fontsize{8}{10}\selectfont]
+    at (151,115) {$y$};
+  \node[rotate=90,anchor=west,text=covergray,
+    font=\coverru\fontsize{6.5}{8}\selectfont]
+    at (193,84) {ФАЗОВЫЙ ПОРТРЕТ};
+  \fill[coverink] (115,50.5) rectangle (178,57.5);
+  \fill[coverred] (110,50.5) rectangle (113,57.5);
+  \node[text=coverpaper,font=\fontsize{9}{11}\selectfont]
+    at (146.5,54) {$\dot x=x\qquad\dot y=-y\qquad xy=C$};
+  \draw[coverink,line width=0.6pt] (181,52) -- (190,52) (181,54) -- (187,54);
 
   \fill[coverred] (18,35) -- (192,35) -- (192,44) -- (43,44) -- (18,39) -- cycle;
   \node[text=coverpaper,anchor=west,font=\sffamily\fontsize{10}{12}\selectfont]
-    at (25,39) {向他的数学创造致敬，也向同行、家人与师友致意。};
+    at (25,39) {向他的数学创造致敬，也向他的同行、他的家人与他的师友致意。};
 
   \node[anchor=north west,text width=174mm,align=left,text=covergray,
     font=\sffamily\fontsize{7}{9.5}\selectfont]
