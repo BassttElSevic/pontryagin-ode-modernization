@@ -1,0 +1,120 @@
+% Original full-page constructivist plate: ВРЕМЯ / ФОРМА.
+% The geometry comes from the rotation system x'=-y, y'=x.
+% One camera is used throughout:
+% P(t,x,y)=(64,77)+t*(91,133)/(6*pi)+x*(42.5,-15)+y*(18.75,31.25).
+% The red line is P(t,cos(t),sin(t)), 0<=t<=6*pi; its phase orbit is a circle.
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\begin{scope}[shift={(current page.south west)},x=1mm,y=1mm,
+  line cap=butt,line join=miter,
+  every node/.style={inner sep=0pt,outer sep=0pt,text=coverink}]
+  \clip (0,0) rectangle (210,297);
+  \fill[coverpaper] (0,0) rectangle (210,297);
+
+  % An inscribed upper-left wedge: both baselines parallel its upper edge.
+  % The text boxes have deliberate clearance from all three triangle sides.
+  \fill[coverred] (10,289) -- (151,253) -- (20,203) -- cycle;
+  \node[anchor=base west,rotate=-14.32,text=coverpaper] at (24,263)
+    {\resizebox{74mm}{!}{{\artru ВРЕМЯ}}};
+  \node[anchor=base west,rotate=-14.32,text=coverpaper] at (28,242)
+    {\resizebox{52mm}{!}{{\artru ФОРМА}}};
+
+  % Two quiet counterweights preserve open space around the continuous helix.
+  \fill[coverink] (168,297) -- (210,297) -- (210,250) -- cycle;
+  \fill[coverred] (-20,-20) -- (44,-20) -- (75,89) -- cycle;
+
+  \begin{scope}[shift={(64,77)},declare function={
+    orbitx(\a)=42.5*cos(\a)+18.75*sin(\a);
+    orbity(\a)=-15*cos(\a)+31.25*sin(\a);
+  }]
+    % The dark phase plane and the concentric orbits share the same camera.
+    \draw[covergray!55!coverpaper,line width=0.5pt]
+      (-76.5625,-20.3125) -- (29.6875,-57.8125) --
+      (76.5625,20.3125) -- (-29.6875,57.8125) -- cycle;
+    \fill[coverink]
+      (-70.4375,-18.6875) -- (27.3125,-53.1875) --
+      (70.4375,18.6875) -- (-27.3125,53.1875) -- cycle;
+    \begin{scope}
+      \clip (-70.4375,-18.6875) -- (27.3125,-53.1875) --
+        (70.4375,18.6875) -- (-27.3125,53.1875) -- cycle;
+      \foreach \s in {-1,-0.5,0,0.5,1}{
+        \draw[coverpaper!12!coverink,line width=0.3pt]
+          ({42.5*\s-18.75*1.15},{-15*\s-31.25*1.15}) --
+          ({42.5*\s+18.75*1.15},{-15*\s+31.25*1.15});
+        \draw[coverpaper!12!coverink,line width=0.3pt]
+          ({-42.5*1.15+18.75*\s},{15*1.15+31.25*\s}) --
+          ({42.5*1.15+18.75*\s},{-15*1.15+31.25*\s});
+      }
+      \foreach \r in {0.34,0.66,1}{
+        \draw[coverpaper,line width=0.85pt]
+          plot[domain=0:360,samples=181,smooth,variable=\a]
+            ({\r*orbitx(\a)},{\r*orbity(\a)}) -- cycle;
+      }
+      \draw[coverpaper!55!coverink,line width=0.45pt,
+        -{Stealth[length=1.8mm]}] (-46.75,16.5) -- (46.75,-16.5);
+      \draw[coverpaper!55!coverink,line width=0.45pt,
+        -{Stealth[length=1.8mm]}] (-20.625,-34.375) -- (20.625,34.375);
+      \fill[coverpaper] (0,0) circle[radius=0.7mm];
+    \end{scope}
+
+    % Restore the spatial armature: true silhouette generators and two inner
+    % generators, all parallel to the projected time direction (91,133).
+    \foreach \a in {-2.8554,177.1446}{
+      \draw[coverink!70!coverpaper,line width=0.8pt]
+        ({orbitx(\a)},{orbity(\a)}) --
+        ({91+orbitx(\a)},{133+orbity(\a)});
+    }
+    \foreach \a in {90,270}{
+      \draw[covergray!42!coverpaper,line width=0.45pt]
+        ({orbitx(\a)},{orbity(\a)}) --
+        ({91+orbitx(\a)},{133+orbity(\a)});
+    }
+
+    % Six exact circular cross-sections. Near and far semicircles meet at the
+    % silhouette tangencies; the lighter halves keep the red solution foremost.
+    \foreach \u in {0.166667,0.333333,0.5,0.666667,0.833333,1}{
+      \draw[covergray!48!coverpaper,line width=0.55pt]
+        plot[domain=-2.8554:177.1446,samples=91,smooth,variable=\a]
+          ({91*\u+orbitx(\a)},{133*\u+orbity(\a)});
+      \draw[coverink!82!coverpaper,line width=0.65pt]
+        plot[domain=177.1446:357.1446,samples=91,smooth,variable=\a]
+          ({91*\u+orbitx(\a)},{133*\u+orbity(\a)});
+    }
+    \draw[covergray!65!coverpaper,line width=0.55pt,
+      -{Stealth[length=2.7mm]}] (0,0) -- (101,147.6154);
+    \foreach \u in {0.166667,0.333333,0.5,0.666667,0.833333,1}{
+      \fill[coverink] ({91*\u-0.55},{133*\u-0.55})
+        rectangle ({91*\u+0.55},{133*\u+0.55});
+    }
+    \node[anchor=south west,font=\fontsize{12}{14}\selectfont]
+      at (104,149) {$t$};
+
+    % The selected solution stays continuous and visually above its framework.
+    \draw[coverpaper,line width=4.8pt,line cap=round]
+      plot[domain=0:1080,samples=481,smooth,variable=\a]
+        ({(\a/1080)*91+orbitx(\a)},{(\a/1080)*133+orbity(\a)});
+    \draw[coverred,line width=3.2pt,line cap=round]
+      plot[domain=0:1080,samples=481,smooth,variable=\a]
+        ({(\a/1080)*91+orbitx(\a)},{(\a/1080)*133+orbity(\a)});
+    \foreach \a in {185,895}{
+      \draw[coverred,line width=3.2pt,-{Stealth[length=3mm,width=2mm]}]
+        plot[domain=\a:{\a+6},samples=9,smooth,variable=\q]
+          ({(\q/1080)*91+orbitx(\q)},{(\q/1080)*133+orbity(\q)});
+    }
+    \fill[coverpaper] ({orbitx(0)},{orbity(0)}) circle[radius=2.1mm];
+    \fill[coverred] ({orbitx(0)},{orbity(0)}) circle[radius=1.5mm];
+    \fill[coverred] ({91+orbitx(0)},{133+orbity(0)}) circle[radius=1.5mm];
+  \end{scope}
+
+  % A lower-right counter-wedge, clear of both the phase plane and the helix.
+  % The inscription follows its rising edge and uses the same approved face.
+  \fill[coverink] (132,22) -- (200,20) -- (200,100) -- cycle;
+  \node[anchor=base west,rotate=48.91,text=coverpaper] at (153,31)
+    {\resizebox{42mm}{!}{{\artru ЕДИНСТВО}}};
+  \node[anchor=base west,rotate=48.91,text=coverpaper] at (165,26)
+    {\resizebox{47mm}{!}{{\artru ДВИЖЕНИЯ}}};
+\end{scope}
+\end{tikzpicture}
+\null\clearpage
+\endgroup

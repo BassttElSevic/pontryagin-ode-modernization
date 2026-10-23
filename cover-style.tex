@@ -1,10 +1,12 @@
-% Cover-only fonts and palette. DejaVu is distributed with TeX Live and
+% Front-matter fonts and palette. DejaVu is distributed with TeX Live and
 % available through the Tectonic bundle; no operating-system fonts are needed.
 \usepackage{fontspec}
 \newfontfamily\coverru{DejaVuSansCondensed.ttf}[
   BoldFont=DejaVuSansCondensed-Bold.ttf,
   Ligatures=TeX
 ]
+% Vendored decorative Cyrillic display face for the original art plate.
+\newfontfamily\artru{Ponomar-Regular.ttf}[Path=assets/fonts/]
 \definecolor{coverpaper}{HTML}{F2EBDD}
 \definecolor{coverred}{HTML}{C73825}
 \definecolor{coverink}{HTML}{202321}

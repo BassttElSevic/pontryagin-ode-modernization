@@ -49,14 +49,17 @@
 
 封面之后为同风格的独立人物介绍页，收录历史肖像、中文传记、生平年表与编者致意，并作为不编号章节列入目录。照片约摄于 1950 年，摄影者不详，Commons 文件页标注 CC BY 4.0；原文件、署名、许可及传记核对说明见 [照片与传记来源](assets/portraits/SOURCES.md)。正文引用莫斯科大学人物档案、MacTutor 与俄罗斯国立图书馆书目；致意文字为本项目原创。
 
+人物介绍与目录之间为原创全页 TikZ 插画《ВРЕМЯ / ФОРМА》（时间与形式）。左上红三角和右下黑三角分别容纳“时间与形式”及“运动的统一”两组俄文题铭，字体采用具有东正教印刷传统的 Ponomar，随项目保存，来源和许可见 [字体说明](assets/fonts/SOURCES.md)。数学结构依据第二章的旋转系统 `x' = -y, y' = x`：连续螺旋积分曲线、等时截面、纵向骨架、时间轴及相平面轨线共用一个线性投影。源码见 `chapters/ode-constructivist-plate.tex`。
+
 ## 目录
 
 ```text
 main.tex                              主文档、版式与符号宏
 cover.tex                             中俄双语构成主义封面，纯 TikZ 矢量绘制
-cover-style.tex                       封面专用字体与配色
+cover-style.tex                       前置页面字体与配色
 chapters/
   pontryagin-tribute.tex               封面之后的人物介绍与致敬页，不编号
+  ode-constructivist-plate.tex         《ВРЕМЯ / ФОРМА》全俄文 TikZ 艺术插画，不编号
   contents.tex                        正文章节清单
   frontmatter-modernization.tex       编写说明与当前进度
   chapter1.tex                        第一章正文

@@ -46,8 +46,14 @@
 \frontmatter
 \input{cover.tex}
 \input{chapters/pontryagin-tribute.tex}
+\input{chapters/ode-constructivist-plate.tex}
 \tableofcontents
+% Honour openany at this transition as well: the art plate adds one page,
+% without a parity-filling blank page after the table of contents.
+\let\odeSavedClearDoublePage\cleardoublepage
+\let\cleardoublepage\clearpage
 \mainmatter
+\let\cleardoublepage\odeSavedClearDoublePage
 \input{chapters/frontmatter-modernization.tex}
 \input{chapters/contents.tex}
 \end{document}
