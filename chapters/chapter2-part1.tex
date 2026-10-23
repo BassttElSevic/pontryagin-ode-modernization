@@ -35,47 +35,47 @@
  D=\frac{\dd}{\dd t},
  \qquad D^k=\frac{\dd^k}{\dd t^k}\quad(k=0,1,2,\ldots).
 \]
-原书使用字母 \(p\) 表示 \(d/dt\)；本稿统一把作用在函数上的算子写作 \(D\)，把对应的普通多项式写作 \(L(s)\)。这样就不必用同一字母同时表示微分运算与复变量。
+原书使用字母 \(p\) 表示 \(d/dt\)。本稿为免与第一章中一般线性算子 \(L\) 相混，把作用于函数的微分算子统一写作 \(D\)，把常系数多项式及其算子形式分别写作 \(p(s)\) 和 \(p(D)\)。
 
 \medskip
 \noindent\textbf{定义 (A)：常系数微分算子.}
 设
 \begin{equation}
- L(s)=a_0s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n
+ p(s)=a_0s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n
  \label{eq:ch2-7-polynomial}
 \end{equation}
 是常系数多项式，系数属于 \(\R\) 或 \(\C\)。把 \(s\) 换成微分算子 \(D\)，并令算子多项式作用在足够多次可微的函数 \(y\) 上：
 \begin{equation}
- L(D)y
+ p(D)y
  =a_0D^ny+a_1D^{n-1}y+\cdots+a_{n-1}Dy+a_ny.
  \label{eq:ch2-7-operator-definition}
 \end{equation}
-这就是常系数线性微分算子 \(L(D)\) 的定义。若 \(L_1,L_2\) 是两个多项式，\(y_1,y_2\) 是足够光滑的函数，则由求导的线性性以及
+这就是常系数线性微分算子 \(p(D)\) 的定义。若 \(p_1,p_2\) 是两个多项式，\(y_1,y_2\) 是足够光滑的函数，则由求导的线性性以及
 \[
  D^kD^\ell y=D^{k+\ell}y,
 \]
 立即得到
 \begin{align}
- L_1(D)(y_1+y_2)&=L_1(D)y_1+L_1(D)y_2,\notag\\
- \bigl(L_1(D)+L_2(D)\bigr)y&=L_1(D)y+L_2(D)y,
+ p_1(D)(y_1+y_2)&=p_1(D)y_1+p_1(D)y_2,\notag\\
+ \bigl(p_1(D)+p_2(D)\bigr)y&=p_1(D)y+p_2(D)y,
  \label{eq:ch2-7-operator-identities}\\
- L_1(D)\bigl(L_2(D)y\bigr)&=\bigl(L_1(D)L_2(D)\bigr)y.\notag
+ p_1(D)\bigl(p_2(D)y\bigr)&=\bigl(p_1(D)p_2(D)\bigr)y.\notag
 \end{align}
 这些恒等式说明，常系数算子之间的加法与乘法可以按普通多项式进行；求导因子的先后次序并不影响结果。
 
 原方程 \eqref{eq:ch2-7-homogeneous} 的首项系数为 \(1\)，因此可以写成
 \begin{equation}
- L(D)y=0,
+ p(D)y=0,
  \qquad
- L(s)=s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n.
+ p(s)=s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n.
  \label{eq:ch2-7-Ly-zero}
 \end{equation}
 
 \medskip
 \noindent\textbf{命题 (B).}
-若 \(L(s)\) 是任意常系数多项式，则对每个复数 \(\lambda\)，
+若 \(p(s)\) 是任意常系数多项式，则对每个复数 \(\lambda\)，
 \begin{equation}
- L(D)e^{\lambda t}=L(\lambda)e^{\lambda t}.
+ p(D)e^{\lambda t}=p(\lambda)e^{\lambda t}.
  \label{eq:ch2-7-exponential-eigenfunction}
 \end{equation}
 
@@ -91,18 +91,18 @@
 \]
 代入算子多项式的定义，便得到
 \[
- L(D)e^{\lambda t}
+ p(D)e^{\lambda t}
  =\left(\sum_{k=0}^n a_kD^{n-k}\right)e^{\lambda t}
  =\left(\sum_{k=0}^n a_k\lambda^{n-k}\right)e^{\lambda t}
- =L(\lambda)e^{\lambda t}.
+ =p(\lambda)e^{\lambda t}.
 \]
 \end{proof}
 
 由 \eqref{eq:ch2-7-exponential-eigenfunction}，函数 \(e^{\lambda t}\) 是齐次方程 \eqref{eq:ch2-7-Ly-zero} 的解，当且仅当
 \[
- L(\lambda)=0.
+ p(\lambda)=0.
 \]
-因此，原微分方程对应的普通多项式 \(L(s)\) 称为它的\emph{特征多项式}；它的根称为特征根。函数 \(e^{\lambda t}\) 是关于 \(D\) 的特征函数，特征根 \(\lambda\) 则是相应的特征值。这个观点与线性代数中“算子作用于特征向量后只多出一个标量因子”的说法完全一致，只是这里的向量位于函数空间中。
+因此，原微分方程对应的普通多项式 \(p(s)\) 称为它的\emph{特征多项式}；它的根称为特征根。函数 \(e^{\lambda t}\) 是关于 \(D\) 的特征函数，特征根 \(\lambda\) 则是相应的特征值。这个观点与线性代数中“算子作用于特征向量后只多出一个标量因子”的说法完全一致，只是这里的向量位于函数空间中。
 
 当特征多项式没有重根时，方程的全部解由下面的定理给出。
 
@@ -110,25 +110,25 @@
 \label{thm:ch2-4-simple-roots}
  假设
  \begin{equation}
-  L(D)y=0
+  p(D)y=0
   \label{eq:ch2-7-theorem4-equation}
  \end{equation}
- 的特征多项式 \(L(s)\) 没有重根，并设 \(\lambda_1,\ldots,\lambda_n\) 是它的 \(n\) 个互不相同的根。令
+ 的特征多项式 \(p(s)\) 没有重根，并设 \(\lambda_1,\ldots,\lambda_n\) 是它的 \(n\) 个互不相同的根。令
  \begin{equation}
-  y_j(t)=e^{\lambda_jt},
+  \varphi_j(t)=e^{\lambda_jt},
   \qquad j=1,\ldots,n.
   \label{eq:ch2-7-simple-fundamental-functions}
  \end{equation}
- 那么对任意复常数 \(c_1,\ldots,c_n\)，函数
+  那么对任意复常数 \(c_1,\ldots,c_n\)，函数
  \begin{equation}
-  y(t)=c_1e^{\lambda_1t}+\cdots+c_ne^{\lambda_nt}
+  \varphi(t)=c_1\varphi_1(t)+\cdots+c_n\varphi_n(t)
   \label{eq:ch2-7-general-complex-solution}
  \end{equation}
- 都是方程 \eqref{eq:ch2-7-theorem4-equation} 的解；反过来，方程的每一个解都能唯一地写成 \eqref{eq:ch2-7-general-complex-solution} 的形式。也就是说，任意给定解都唯一确定一组积分常数 \(c_1,\ldots,c_n\)。
+  都是方程 \eqref{eq:ch2-7-theorem4-equation} 的解；反过来，方程的每一个解都能唯一地写成 \eqref{eq:ch2-7-general-complex-solution} 的形式。也就是说，任意给定解都唯一确定一组积分常数 \(c_1,\ldots,c_n\)。
 \end{theorem}
 
 \begin{proof}
-由命题 (B)，每个 \(e^{\lambda_jt}\) 都是齐次方程的解。齐次方程的解对线性组合封闭，所以任意复常数 \(c_1,\ldots,c_n\) 所给出的 \eqref{eq:ch2-7-general-complex-solution} 都是解。
+由命题 (B)，每个 \(\varphi_j(t)=e^{\lambda_jt}\) 都是齐次方程的解。齐次方程的解对线性组合封闭，所以任意复常数 \(c_1,\ldots,c_n\) 所给出的 \eqref{eq:ch2-7-general-complex-solution} 都是解。
 
 设 \(y_*(t)\) 是方程的任意一个解。由高阶线性方程的唯一性定理，可以把它的定义区间取为整条实轴。令
 \begin{equation}
@@ -137,24 +137,26 @@
  y_*^{(n-1)}(0)=y_{n-1}.
  \label{eq:ch2-7-initial-vector}
 \end{equation}
-要证明 \(y_*\) 具有 \eqref{eq:ch2-7-general-complex-solution} 的形式，只须选取 \(c_1,\ldots,c_n\)，使得由 \eqref{eq:ch2-7-general-complex-solution} 定义的新解满足同一组初始条件。
+要证明 \(y_*\) 具有 \eqref{eq:ch2-7-general-complex-solution} 的形式，只须选取 \(c_1,\ldots,c_n\)，使得由 \eqref{eq:ch2-7-general-complex-solution} 定义的函数 \(\varphi\) 满足同一组初始条件。
 
-记 \(y_j^{(r)}=D^ry_j\)。把 \eqref{eq:ch2-7-general-complex-solution} 代入初始条件，得到 \(n\) 个线性方程：
+记 \(\varphi_j^{(r)}=D^r\varphi_j\)。把 \eqref{eq:ch2-7-general-complex-solution} 代入初始条件，得到 \(n\) 个线性方程：
 \begin{equation}
- c_1y_1^{(r)}(0)+\cdots+c_ny_n^{(r)}(0)=y_r,
+ c_1\varphi_1^{(r)}(0)+\cdots+c_n\varphi_n^{(r)}(0)=y_r,
  \qquad r=0,1,\ldots,n-1.
  \label{eq:ch2-7-initial-linear-system}
 \end{equation}
 其系数矩阵为
 \begin{equation}
  \begin{pmatrix}
-  y_1(0)&y_2(0)&\cdots&y_n(0)\\
-  y_1'(0)&y_2'(0)&\cdots&y_n'(0)\\
+  \varphi_1(0)&\varphi_2(0)&\cdots&\varphi_n(0)\\
+  \varphi_1'(0)&\varphi_2'(0)&\cdots&\varphi_n'(0)\\
   \vdots&\vdots&&\vdots\\
-  y_1^{(n-1)}(0)&y_2^{(n-1)}(0)&\cdots&y_n^{(n-1)}(0)
+  \varphi_1^{(n-1)}(0)&\varphi_2^{(n-1)}(0)&\cdots&\varphi_n^{(n-1)}(0)
  \end{pmatrix}.
  \label{eq:ch2-7-wronskian-matrix}
 \end{equation}
+把矩阵 \eqref{eq:ch2-7-wronskian-matrix} 的第 \(r+1\) 行记作 \(R_r\)（\(r=0,1,\ldots,n-1\)）。
+
 由于 \(D^re^{\lambda t}=\lambda^re^{\lambda t}\)，这个矩阵就是
 \begin{equation}
  \begin{pmatrix}
@@ -168,19 +170,23 @@
 \end{equation}
 当 \(\lambda_1,\ldots,\lambda_n\) 两两不同时，其行列式是非零 Vandermonde 行列式。因此方程组 \eqref{eq:ch2-7-initial-linear-system} 有唯一的解 \((c_1,\ldots,c_n)\)。
 
-原书在这里再给出一个不直接引用 Vandermonde 公式的论证，因为它可推广到重根情形。假设矩阵 \eqref{eq:ch2-7-wronskian-matrix} 的行线性相关。于是存在不全为零的常数 \(b_{n-1},b_{n-2},\ldots,b_0\)，使得依次用它们乘各行再相加后得到零行。考察所得零行的第 \(j\) 列：
+原书在这里再给出一个不直接引用 Vandermonde 公式的论证，因为它可推广到重根情形。假设矩阵 \eqref{eq:ch2-7-wronskian-matrix} 的行线性相关，即存在不全为零的常数 \(b_0,b_1,\ldots,b_{n-1}\)，使得
+\[
+ b_0R_0+b_1R_1+\cdots+b_{n-1}R_{n-1}=0.
+\]
+考察所得零行的第 \(j\) 列：
 \begin{equation}
- b_{n-1}y_j(0)+b_{n-2}y_j'(0)+\cdots+b_0y_j^{(n-1)}(0)=0,
+ b_0\varphi_j(0)+b_1\varphi_j'(0)+\cdots+b_{n-1}\varphi_j^{(n-1)}(0)=0,
  \qquad j=1,\ldots,n.
  \label{eq:ch2-7-row-relation}
 \end{equation}
 令
 \[
- M(s)=b_0s^{n-1}+b_1s^{n-2}+\cdots+b_{n-2}s+b_{n-1}.
+ M(s)=b_0+b_1s+\cdots+b_{n-1}s^{n-1}.
 \]
 则 \eqref{eq:ch2-7-row-relation} 等价于
 \[
- M(D)e^{\lambda_jt}\big|_{t=0}=M(\lambda_j)=0,
+ M(D)\varphi_j(t)\big|_{t=0}=M(\lambda_j)=0,
  \qquad j=1,\ldots,n.
 \]
 这说明次数不超过 \(n-1\) 的多项式 \(M(s)\) 有 \(n\) 个互不相同的根 \(\lambda_1,\ldots,\lambda_n\)。除非 \(M\equiv0\)，非零多项式不可能有这么多根；但 \(b_0,\ldots,b_{n-1}\) 不全为零，所以 \(M\not\equiv0\)，矛盾。因此矩阵 \eqref{eq:ch2-7-wronskian-matrix} 非奇异。
@@ -190,7 +196,7 @@
 
 定理中的函数组 \eqref{eq:ch2-7-simple-fundamental-functions} 称为齐次方程的一个基本解组；它们在整个实轴上定义。解空间由这些函数张成，维数等于特征多项式的次数 \(n\)。
 
-若特征多项式 \(L(s)\) 的系数全为实数，则复值解总体 \eqref{eq:ch2-7-general-complex-solution} 中还要分辨哪些解是实值的。下面的向量命题是处理这一点的工具。
+若特征多项式 \(p(s)\) 的系数全为实数，则复值解总体 \eqref{eq:ch2-7-general-complex-solution} 中还要分辨哪些解是实值的。下面的向量命题是处理这一点的工具。
 
 \medskip
 \noindent\textbf{命题 (C).}
@@ -258,7 +264,7 @@
 
 \medskip
 \noindent\textbf{命题 (E).}
-假设 \(L(s)\) 的系数全为实数。若 \(\lambda\) 是特征根，则 \(\overline\lambda\) 也是特征根；对应的指数解 \(e^{\lambda t}\) 与 \(e^{\overline\lambda t}\) 互为复共轭。若 \(\lambda\) 为实数，则 \(e^{\lambda t}\) 本身为实函数。因此，在基本解组中，每个复值解都与它的共轭解一同出现。复值线性组合 \eqref{eq:ch2-7-general-complex-solution} 为实值解，当且仅当实特征根对应的系数为实数，而每一对共轭特征根对应的系数互为共轭。
+假设 \(p(s)\) 的系数全为实数。若 \(\lambda\) 是特征根，则 \(\overline\lambda\) 也是特征根；对应的指数解 \(e^{\lambda t}\) 与 \(e^{\overline\lambda t}\) 互为复共轭。若 \(\lambda\) 为实数，则 \(e^{\lambda t}\) 本身为实函数。因此，在基本解组中，每个复值解都与它的共轭解一同出现。复值线性组合 \eqref{eq:ch2-7-general-complex-solution} 为实值解，当且仅当实特征根对应的系数为实数，而每一对共轭特征根对应的系数互为共轭。
 
 \begin{proof}
 对每个特征函数，把
@@ -299,11 +305,11 @@
 \end{equation}
 的全部复值解。这里
 \[
- L(s)=s^3-3s^2+9s+13.
+ p(s)=s^3-3s^2+9s+13.
 \]
 直接验算可知 \(s=-1\) 是一个根，并且
 \[
- L(s)=(s+1)(s^2-4s+13).
+ p(s)=(s+1)(s^2-4s+13).
 \]
 二次因子给出另外两个根 \(2\pm3i\)。因此
 \[
@@ -390,9 +396,9 @@
 
 仍考虑
 \begin{equation}
- L(D)y=0,
+ p(D)y=0,
  \qquad
- L(s)=s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n.
+ p(s)=s^n+a_1s^{n-1}+\cdots+a_{n-1}s+a_n.
  \label{eq:ch2-8-equation}
 \end{equation}
 若特征多项式有重根，形如 \(e^{\lambda t}\) 的互异函数不可能给出 \(n\) 个不同的基本解。为寻找缺少的解，可以先看一个极限想法。设 \(\lambda_1,\lambda_2\) 是特征多项式两个不同的实根。由线性性，
@@ -417,7 +423,7 @@
  \[
   \lambda_1,\ldots,\lambda_m
  \]
- 是特征多项式 \(L(s)\) 的全部两两不同的根，而 \(\lambda_j\) 的重数为 \(k_j\)，于是
+ 是特征多项式 \(p(s)\) 的全部两两不同的根，而 \(\lambda_j\) 的重数为 \(k_j\)，于是
  \[
   k_1+\cdots+k_m=n.
  \]
@@ -448,22 +454,22 @@
 
 \medskip
 \noindent\textbf{命题 (A)：平移公式.}
-设 \(L(s)\) 是任意多项式，\(\lambda\in\C\)，而 \(f\) 是足够多次可微的函数。则
+设 \(p(s)\) 是任意多项式，\(\lambda\in\C\)，而 \(f\) 是足够多次可微的函数。则
 \begin{equation}
- L(D)\bigl(e^{\lambda t}f(t)\bigr)
- =e^{\lambda t}L(D+\lambda)f(t).
+ p(D)\bigl(e^{\lambda t}f(t)\bigr)
+ =e^{\lambda t}p(D+\lambda)f(t).
  \label{eq:ch2-8-shift-formula}
 \end{equation}
-右端的 \(L(D+\lambda)\) 表示把多项式 \(L(s)\) 中的自变量 \(s\) 形式地替换成 \(D+\lambda\)。
+右端的 \(p(D+\lambda)\) 表示把多项式 \(p(s)\) 中的自变量 \(s\) 形式地替换成 \(D+\lambda\)。
 
 \begin{proof}
-先看 \(L(s)=s\)：
+先看 \(p(s)=s\)：
 \[
  D(e^{\lambda t}f)
  =\lambda e^{\lambda t}f+e^{\lambda t}Df
  =e^{\lambda t}(D+\lambda)f.
 \]
-对 \(L(s)=as+b\)，由线性性，
+对 \(p(s)=as+b\)，由线性性，
 \[
  (aD+b)(e^{\lambda t}f)
  =ae^{\lambda t}(D+\lambda)f+be^{\lambda t}f
@@ -471,14 +477,14 @@
 \]
 一般情形可按多项式次数归纳。假设公式对所有次数小于 \(n\) 的多项式成立，并把 \(n\) 次多项式分解为
 \[
- L(s)=L_1(s)L_2(s),
+ p(s)=p_1(s)p_2(s),
 \]
-其中 \(L_1\) 是一次，\(L_2\) 是 \(n-1\) 次。利用算子多项式的乘积法则以及归纳假设，
+其中 \(p_1\) 是一次，\(p_2\) 是 \(n-1\) 次。利用算子多项式的乘积法则以及归纳假设，
 \begin{align*}
- L_1(D)\bigl(L_2(D)(e^{\lambda t}f)\bigr)
- &=L_1(D)\bigl(e^{\lambda t}L_2(D+\lambda)f\bigr)\\
- &=e^{\lambda t}L_1(D+\lambda)L_2(D+\lambda)f\\
- &=e^{\lambda t}L(D+\lambda)f.
+ p_1(D)\bigl(p_2(D)(e^{\lambda t}f)\bigr)
+ &=p_1(D)\bigl(e^{\lambda t}p_2(D+\lambda)f\bigr)\\
+ &=e^{\lambda t}p_1(D+\lambda)p_2(D+\lambda)f\\
+ &=e^{\lambda t}p(D+\lambda)f.
 \end{align*}
 因此公式 \eqref{eq:ch2-8-shift-formula} 对一切多项式成立。
 \end{proof}
@@ -487,11 +493,11 @@
 \noindent\textbf{命题 (B)：重根的算子判据.}
 令
 \begin{equation}
- \omega_r(t)=L(D)\bigl(t^re^{\lambda t}\bigr),
+ \omega_r(t)=p(D)\bigl(t^re^{\lambda t}\bigr),
  \qquad r=0,1,\ldots.
  \label{eq:ch2-8-omega}
 \end{equation}
-若 \(\lambda\) 是 \(L(s)\) 的 \(k\) 重根，则
+若 \(\lambda\) 是 \(p(s)\) 的 \(k\) 重根，则
 \[
  \omega_0(t)=\cdots=\omega_{k-1}(t)\equiv0.
 \]
@@ -500,36 +506,36 @@
  \omega_0(t_0)=\omega_1(t_0)=\cdots=\omega_{k-1}(t_0)=0,
  \label{eq:ch2-8-multiplicity-condition}
 \end{equation}
-则 \(\lambda\) 是 \(L(s)\) 的根，而且重数至少为 \(k\)。
+则 \(\lambda\) 是 \(p(s)\) 的根，而且重数至少为 \(k\)。
 
 \begin{proof}
 由平移公式，
 \begin{equation}
  \omega_r(t)
- =e^{\lambda t}L(D+\lambda)t^r.
+ =e^{\lambda t}p(D+\lambda)t^r.
  \label{eq:ch2-8-omega-shift}
 \end{equation}
 先设 \(\lambda\) 是 \(k\) 重根，于是
 \[
- L(s)=M(s)(s-\lambda)^k,
+ p(s)=M(s)(s-\lambda)^k,
  \qquad M(\lambda)\ne0.
 \]
 把 \(s\) 换成 \(D+\lambda\)，得到
 \[
- L(D+\lambda)=M(D+\lambda)D^k.
+ p(D+\lambda)=M(D+\lambda)D^k.
 \]
 当 \(r=0,1,\ldots,k-1\) 时，\(D^k t^r=0\)，所以 \(\omega_r\equiv0\)。
 
-反过来，假设 \eqref{eq:ch2-8-multiplicity-condition} 成立。把 \(L(D+\lambda)\) 按 \(D\) 的幂展开为
+反过来，假设 \eqref{eq:ch2-8-multiplicity-condition} 成立。把 \(p(D+\lambda)\) 按 \(D\) 的幂展开为
 \begin{equation}
- L(D+\lambda)=b_0+b_1D+\cdots+b_nD^n.
+ p(D+\lambda)=b_0+b_1D+\cdots+b_nD^n.
  \label{eq:ch2-8-expanded-shift}
 \end{equation}
 由 \eqref{eq:ch2-8-omega-shift}，在 \(t=t_0\) 处
 \[
  \omega_0(t_0)=e^{\lambda t_0}b_0.
 \]
-由 \(\omega_0(t_0)=0\)，得 \(b_0=0\)，即 \(L(\lambda)=0\)。
+由 \(\omega_0(t_0)=0\)，得 \(b_0=0\)，即 \(p(\lambda)=0\)。
 
 再假设已经证明
 \[
@@ -539,14 +545,14 @@
 由于 \(D^\ell t^r|_{t=t_0}=0\) 对 \(0\le\ell<r\) 成立，而 \(D^rt^r=r!\)，所以
 \[
  \omega_r(t_0)
- =e^{\lambda t_0}L(D+\lambda)t^r\big|_{t=t_0}
+ =e^{\lambda t_0}p(D+\lambda)t^r\big|_{t=t_0}
  =e^{\lambda t_0}r!b_r.
 \]
 条件 \(\omega_r(t_0)=0\) 给出 \(b_r=0\)。逐步归纳得
 \[
  b_0=b_1=\cdots=b_{k-1}=0.
 \]
-因此 \(L(D+\lambda)\) 能被 \(D^k\) 整除；把 \(D\) 换回 \(s-\lambda\)，便知 \(L(s)\) 能被 \((s-\lambda)^k\) 整除。所以 \(\lambda\) 至少是 \(k\) 重根。
+因此 \(p(D+\lambda)\) 能被 \(D^k\) 整除；把 \(D\) 换回 \(s-\lambda\)，便知 \(p(s)\) 能被 \((s-\lambda)^k\) 整除。所以 \(\lambda\) 至少是 \(k\) 重根。
 \end{proof}
 
 \begin{proof}[定理 5 的证明]
@@ -615,7 +621,7 @@
 
 \medskip
 \noindent\textbf{命题 (D).}
-假设特征多项式 \(L(s)\) 的系数全为实数，\(\lambda\) 是它的 \(k\) 重根。对
+假设特征多项式 \(p(s)\) 的系数全为实数，\(\lambda\) 是它的 \(k\) 重根。对
 \(r=0,1,\ldots,k-1\)，函数 \(t^re^{\lambda t}\) 是方程的解。若 \(\lambda\) 为实数，则这些函数都是实的；若 \(\lambda\) 为复数，则 \(\overline\lambda\) 也是 \(k\) 重根，并且 \(t^re^{\overline\lambda t}\) 与 \(t^re^{\lambda t}\) 互为复共轭。因此，为了让复值线性组合成为实解，实根项所带的系数必须为实数，每对共轭根项所带的系数必须互为共轭。
 
 其证明与 §7 命题 (E) 完全相同：把基本解及其直到 \(n-1\) 阶导数在一点的值组成实向量，再应用命题 (D) 的实向量判据即可。
@@ -630,7 +636,7 @@
 \end{equation}
 特征多项式为
 \[
- L(s)=s^5+3s^4+3s^3+s^2=s^2(s+1)^3.
+ p(s)=s^5+3s^4+3s^3+s^2=s^2(s+1)^3.
 \]
 所以
 \[
@@ -656,7 +662,7 @@
 \end{equation}
 特征多项式为
 \[
- L(s)=(s^2+1)^2=(s-i)^2(s+i)^2.
+ p(s)=(s^2+1)^2=(s-i)^2(s+i)^2.
 \]
 两个二重根为 \(\lambda_1=i,\lambda_2=-i\)。因此复通解为
 \begin{equation}
@@ -707,14 +713,14 @@
 
 仍设
 \begin{equation}
- L(D)y=0
+ p(D)y=0
  \label{eq:ch2-9-equation}
 \end{equation}
 是常系数线性齐次方程。当 \(t\to+\infty\) 时，它的解是趋于零、保持有界，还是无限增长，是常微分方程应用中最重要的问题之一。§7 例 3 和 §8 例 4 已经说明，长期行为由特征根实部的符号控制。现在把这一联系写成一般判据。
 
 \medskip
 \noindent\textbf{定义 (A).}
-若多项式 \(L(s)\) 的所有根都有严格负实部，也就是说所有根都位于复平面虚轴的左侧，则称 \(L(s)\) 为\emph{稳定多项式}。
+若多项式 \(p(s)\) 的所有根都有严格负实部，也就是说所有根都位于复平面虚轴的左侧，则称 \(p(s)\) 为\emph{稳定多项式}。
 
 设特征根为
 \[
@@ -774,7 +780,7 @@
 即可。若解不是零解，还可以把严格不等式改成不超过某个常数；这里取更大的 \(M\) 不影响证明。
 \end{proof}
 
-反过来，如果 \(L(s)\) 至少有一个根 \(\lambda_j\) 的实部 \(\mu_j>0\)，则对应的解 \(e^{\lambda_jt}\) 的模为 \(e^{\mu_jt}\)，当 \(t\to+\infty\) 时无限增长。因此，所有根实部严格为负是“每条解都按指数速度趋于零”的充分条件；对本节的常系数齐次方程，它也是必要条件。
+反过来，如果 \(p(s)\) 至少有一个根 \(\lambda_j\) 的实部 \(\mu_j>0\)，则对应的解 \(e^{\lambda_jt}\) 的模为 \(e^{\mu_jt}\)，当 \(t\to+\infty\) 时无限增长。因此，所有根实部严格为负是“每条解都按指数速度趋于零”的充分条件；对本节的常系数齐次方程，它也是必要条件。
 
 找出便于实际使用的稳定性代数判据，长期吸引了许多数学家的研究。二次多项式可以直接由求根公式判断；任意次多项式的稳定性则由 Routh 和 Hurwitz 以略有不同的形式解决。Routh--Hurwitz 条件在实际计算中并不总是方便，因此人们不断寻求新的等价形式。下面先给出二次判据、实系数稳定性的必要条件，再证明三次情形的 Routh--Hurwitz 判据，最后陈述一般次数的 Hurwitz 判据。
 
@@ -782,10 +788,10 @@
 \noindent\textbf{命题 (B).}
 设
 \[
- L(s)=s^2+as+b,
+ p(s)=s^2+as+b,
  \qquad a,b\in\R.
 \]
-则 \(L(s)\) 稳定，当且仅当
+则 \(p(s)\) 稳定，当且仅当
 \[
  a>0,\qquad b>0.
 \]
@@ -798,7 +804,7 @@
 \noindent\textbf{命题 (C).}
 若实系数多项式
 \[
- L(s)=s^n+a_1s^{n-1}+\cdots+a_n
+ p(s)=s^n+a_1s^{n-1}+\cdots+a_n
 \]
 稳定，则它的所有系数 \(a_1,\ldots,a_n\) 都为正。
 
@@ -810,10 +816,10 @@
 \label{thm:ch2-6-cubic-stability}
  设实系数三次多项式
  \[
-  L(s)=a_0s^3+a_1s^2+a_2s+a_3,
+  p(s)=a_0s^3+a_1s^2+a_2s+a_3,
   \qquad a_0>0.
  \]
- 则 \(L(s)\) 稳定，当且仅当
+ 则 \(p(s)\) 稳定，当且仅当
  \[
   a_1>0,\quad a_2>0,\quad a_3>0,
   \qquad
@@ -824,7 +830,7 @@
 \begin{proof}
 因 \(a_0>0\)，可除以 \(a_0\)，化为首项系数为 \(1\) 的多项式
 \begin{equation}
- L(s)=s^3+as^2+bs+c.
+ p(s)=s^3+as^2+bs+c.
  \label{eq:ch2-9-monic-cubic}
 \end{equation}
 由命题 (C)，若它稳定，必有 \(a,b,c>0\)。在这个前提下还要证明：稳定当且仅当
@@ -836,12 +842,12 @@
 
 先判断何时会有纯虚根。这里把 \(s=0\) 也看作落在虚轴上的退化纯虚根。若 \(s=0\) 是根，则 \(c=0\)，但已假设 \(c>0\)，故不会发生。把多项式整理为
 \begin{equation}
- L(s)=(s+a)(s^2+b)-ab+c.
+ p(s)=(s+a)(s^2+b)-ab+c.
  \label{eq:ch2-9-cubic-decomposition}
 \end{equation}
-设 \(s=i\omega,\omega\ne0\)，是 \(L\) 的根。则
+设 \(s=i\omega,\omega\ne0\)，是 \(p\) 的根。则
 \[
- L(i\omega)=(i\omega+a)(-\omega^2+b)-ab+c.
+ p(i\omega)=(i\omega+a)(-\omega^2+b)-ab+c.
 \]
 如果 \(-\omega^2+b\ne0\)，那么 \((i\omega+a)(-\omega^2+b)\) 的虚部等于
 \(\omega(b-\omega^2)\ne0\)，它不可能与实数 \(-ab+c\) 相加为零。因此必须有
@@ -850,9 +856,9 @@
 \]
 并且
 \[
- L(i\omega)=-ab+c=0.
+ p(i\omega)=-ab+c=0.
 \]
-反过来，若 \(ab=c\)，由 \(b>0\) 可取 \(\omega=\sqrt b\)，上面的计算给出 \(L(\pm i\sqrt b)=0\)。因此，具有正系数 \(a,b,c\) 的三次多项式有纯虚根，当且仅当
+反过来，若 \(ab=c\)，由 \(b>0\) 可取 \(\omega=\sqrt b\)，上面的计算给出 \(p(\pm i\sqrt b)=0\)。因此，具有正系数 \(a,b,c\) 的三次多项式有纯虚根，当且仅当
 \[
  ab=c.
 \]
@@ -865,7 +871,7 @@
  \end{equation}
 这个过程中不能穿过边界 \(ab=c\)，所以稳定性状态不变。当 \(a=b=0\) 时，
 \[
- L(s)=s^3+c.
+ p(s)=s^3+c.
 \]
 它的三个根为
 \[
@@ -878,7 +884,7 @@
 
 最后假设 \(ab>c\)。让 \(c\) 连续减小并仍保持为正，直到 \(c\to0\)，过程中不穿过临界等式 \(ab=c\)。当 \(c=0\) 时，
 \begin{equation}
- L(s)=s(s^2+as+b),
+ p(s)=s(s^2+as+b),
  \label{eq:ch2-9-boundary-cubic}
 \end{equation}
 有一个零根，另外两个根满足二次稳定条件 \(a>0,b>0\)，所以具有负实部。对足够小的正 \(c\)，后两个根的实部仍为负；零根则连续变为一个很小的实根。三个根之积等于 \(-c<0\)，而另外两个根的乘积为正，所以这个接近零的根必须是负实根。故在 \(ab>c\) 时三个根都有负实部，多项式稳定。定理得证。
@@ -905,7 +911,7 @@
 \label{thm:ch2-7-hurwitz}
  设
  \begin{equation}
-  L(s)=a_0s^n+a_1s^{n-1}+\cdots+a_n,
+  p(s)=a_0s^n+a_1s^{n-1}+\cdots+a_n,
   \qquad a_0>0,
   \label{eq:ch2-9-hurwitz-polynomial}
  \end{equation}
@@ -921,7 +927,7 @@
   \end{pmatrix},
   \label{eq:ch2-9-hurwitz-matrix}
  \end{equation}
- 其中当 \(r<0\) 或 \(r>n\) 时约定 \(a_r=0\)。则 \(L(s)\) 稳定，当且仅当
+ 其中当 \(r<0\) 或 \(r>n\) 时约定 \(a_r=0\)。则 \(p(s)\) 稳定，当且仅当
  \[
   \Delta_k(\mat{Q})>0,
   \qquad k=1,\ldots,n.
@@ -999,7 +1005,7 @@
 
 本节讨论含有自由项的常系数线性方程
 \begin{equation}
- L(D)y=F(t),
+ p(D)y=F(t),
  \label{eq:ch2-10-nonhomogeneous}
 \end{equation}
 其中自由项属于所谓拟多项式。工程中常见的多项式、指数函数、正弦与余弦以及它们的有限乘积，都可以纳入这一框架。
@@ -1020,11 +1026,11 @@
 \[
  (f_1+f_2)e^{\lambda_1t}.
 \]
-因此，总可以把同一个拟多项式改写成指数 \(\lambda_j\) 两两不同的形式。再用分配律，任意两个拟多项式的和与积仍是拟多项式；这是有限和与有限乘积的直接结果。把任意常系数微分算子 \(L(D)\) 作用于一个拟多项式，由 Leibniz 法则可知，所得仍然是有限个“多项式乘指数”的和，因而仍是拟多项式。
+因此，总可以把同一个拟多项式改写成指数 \(\lambda_j\) 两两不同的形式。再用分配律，任意两个拟多项式的和与积仍是拟多项式；这是有限和与有限乘积的直接结果。把任意常系数微分算子 \(p(D)\) 作用于一个拟多项式，由 Leibniz 法则可知，所得仍然是有限个“多项式乘指数”的和，因而仍是拟多项式。
 
 与 \eqref{eq:ch2-10-nonhomogeneous} 对应的齐次方程为
 \begin{equation}
- L(D)u=0.
+ p(D)u=0.
  \label{eq:ch2-10-associated-homogeneous}
 \end{equation}
 由线性性立即得到下面的解集结构。
@@ -1039,13 +1045,13 @@
 其中 \(u\) 是对应齐次方程 \eqref{eq:ch2-10-associated-homogeneous} 的某个解。反过来，任何形如 \eqref{eq:ch2-10-affine-solution-set} 的函数都是非齐次方程的解。
 
 \begin{proof}
-若 \(y\) 与 \(\widetilde y\) 都满足 \(L(D)y=F\)，令 \(u=y-\widetilde y\)，则
+若 \(y\) 与 \(\widetilde y\) 都满足 \(p(D)y=F\)，令 \(u=y-\widetilde y\)，则
 \[
- L(D)u=L(D)y-L(D)\widetilde y=F-F=0.
+ p(D)u=p(D)y-p(D)\widetilde y=F-F=0.
 \]
 反过来，若 \(u\) 满足齐次方程，则
 \[
- L(D)(\widetilde y+u)=F+0=F.
+ p(D)(\widetilde y+u)=F+0=F.
 \]
 \end{proof}
 
@@ -1053,9 +1059,9 @@
 \[
  F=\sum_{j=1}^mF_j,
 \]
-并且 \(y_j\) 是方程 \(L(D)y_j=F_j\) 的特解，则线性性给出
+并且 \(y_j\) 是方程 \(p(D)y_j=F_j\) 的特解，则线性性给出
 \[
- L(D)\left(\sum_{j=1}^m y_j\right)=\sum_{j=1}^mF_j=F.
+ p(D)\left(\sum_{j=1}^m y_j\right)=\sum_{j=1}^mF_j=F.
 \]
 所以只须处理单项自由项
 \begin{equation}
@@ -1075,11 +1081,11 @@
 \label{thm:ch2-8-quasipolynomial}
  考虑非齐次方程
  \begin{equation}
-  L(D)y=f(t)e^{\lambda t},
+  p(D)y=f(t)e^{\lambda t},
   \label{eq:ch2-10-theorem8-equation}
  \end{equation}
  其中 \(f(t)\) 是 \(r\) 次多项式，\(\lambda\in\C\)。
- 若 \(L(\lambda)\ne0\)，取 \(k=0\)；若 \(L(\lambda)=0\)，取 \(k\) 为 \(\lambda\) 在特征多项式 \(L(s)\) 中的重数。则方程存在形如
+ 若 \(p(\lambda)\ne0\)，取 \(k=0\)；若 \(p(\lambda)=0\)，取 \(k\) 为 \(\lambda\) 在特征多项式 \(p(s)\) 中的重数。则方程存在形如
  \begin{equation}
   y=t^kg(t)e^{\lambda t}
   \label{eq:ch2-10-resonance-ansatz}
@@ -1102,18 +1108,18 @@
 
 按 \(k\) 的定义，存在多项式 \(M(s)\)，使
 \begin{equation}
- L(s)=M(s)(s-\lambda)^k,
+ p(s)=M(s)(s-\lambda)^k,
  \qquad M(\lambda)\ne0.
  \label{eq:ch2-10-factor-at-lambda}
 \end{equation}
 要使 \eqref{eq:ch2-10-resonance-ansatz} 成为解，代入后约去共同的 \(e^{\lambda t}\)，由平移公式 §8(A) 得到条件
 \begin{equation}
- L(D+\lambda)\bigl(t^kg(t)\bigr)=f(t).
+ p(D+\lambda)\bigl(t^kg(t)\bigr)=f(t).
  \label{eq:ch2-10-shifted-condition}
 \end{equation}
 由 \eqref{eq:ch2-10-factor-at-lambda}，
 \[
- L(D+\lambda)=M(D+\lambda)D^k.
+ p(D+\lambda)=M(D+\lambda)D^k.
 \]
 又因为 \(M(\lambda)\ne0\)，可把 \(M(D+\lambda)\) 写成
 \begin{equation}
@@ -1223,7 +1229,7 @@
 \end{gather}
 若 \(y\) 是 \eqref{eq:ch2-10-example1-plus} 的解，则 \(\overline y\) 是 \eqref{eq:ch2-10-example1-minus} 的解。两个解相加即为原方程的特解，因此只须先解 \eqref{eq:ch2-10-example1-plus}。
 
-这里 \(L(s)=s^2+1\)，\(L(i)=0\)，且 \(i\) 是一重根，所以 \(k=1\)。又 \(r=1\)，应设
+这里 \(p(s)=s^2+1\)，\(p(i)=0\)，且 \(i\) 是一重根，所以 \(k=1\)。又 \(r=1\)，应设
 \begin{equation}
  y=t(c_1+c_2t)e^{it}.
  \label{eq:ch2-10-example1-ansatz}
@@ -1696,9 +1702,9 @@
 \end{equation}
 的全部解都可以写成 \eqref{eq:ch2-12-real-harmonic} 的形式，其中振幅与位相任意。这个方程称为简谐振动方程；更一般的受迫振动则会出现非齐次项。
 
-设 \(L(D)\) 是实系数常系数微分算子。常见的受迫振动问题形如
+设 \(p(D)\) 是实系数常系数微分算子。常见的受迫振动问题形如
 \begin{equation}
- L(D)y=r\cos(\omega t+\alpha),
+ p(D)y=r\cos(\omega t+\alpha),
  \label{eq:ch2-12-scalar-forced}
 \end{equation}
 右端是简谐函数。由于简谐函数属于拟多项式，定理 8 已经足以处理它。对实系数算子还有一种更简洁、更适合电工程计算的写法，就是复数振幅法。
@@ -1724,21 +1730,21 @@
  r=|\rho|.
 \]
 
-当 \(L\) 的系数为实数时，求实方程 \eqref{eq:ch2-12-scalar-forced} 的特解，可以先求对应的复方程
+当 \(p\) 的系数为实数时，求实方程 \eqref{eq:ch2-12-scalar-forced} 的特解，可以先求对应的复方程
 \begin{equation}
- L(D)z=\rho e^{i\omega t}.
+ p(D)z=\rho e^{i\omega t}.
  \label{eq:ch2-12-complex-forced}
 \end{equation}
 若 \(z=x+iy\) 是它的复值解，则实部 \(x\) 满足
 \[
- L(D)x=\operatorname{Re}\bigl(\rho e^{i\omega t}\bigr)
+ p(D)x=\operatorname{Re}\bigl(\rho e^{i\omega t}\bigr)
  =r\cos(\omega t+\alpha).
 \]
-这一步完全依赖于算子系数为实数：只有这样，\(L(D)z\) 的实部才等于 \(L(D)\) 作用于 \(z\) 的实部。
+这一步完全依赖于算子系数为实数：只有这样，\(p(D)z\) 的实部才等于 \(p(D)\) 作用于 \(z\) 的实部。
 
 假设 \(\omega\) 满足
 \begin{equation}
- L(i\omega)\ne0.
+ p(i\omega)\ne0.
  \label{eq:ch2-12-nonresonant-frequency}
 \end{equation}
 由定理 8，可以寻找形如
@@ -1747,9 +1753,9 @@
  \label{eq:ch2-12-steady-complex-ansatz}
 \end{equation}
 的特解，其中复振幅 \(\sigma\) 待定。代入 \eqref{eq:ch2-12-complex-forced}，由
-\(L(D)e^{i\omega t}=L(i\omega)e^{i\omega t}\)，约去非零的 \(e^{i\omega t}\)，得到
+\(p(D)e^{i\omega t}=p(i\omega)e^{i\omega t}\)，约去非零的 \(e^{i\omega t}\)，得到
 \begin{equation}
- \sigma=\frac{\rho}{L(i\omega)}.
+ \sigma=\frac{\rho}{p(i\omega)}.
  \label{eq:ch2-12-scalar-complex-amplitude}
 \end{equation}
 因此 \eqref{eq:ch2-12-scalar-forced} 的一个特解是
@@ -1760,21 +1766,21 @@
 其中 \(s,\beta\) 由
 \begin{equation}
  se^{i\beta}=\sigma
- =\frac{re^{i\alpha}}{L(i\omega)}
+ =\frac{re^{i\alpha}}{p(i\omega)}
  \label{eq:ch2-12-real-amplitude-phase}
 \end{equation}
 确定。特别地，
 \begin{equation}
- s=|\sigma|=\frac{r}{|L(i\omega)|}.
+ s=|\sigma|=\frac{r}{|p(i\omega)|}.
  \label{eq:ch2-12-amplitude-formula}
 \end{equation}
 
-若 \(L(s)\) 是稳定多项式，则 \(L(i\omega)\ne0\) 自动成立。此时非齐次方程的任意解为
+若 \(p(s)\) 是稳定多项式，则 \(p(i\omega)\ne0\) 自动成立。此时非齐次方程的任意解为
 \begin{equation}
  y=u+s\cos(\omega t+\beta),
  \label{eq:ch2-12-steady-plus-transient}
 \end{equation}
-其中 \(u\) 是对应齐次方程的解。由于 \(L\) 稳定，\(u(t)\to0\)（\(t\to+\infty\)），所以一切解都趋近于同一个周期解 \eqref{eq:ch2-12-steady-real-solution}。这个周期解称为\emph{定态解}；齐次项 \(u\) 描述初始条件造成的\emph{过渡过程}。在稳定情形，定态解也是原非齐次方程唯一的周期解。
+其中 \(u\) 是对应齐次方程的解。由于 \(p\) 稳定，\(u(t)\to0\)（\(t\to+\infty\)），所以一切解都趋近于同一个周期解 \eqref{eq:ch2-12-steady-real-solution}。这个周期解称为\emph{定态解}；齐次项 \(u\) 描述初始条件造成的\emph{过渡过程}。在稳定情形，定态解也是原非齐次方程唯一的周期解。
 
 实际使用复数振幅法时，通常不必先把实方程整体解完，而直接写出复方程，求复振幅，再取实部。这个步骤可以原样推广到实系数线性方程组。考虑
 \begin{equation}
@@ -1848,7 +1854,7 @@
 
 若 \(\omega\ne\omega_1\)，则 \(\omega_1^2-\omega^2\ne0\)，并且
 \[
- L(i\omega)=\omega_1^2-\omega^2.
+ p(i\omega)=\omega_1^2-\omega^2.
 \]
 由 \eqref{eq:ch2-12-scalar-complex-amplitude}，
 \begin{equation}
@@ -1900,7 +1906,7 @@
 \end{equation}
 其中第一项称为固有振动，第二项称为强迫振动。
 
-当 \(\omega=\omega_1\) 时，前面的非共振公式失效，因为 \(L(i\omega_1)=0\)，属于共振的退化情形。按定理 8，应对复方程寻找形式
+当 \(\omega=\omega_1\) 时，前面的非共振公式失效，因为 \(p(i\omega_1)=0\)，属于共振的退化情形。按定理 8，应对复方程寻找形式
 \begin{equation}
  z=\sigma t e^{i\omega_1t}.
  \label{eq:ch2-12-resonance-ansatz}
@@ -2328,7 +2334,7 @@
 \end{equation}
 无源电路不会自发产生持续电流，零函数是它的特解；但若初始时已有电流或电容已充电，仍可研究这些状态如何随时间演化。特征多项式为
 \begin{equation}
- L(s)=Ls^2+Rs+\frac1C.
+ p(s)=Ls^2+Rs+\frac1C.
  \label{eq:ch2-13-loop-characteristic}
 \end{equation}
 因为 \(L,C>0\)，若 \(R\ge0\)，则所有系数非负且常数项为正；由 §9 命题 (B)，在 \(R>0\) 时它稳定，电流按指数速度衰减。若 \(R=0\)，则为下一段的无阻尼理想情形。
